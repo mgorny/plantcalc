@@ -1,0 +1,17 @@
+/* plantcalc -- Power plant modelling
+ * (c) 2012 Michał Górny
+ * Released under the terms of the 2-clause BSD license
+ */
+
+#pragma once
+
+#ifndef _PLANTCALC_STREAMS_MEDIUM_WATERSTREAM_HXX
+#define _PLANTCALC_STREAMS_MEDIUM_WATERSTREAM_HXX 1
+
+#include "../mediumstream.hxx"
+
+class WaterStream : public MediumStream
+{
+};
+
+#endif /*_PLANTCALC_STREAMS_MEDIUM_WATERSTREAM_HXX*/
