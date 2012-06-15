@@ -8,3 +8,8 @@
 #endif
 
 #include "waterconnection.hxx"
+
+WaterConnection::WaterConnection(MediumPin& from, MediumPin& to)
+	: MediumConnection(from, to)
+{
+}

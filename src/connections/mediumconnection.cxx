@@ -9,6 +9,21 @@
 
 #include "mediumconnection.hxx"
 
+	MediumConnection::MediumConnection(MediumPin& from, MediumPin& to)
+	: _from(from), _to(to)
+{
+}
+
 MediumConnection::~MediumConnection()
 {
+}
+
+MediumPin& MediumConnection::from()
+{
+	return _from;
+}
+
+MediumPin& MediumConnection::to()
+{
+	return _to;
 }

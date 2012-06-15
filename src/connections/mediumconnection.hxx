@@ -9,11 +9,20 @@
 #define _PLANTCALC_CONNECTIONS_MEDIUMCONNECTION_HXX 1
 
 #include "../connection.hxx"
+#include "../pins/mediumpin.hxx"
 
 class MediumConnection : public Connection
 {
+	MediumPin& _from, _to;
+
+protected:
+	MediumConnection(MediumPin& from, MediumPin& to);
+
 public:
 	virtual ~MediumConnection();
+
+	virtual MediumPin& from();
+	virtual MediumPin& to();
 };
 
 #endif /*_PLANTCALC_CONNECTIONS_MEDIUMCONNECTION_HXX*/

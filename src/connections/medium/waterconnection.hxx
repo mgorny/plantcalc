@@ -12,6 +12,8 @@
 
 class WaterConnection : public MediumConnection
 {
+public:
+	WaterConnection(MediumPin& from, MediumPin& to);
 };
 
 #endif /*_PLANTCALC_CONNECTIONS_MEDIUM_WATERCONNECTION_HXX*/
