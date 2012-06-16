@@ -18,7 +18,7 @@ public:
 
 	void operator=(double new_val);
 
-	operator bool();
+	bool is_set();
 	operator double();
 };
 

@@ -28,7 +28,7 @@ void PosOrUnsetDouble::operator=(double new_val)
 	_val = new_val;
 }
 
-PosOrUnsetDouble::operator bool()
+bool PosOrUnsetDouble::is_set()
 {
 	if (_val == unset_val)
 		return false;
