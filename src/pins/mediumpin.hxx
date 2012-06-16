@@ -21,12 +21,12 @@ public:
 
 	virtual ~MediumPin();
 
-	PosOrUnsetDouble p();
-	void p(PosOrUnsetDouble newval);
-	PosOrUnsetDouble T();
-	void T(PosOrUnsetDouble newval);
-	PosOrUnsetDouble h();
-	void h(PosOrUnsetDouble newval);
+	const PosOrUnsetDouble& p();
+	void p(const PosOrUnsetDouble& newval);
+	const PosOrUnsetDouble& T();
+	void T(const PosOrUnsetDouble& newval);
+	const PosOrUnsetDouble& h();
+	void h(const PosOrUnsetDouble& newval);
 };
 
 #endif /*_PLANTCALC_PINS_MEDIUMPIN_HXX*/

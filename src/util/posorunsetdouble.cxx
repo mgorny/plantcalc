@@ -28,7 +28,7 @@ void PosOrUnsetDouble::operator=(double new_val)
 	_val = new_val;
 }
 
-bool PosOrUnsetDouble::is_set()
+bool PosOrUnsetDouble::is_set() const
 {
 	if (_val == unset_val)
 		return false;
@@ -36,7 +36,7 @@ bool PosOrUnsetDouble::is_set()
 		return true;
 }
 
-PosOrUnsetDouble::operator double()
+PosOrUnsetDouble::operator double() const
 {
 	assert(*this);
 

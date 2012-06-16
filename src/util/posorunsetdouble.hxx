@@ -18,8 +18,8 @@ public:
 
 	void operator=(double new_val);
 
-	bool is_set();
-	operator double();
+	bool is_set() const;
+	operator double() const;
 };
 
 #endif /*_PLANTCALC_UTIL_POSORUNSETDOUBLE_HXX*/

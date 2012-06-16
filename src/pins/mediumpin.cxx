@@ -22,32 +22,32 @@ MediumPin::MediumPin(double p, double T)
 {
 }
 
-PosOrUnsetDouble MediumPin::p()
+const PosOrUnsetDouble& MediumPin::p()
 {
 	return _p;
 }
 
-void MediumPin::p(PosOrUnsetDouble newval)
+void MediumPin::p(const PosOrUnsetDouble& newval)
 {
 	_p = newval;
 }
 
-PosOrUnsetDouble MediumPin::T()
+const PosOrUnsetDouble& MediumPin::T()
 {
 	return _T;
 }
 
-void MediumPin::T(PosOrUnsetDouble newval)
+void MediumPin::T(const PosOrUnsetDouble& newval)
 {
 	_T = newval;
 }
 
-PosOrUnsetDouble MediumPin::h()
+const PosOrUnsetDouble& MediumPin::h()
 {
 	return _h;
 }
 
-void MediumPin::h(PosOrUnsetDouble newval)
+void MediumPin::h(const PosOrUnsetDouble& newval)
 {
 	_h = newval;
 }
