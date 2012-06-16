@@ -11,8 +11,10 @@
 
 #include "posorunsetdouble.hxx"
 
+static const double unset_val = -100;
+
 PosOrUnsetDouble::PosOrUnsetDouble()
-	: _val(-1000)
+	: _val(unset_val)
 {
 }
 
@@ -28,7 +30,7 @@ void PosOrUnsetDouble::operator=(double new_val)
 
 PosOrUnsetDouble::operator bool()
 {
-	if (_val < -100)
+	if (_val == unset_val)
 		return false;
 	else
 		return true;
