@@ -5,7 +5,6 @@ lib_LTLIBRARIES = libplantcalc.la
 libplantcalc_la_SOURCES = \
 	src/stream.cxx src/stream.hxx \
 	src/streams/mediumstream.cxx src/streams/mediumstream.hxx \
-	src/streams/medium/waterstream.cxx src/streams/medium/waterstream.hxx \
 	\
 	src/connection.cxx src/connection.hxx \
 	src/connections/mediumconnection.cxx src/connections/mediumconnection.hxx \
