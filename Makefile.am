@@ -15,7 +15,8 @@ libplantcalc_la_SOURCES = \
 	src/devices/condenser.cxx src/devices/condenser.hxx \
 	\
 	src/variable.cxx src/variable.hxx \
-	src/util/posorunsetdouble.cxx src/util/posorunsetdouble.hxx
+	src/util/posorunsetdouble.cxx src/util/posorunsetdouble.hxx \
+	src/util/sequentialnumbersource.cxx src/util/sequentialnumbersource.hxx
 libplantcalc_la_LDFLAGS = -version-info 0:0:0
 
 noinst_PROGRAMS = test
