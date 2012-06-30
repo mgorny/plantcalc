@@ -8,46 +8,39 @@
 #endif
 
 #include "mediumpin.hxx"
+#include "../util/sequentialnumbersource.hxx"
 
 MediumPin::~MediumPin()
 {
 }
 
 MediumPin::MediumPin()
+	: _id(seqnum.next()),
+	_p("p", _id),
+	_T("T", _id),
+	_h("h", _id)
 {
 }
 
 MediumPin::MediumPin(double p, double T)
-	: _p(p), _T(T)
+	: _id(seqnum.next()),
+	_p("p", _id, p),
+	_T("T", _id, T),
+	_h("h", _id)
 {
 }
 
-const PosOrUnsetDouble& MediumPin::p()
+const Variable& MediumPin::p()
 {
 	return _p;
 }
 
-void MediumPin::p(const PosOrUnsetDouble& newval)
-{
-	_p = newval;
-}
-
-const PosOrUnsetDouble& MediumPin::T()
+const Variable& MediumPin::T()
 {
 	return _T;
 }
 
-void MediumPin::T(const PosOrUnsetDouble& newval)
-{
-	_T = newval;
-}
-
-const PosOrUnsetDouble& MediumPin::h()
+const Variable& MediumPin::h()
 {
 	return _h;
-}
-
-void MediumPin::h(const PosOrUnsetDouble& newval)
-{
-	_h = newval;
 }

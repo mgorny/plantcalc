@@ -9,11 +9,12 @@
 #define _PLANTCALC_PINS_MEDIUMPIN_HXX 1
 
 #include "../pin.hxx"
-#include "../util/posorunsetdouble.hxx"
+#include "../variable.hxx"
 
 class MediumPin : public Pin
 {
-	PosOrUnsetDouble _p, _T, _h;
+	int _id;
+	Variable _p, _T, _h;
 
 public:
 	MediumPin();
@@ -21,12 +22,9 @@ public:
 
 	virtual ~MediumPin();
 
-	const PosOrUnsetDouble& p();
-	void p(const PosOrUnsetDouble& newval);
-	const PosOrUnsetDouble& T();
-	void T(const PosOrUnsetDouble& newval);
-	const PosOrUnsetDouble& h();
-	void h(const PosOrUnsetDouble& newval);
+	const Variable& p();
+	const Variable& T();
+	const Variable& h();
 };
 
 #endif /*_PLANTCALC_PINS_MEDIUMPIN_HXX*/
