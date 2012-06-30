@@ -15,6 +15,7 @@ libplantcalc_la_SOURCES = \
 	src/devices/condenser.cxx src/devices/condenser.hxx \
 	\
 	src/equation.cxx src/equation.hxx \
+	src/equationsystem.cxx src/equationsystem.hxx \
 	src/variable.cxx src/variable.hxx \
 	src/util/sequentialnumbersource.cxx src/util/sequentialnumbersource.hxx
 libplantcalc_la_LDFLAGS = -version-info 0:0:0
