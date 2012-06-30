@@ -29,7 +29,8 @@ double Boiler::efficiency()
 
 void Boiler::efficiency(double new_value)
 {
-	assert(0 <= new_value <= 1);
+	assert(new_value >= 0);
+	assert(new_value <= 1);
 
 	_efficiency = new_value;
 }
