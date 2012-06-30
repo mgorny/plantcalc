@@ -14,6 +14,7 @@ libplantcalc_la_SOURCES = \
 	src/devices/boiler.cxx src/devices/boiler.hxx \
 	src/devices/condenser.cxx src/devices/condenser.hxx \
 	\
+	src/variable.cxx src/variable.hxx \
 	src/util/posorunsetdouble.cxx src/util/posorunsetdouble.hxx
 libplantcalc_la_LDFLAGS = -version-info 0:0:0
 
