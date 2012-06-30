@@ -18,4 +18,6 @@ public:
 	int next();
 };
 
+extern SequentialNumberSource seqnum;
+
 #endif /*_PLANTCALC_UTIL_SEQUENTIALNUMBERSOURCE_HXX*/

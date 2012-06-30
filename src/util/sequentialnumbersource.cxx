@@ -9,6 +9,8 @@
 
 #include "sequentialnumbersource.hxx"
 
+SequentialNumberSource seqnum;
+
 SequentialNumberSource::SequentialNumberSource()
 	: _current_seq(0)
 {
