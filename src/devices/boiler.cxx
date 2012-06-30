@@ -17,10 +17,9 @@ Boiler::Boiler(double eff)
 }
 
 Boiler::Boiler(double eff, double pout, double Tout)
-	: _efficiency(eff)
+	: _efficiency(eff),
+	_out(pout, Tout)
 {
-	_out.p(pout);
-	_out.T(Tout);
 }
 
 double Boiler::efficiency()
