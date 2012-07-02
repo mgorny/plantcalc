@@ -26,6 +26,8 @@ public:
 
 	MediumPin& in();
 	MediumPin& out();
+
+	virtual EquationSystem equations();
 };
 
 #endif /*_PLANTCALC_DEVICES_BOILER_HXX*/

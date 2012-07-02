@@ -24,6 +24,8 @@ public:
 
 	MediumPin& sec_in();
 	MediumPin& sec_out();
+
+	virtual EquationSystem equations();
 };
 
 #endif /*_PLANTCALC_DEVICES_CONDENSER_HXX*/

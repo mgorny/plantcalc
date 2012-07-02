@@ -44,3 +44,10 @@ MediumPin& Boiler::out()
 {
 	return _out;
 }
+
+EquationSystem Boiler::equations()
+{
+	EquationSystem ret;
+
+	return ret;
+}

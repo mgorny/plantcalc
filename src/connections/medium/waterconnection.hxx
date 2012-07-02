@@ -14,6 +14,8 @@ class WaterConnection : public MediumConnection
 {
 public:
 	WaterConnection(MediumPin& from, MediumPin& to);
+
+	virtual EquationSystem equations();
 };
 
 #endif /*_PLANTCALC_CONNECTIONS_MEDIUM_WATERCONNECTION_HXX*/

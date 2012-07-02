@@ -8,6 +8,7 @@
 #ifndef _PLANTCALC_CONNECTION_HXX
 #define _PLANTCALC_CONNECTION_HXX 1
 
+#include "equationsystem.hxx"
 #include "pin.hxx"
 
 class Connection
@@ -17,6 +18,8 @@ public:
 
 	virtual Pin& from() = 0;
 	virtual Pin& to() = 0;
+
+	virtual EquationSystem equations() = 0;
 };
 
 #endif /*_PLANTCALC_CONNECTION_HXX*/

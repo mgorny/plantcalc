@@ -32,3 +32,10 @@ MediumPin& Condenser::sec_out()
 {
 	return _sec_out;
 }
+
+EquationSystem Condenser::equations()
+{
+	EquationSystem ret;
+
+	return ret;
+}
