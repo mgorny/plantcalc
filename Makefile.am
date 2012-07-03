@@ -20,7 +20,9 @@ libplantcalc_la_SOURCES = \
 	\
 	src/equationsystem.cxx src/equationsystem.hxx \
 	src/variable.cxx src/variable.hxx \
-	src/util/sequentialnumbersource.cxx src/util/sequentialnumbersource.hxx
+	src/util/sequentialnumbersource.cxx src/util/sequentialnumbersource.hxx \
+	\
+	src/exceptions/indeterminateequationerror.cxx src/exceptions/indeterminateequationerror.hxx
 libplantcalc_la_LDFLAGS = -version-info 0:0:0
 
 noinst_PROGRAMS = test
