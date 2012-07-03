@@ -15,7 +15,7 @@ class Variable
 	const char* _name;
 	int _id;
 
-	bool _is_set;
+	bool _is_calculated, _is_set;
 	double _val;
 
 	friend std::ostream& operator <<(std::ostream& f, const Variable& v);
@@ -23,6 +23,12 @@ class Variable
 public:
 	Variable(const char* name, int id);
 	Variable(const char* name, int id, double value);
+
+	bool is_set() const;
+
+	operator double() const;
+	void set_value(double user_val);
+	void unset();
 };
 
 std::ostream& operator <<(std::ostream& f, const Variable& v);
