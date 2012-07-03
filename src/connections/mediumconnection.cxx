@@ -9,8 +9,11 @@
 
 #include "mediumconnection.hxx"
 
-	MediumConnection::MediumConnection(MediumPin& from, MediumPin& to)
-	: _from(from), _to(to)
+MediumConnection::MediumConnection(MediumPin& from, MediumPin& to)
+	: _from(from), _to(to),
+	_p_eq(from.p(), to.p()),
+	_T_eq(from.T(), to.T()),
+	_h_eq(from.h(), to.h())
 {
 }
 
@@ -26,4 +29,15 @@ MediumPin& MediumConnection::from()
 MediumPin& MediumConnection::to()
 {
 	return _to;
+}
+
+EquationSystem MediumConnection::equations()
+{
+	EquationSystem ret;
+
+	ret.push_back(&_p_eq);
+	ret.push_back(&_T_eq);
+	ret.push_back(&_h_eq);
+
+	return ret;
 }

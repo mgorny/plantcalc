@@ -16,7 +16,7 @@ WaterConnection::WaterConnection(MediumPin& from, MediumPin& to)
 
 EquationSystem WaterConnection::equations()
 {
-	EquationSystem ret;
+	EquationSystem ret = MediumConnection::equations();
 
 	return ret;
 }
