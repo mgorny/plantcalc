@@ -30,17 +30,17 @@ MediumPin::MediumPin(double p, double T)
 {
 }
 
-const Variable& MediumPin::p()
+Variable& MediumPin::p()
 {
 	return _p;
 }
 
-const Variable& MediumPin::T()
+Variable& MediumPin::T()
 {
 	return _T;
 }
 
-const Variable& MediumPin::h()
+Variable& MediumPin::h()
 {
 	return _h;
 }

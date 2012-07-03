@@ -22,9 +22,9 @@ public:
 
 	virtual ~MediumPin();
 
-	const Variable& p();
-	const Variable& T();
-	const Variable& h();
+	Variable& p();
+	Variable& T();
+	Variable& h();
 };
 
 #endif /*_PLANTCALC_PINS_MEDIUMPIN_HXX*/
