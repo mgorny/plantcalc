@@ -23,3 +23,14 @@ std::ostream& operator <<(std::ostream& f, const EquationSystem& eqs)
 
 	return *fp;
 }
+
+EquationSystem& EquationSystem::operator+=(const EquationSystem& rhs)
+{
+	EquationSystem::const_iterator it;
+
+	reserve(size() + rhs.size());
+	for (it = rhs.begin(); it != rhs.end(); ++it)
+		push_back(*it);
+
+	return *this;
+}

@@ -4,6 +4,7 @@
 
 #include "src/devices/boiler.hxx"
 #include "src/devices/condenser.hxx"
+#include "src/equationsystem.hxx"
 
 #include "src/connections/medium/waterconnection.hxx"
 
@@ -28,27 +29,25 @@ int main()
 	connections.push_back(&bc);
 	connections.push_back(&cb);
 
-	do
+	EquationSystem eqs;
+
+	for (device_list::iterator it = devices.begin();
+			it != devices.end(); ++it)
 	{
-		for (device_list::iterator it = devices.begin();
-				it != devices.end(); ++it)
-		{
-			Device& d = **it;
+		Device& d = **it;
 
-			std::cout << d.equations() << std::endl;
-		}
-
-		for (connection_list::iterator it = connections.begin();
-				it != connections.end(); ++it)
-		{
-			Connection& c = **it;
-
-			std::cout << c.equations() << std::endl;
-			std::cout << std::boolalpha << c.equations()[0]->solve() << std::endl;
-			std::cout << c.equations() << std::endl;
-		}
+		eqs += d.equations();
 	}
-	while (0);
+
+	for (connection_list::iterator it = connections.begin();
+			it != connections.end(); ++it)
+	{
+		Connection& c = **it;
+
+		eqs += c.equations();
+	}
+
+	std::cout << eqs << std::endl;
 
 	return 0;
 }

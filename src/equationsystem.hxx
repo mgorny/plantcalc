@@ -17,6 +17,8 @@ class EquationSystem : public std::vector<Equation*>
 {
 public:
 	EquationSystem();
+
+	EquationSystem& operator+=(const EquationSystem& rhs);
 };
 
 std::ostream& operator <<(std::ostream& f, const EquationSystem& eqs);
