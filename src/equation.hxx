@@ -9,6 +9,7 @@
 #define _PLANTCALC_EQUATION_HXX 1
 
 #include <ostream>
+#include <exception>
 
 class Equation
 {

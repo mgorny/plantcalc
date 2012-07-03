@@ -16,7 +16,7 @@ int main()
 	Condenser c;
 
 	WaterConnection bc(b.out(), c.in());
-	WaterConnection cb(c.in(), b.out());
+	WaterConnection cb(c.out(), b.in());
 
 	typedef std::vector<Device*> device_list;
 	device_list devices;
@@ -43,6 +43,8 @@ int main()
 		{
 			Connection& c = **it;
 
+			std::cout << c.equations() << std::endl;
+			std::cout << std::boolalpha << c.equations()[0]->solve() << std::endl;
 			std::cout << c.equations() << std::endl;
 		}
 	}

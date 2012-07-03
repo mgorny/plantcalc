@@ -8,6 +8,9 @@
 #endif
 
 #include "linearequation.hxx"
+#include "../exceptions/indeterminateequationerror.hxx"
+
+#include <cassert>
 
 LinearEquation::LinearEquation()
 {
@@ -34,7 +37,45 @@ void LinearEquation::add(double coefficient, Variable& v)
 
 bool LinearEquation::solve()
 {
-	return false; // XXX
+	list_type::iterator it;
+	Variable* dest_var = 0;
+	double dest_coeff;
+
+	for (it = _vars.begin(); it != _vars.end(); ++it)
+	{
+		list_elem_type& el = *it;
+
+		if (!el.variable->is_set())
+		{
+			if (!dest_var) // single unset
+			{
+				dest_var = el.variable;
+				dest_coeff = el.coefficient;
+			}
+			else // more unset
+				return false;
+		}
+	}
+
+	if (!dest_var)
+		throw IndeterminateEquationError();
+
+	double val = 0;
+
+	for (it = _vars.begin(); it != _vars.end(); ++it)
+	{
+		list_elem_type& el = *it;
+
+		if (el.variable->is_set())
+			val += el.coefficient * *el.variable;
+		else
+			assert(el.variable == dest_var);
+	}
+
+	val /= -dest_coeff;
+	dest_var->set_value(val);
+
+	return true;
 }
 
 std::ostream& LinearEquation::print_to(std::ostream& f) const
