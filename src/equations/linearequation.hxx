@@ -24,6 +24,9 @@ class LinearEquation : public Equation
 
 	list_type _vars;
 
+protected:
+	virtual std::ostream& print_to(std::ostream& f) const;
+
 public:
 	LinearEquation();
 

@@ -25,3 +25,12 @@ Variable::Variable(const char* name, int id, double value)
 	_val(value)
 {
 }
+
+std::ostream& operator <<(std::ostream& f, const Variable& v)
+{
+	std::ostream& f1 = f << v._name << v._id;
+
+	if (v._is_set)
+		return f1 << '(' << v._val << ')';
+	return f1;
+}

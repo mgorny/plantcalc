@@ -8,6 +8,8 @@
 #ifndef _PLANTCALC_VARIABLE_HXX
 #define _PLANTCALC_VARIABLE_HXX 1
 
+#include <ostream>
+
 class Variable
 {
 	const char* _name;
@@ -16,9 +18,13 @@ class Variable
 	bool _is_set;
 	double _val;
 
+	friend std::ostream& operator <<(std::ostream& f, const Variable& v);
+
 public:
 	Variable(const char* name, int id);
 	Variable(const char* name, int id, double value);
 };
+
+std::ostream& operator <<(std::ostream& f, const Variable& v);
 
 #endif /*_PLANTCALC_VARIABLE_HXX*/

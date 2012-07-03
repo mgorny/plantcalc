@@ -8,6 +8,7 @@
 #include "src/connections/medium/waterconnection.hxx"
 
 #include <vector>
+#include <iostream>
 
 int main()
 {
@@ -33,12 +34,16 @@ int main()
 				it != devices.end(); ++it)
 		{
 			Device& d = **it;
+
+			std::cout << d.equations() << std::endl;
 		}
 
 		for (connection_list::iterator it = connections.begin();
 				it != connections.end(); ++it)
 		{
 			Connection& c = **it;
+
+			std::cout << c.equations() << std::endl;
 		}
 	}
 	while (0);

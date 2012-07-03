@@ -12,3 +12,8 @@
 Equation::~Equation()
 {
 }
+
+std::ostream& operator <<(std::ostream& f, const Equation& eq)
+{
+	return eq.print_to(f);
+}

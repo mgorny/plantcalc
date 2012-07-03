@@ -12,3 +12,14 @@
 EquationSystem::EquationSystem()
 {
 }
+
+std::ostream& operator <<(std::ostream& f, const EquationSystem& eqs)
+{
+	EquationSystem::const_iterator it;
+	std::ostream* fp = &f;
+
+	for (it = eqs.begin(); it != eqs.end(); ++it)
+		fp = &(*fp << "{ " << **it << "\n");
+
+	return *fp;
+}

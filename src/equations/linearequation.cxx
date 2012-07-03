@@ -36,3 +36,21 @@ bool LinearEquation::solve()
 {
 	return false; // XXX
 }
+
+std::ostream& LinearEquation::print_to(std::ostream& f) const
+{
+	list_type::const_iterator it;
+	std::ostream* fp = &f;
+
+	for (it = _vars.begin(); it != _vars.end();)
+	{
+		const list_elem_type& li = *it;
+
+		fp = &(*fp << li.coefficient << " " << *li.variable);
+
+		if (++it != _vars.end())
+			fp = &(*fp << " + ");
+	}
+
+	return *fp << " = 0";
+}

@@ -11,11 +11,14 @@
 #include "equation.hxx"
 
 #include <vector>
+#include <ostream>
 
 class EquationSystem : public std::vector<Equation*>
 {
 public:
 	EquationSystem();
 };
+
+std::ostream& operator <<(std::ostream& f, const EquationSystem& eqs);
 
 #endif /*_PLANTCALC_EQUATIONSYSTEM_HXX*/
