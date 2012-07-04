@@ -15,7 +15,9 @@
 
 class WaterStateEquation : public Equation
 {
-	Variable& _p, _T, _h;
+	Variable& _p;
+	Variable& _T;
+	Variable& _h;
 
 public:
 	WaterStateEquation(Variable& p, Variable& T, Variable& h);
