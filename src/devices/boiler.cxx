@@ -12,13 +12,15 @@
 #include "boiler.hxx"
 
 Boiler::Boiler(double eff)
-	: _efficiency(eff)
+	: _efficiency(eff),
+	_water_mass_eq(_in.D(), _out.D())
 {
 }
 
 Boiler::Boiler(double eff, double pout, double Tout)
 	: _efficiency(eff),
-	_out(pout, Tout)
+	_out(pout, Tout),
+	_water_mass_eq(_in.D(), _out.D())
 {
 }
 
@@ -48,6 +50,8 @@ MediumPin& Boiler::out()
 EquationSystem Boiler::equations()
 {
 	EquationSystem ret;
+
+	ret.push_back(&_water_mass_eq);
 
 	return ret;
 }

@@ -10,11 +10,14 @@
 
 #include "../device.hxx"
 #include "../pins/mediumpin.hxx"
+#include "../equations/equalityequation.hxx"
 
 class Condenser : public Device
 {
 	MediumPin _in, _out;
 	MediumPin _sec_in, _sec_out;
+
+	EqualityEquation _prim_mass_eq, _sec_mass_eq;
 
 public:
 	Condenser();

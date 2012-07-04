@@ -10,12 +10,15 @@
 
 #include "../device.hxx"
 #include "../pins/mediumpin.hxx"
+#include "../equations/equalityequation.hxx"
 
 class Boiler : public Device
 {
 	double _efficiency;
 
 	MediumPin _in, _out;
+
+	EqualityEquation _water_mass_eq;
 
 public:
 	Boiler(double efficiency = 1);

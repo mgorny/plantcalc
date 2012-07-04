@@ -10,6 +10,8 @@
 #include "condenser.hxx"
 
 Condenser::Condenser()
+	: _prim_mass_eq(_in.D(), _out.D()),
+	_sec_mass_eq(_sec_in.D(), _sec_out.D())
 {
 }
 
@@ -36,6 +38,9 @@ MediumPin& Condenser::sec_out()
 EquationSystem Condenser::equations()
 {
 	EquationSystem ret;
+
+	ret.push_back(&_prim_mass_eq);
+	ret.push_back(&_sec_mass_eq);
 
 	return ret;
 }
