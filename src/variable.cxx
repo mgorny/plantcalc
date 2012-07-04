@@ -14,7 +14,6 @@
 Variable::Variable(const char* name, int id)
 	: _name(name),
 	_id(id),
-	_is_calculated(false),
 	_is_set(false)
 {
 }
@@ -22,7 +21,6 @@ Variable::Variable(const char* name, int id)
 Variable::Variable(const char* name, int id, double value)
 	: _name(name),
 	_id(id),
-	_is_calculated(false),
 	_is_set(true),
 	_val(value)
 {
