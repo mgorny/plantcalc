@@ -18,13 +18,15 @@
 int main()
 {
 	Boiler b(.9, 10, 773.15);
-	Turbine t(.95, 0.1);
+	Turbine t(.95, .99, 0.1);
 	Condenser c;
 
 	WaterConnection bt(b.out(), t.in());
 	WaterConnection tc(t.out(), c.in());
 	WaterConnection cb(c.out(), b.in());
 	WaterConnection tloop(t.loop_out(), t.loop_in());
+
+	t.energy_out().P().set_value(1000);
 
 	typedef std::vector<Device*> device_list;
 	device_list devices;
