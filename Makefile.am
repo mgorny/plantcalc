@@ -17,6 +17,7 @@ libplantcalc_la_SOURCES = \
 	src/equation.cxx src/equation.hxx \
 	src/equations/linearequation.cxx src/equations/linearequation.hxx \
 	src/equations/equalityequation.cxx src/equations/equalityequation.hxx \
+	src/equations/waterstateequation.cxx src/equations/waterstateequation.hxx \
 	\
 	src/equationsolver.cxx src/equationsolver.hxx \
 	src/equationsolvers/determinateequationsolver.cxx src/equationsolvers/determinateequationsolver.hxx \
@@ -27,6 +28,8 @@ libplantcalc_la_SOURCES = \
 	\
 	src/exceptions/indeterminateequationerror.cxx src/exceptions/indeterminateequationerror.hxx
 libplantcalc_la_LDFLAGS = -version-info 0:0:0
+libplantcalc_la_CPPFLAGS = $(LIBH2OXX_CFLAGS)
+libplantcalc_la_LIBADD = $(LIBH2OXX_LIBS)
 
 noinst_PROGRAMS = test
 

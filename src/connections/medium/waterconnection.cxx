@@ -10,13 +10,16 @@
 #include "waterconnection.hxx"
 
 WaterConnection::WaterConnection(MediumPin& from, MediumPin& to)
-	: MediumConnection(from, to)
+	: MediumConnection(from, to),
+	_state_eq(from.p(), from.T(), from.h())
 {
 }
 
 EquationSystem WaterConnection::equations()
 {
 	EquationSystem ret = MediumConnection::equations();
+
+	ret.push_back(&_state_eq);
 
 	return ret;
 }

@@ -9,9 +9,12 @@
 #define _PLANTCALC_CONNECTIONS_MEDIUM_WATERCONNECTION_HXX 1
 
 #include "../mediumconnection.hxx"
+#include "../../equations/waterstateequation.hxx"
 
 class WaterConnection : public MediumConnection
 {
+	WaterStateEquation _state_eq;
+
 public:
 	WaterConnection(MediumPin& from, MediumPin& to);
 
