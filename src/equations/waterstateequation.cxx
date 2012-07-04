@@ -8,6 +8,11 @@
 #endif
 
 #include "waterstateequation.hxx"
+#include "../exceptions/indeterminateequationerror.hxx"
+
+#include <stdexcept>
+
+#include <h2o>
 
 WaterStateEquation::WaterStateEquation(Variable& p, Variable& T, Variable& h)
 	: _p(p), _T(T), _h(h)
@@ -16,7 +21,28 @@ WaterStateEquation::WaterStateEquation(Variable& p, Variable& T, Variable& h)
 
 bool WaterStateEquation::solve()
 {
-	return false;
+	int count = _p.is_set() + _T.is_set() + _h.is_set();
+
+	if (count > 2)
+		throw IndeterminateEquationError();
+	else if (count < 2)
+		return false;
+
+	h2o::H2O state;
+
+	if (_p.is_set() && _T.is_set())
+		state = h2o::H2O::pT(_p, _T);
+	else if (_p.is_set() && _h.is_set())
+		state = h2o::H2O::ph(_p, _h);
+	else
+		throw std::runtime_error("Unsupported water state equation arguments.");
+
+	if (!_T.is_set())
+		_T.set_value(state.T());
+	if (!_h.is_set())
+		_h.set_value(state.h());
+
+	return true;
 }
 
 std::ostream& WaterStateEquation::print_to(std::ostream& f) const
