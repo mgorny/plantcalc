@@ -10,18 +10,21 @@
 #include "variable.hxx"
 
 #include <cassert>
+#include <stdexcept>
 
 Variable::Variable(const char* name, int id)
 	: _name(name),
 	_id(id),
-	_is_set(false)
+	_is_set(false),
+	_read_only(false)
 {
 }
 
-Variable::Variable(const char* name, int id, double value)
+Variable::Variable(const char* name, int id, double value, bool read_only)
 	: _name(name),
 	_id(id),
 	_is_set(true),
+	_read_only(read_only),
 	_val(value)
 {
 }
@@ -49,11 +52,17 @@ Variable::operator double() const
 
 void Variable::set_value(double val)
 {
+	if (_read_only)
+		throw std::logic_error("set_value() unallowed on read-only Variable.");
+
 	_is_set = true;
 	_val = val;
 }
 
 void Variable::unset()
 {
+	if (_read_only)
+		throw std::logic_error("unset() unallowed on read-only Variable.");
+
 	_is_set = false;
 }

@@ -15,14 +15,14 @@ class Variable
 	const char* _name;
 	int _id;
 
-	bool _is_set;
+	bool _is_set, _read_only;
 	double _val;
 
 	friend std::ostream& operator <<(std::ostream& f, const Variable& v);
 
 public:
 	Variable(const char* name, int id);
-	Variable(const char* name, int id, double value);
+	Variable(const char* name, int id, double value, bool read_only = false);
 
 	bool is_set() const;
 
