@@ -11,6 +11,7 @@ libplantcalc_la_SOURCES = \
 	src/pins/mediumpin.cxx src/pins/mediumpin.hxx \
 	\
 	src/device.cxx src/device.hxx \
+	src/devices/mediumflowdevice.cxx src/devices/mediumflowdevice.hxx \
 	src/devices/boiler.cxx src/devices/boiler.hxx \
 	src/devices/condenser.cxx src/devices/condenser.hxx \
 	\

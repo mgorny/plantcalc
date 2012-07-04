@@ -8,22 +8,18 @@
 #ifndef _PLANTCALC_DEVICES_CONDENSER_HXX
 #define _PLANTCALC_DEVICES_CONDENSER_HXX 1
 
-#include "../device.hxx"
+#include "mediumflowdevice.hxx"
 #include "../pins/mediumpin.hxx"
 #include "../equations/equalityequation.hxx"
 
-class Condenser : public Device
+class Condenser : public MediumFlowDevice
 {
-	MediumPin _in, _out;
 	MediumPin _sec_in, _sec_out;
 
-	EqualityEquation _prim_mass_eq, _sec_mass_eq;
+	EqualityEquation _secondary_mass_eq;
 
 public:
 	Condenser();
-
-	MediumPin& in();
-	MediumPin& out();
 
 	MediumPin& sec_in();
 	MediumPin& sec_out();

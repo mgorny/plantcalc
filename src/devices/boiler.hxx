@@ -8,17 +8,11 @@
 #ifndef _PLANTCALC_DEVICES_BOILER_HXX
 #define _PLANTCALC_DEVICES_BOILER_HXX 1
 
-#include "../device.hxx"
-#include "../pins/mediumpin.hxx"
-#include "../equations/equalityequation.hxx"
+#include "mediumflowdevice.hxx"
 
-class Boiler : public Device
+class Boiler : public MediumFlowDevice
 {
 	double _efficiency;
-
-	MediumPin _in, _out;
-
-	EqualityEquation _water_mass_eq;
 
 public:
 	Boiler(double efficiency = 1);
@@ -26,9 +20,6 @@ public:
 
 	double efficiency();
 	void efficiency(double new_value);
-
-	MediumPin& in();
-	MediumPin& out();
 
 	virtual EquationSystem equations();
 };
