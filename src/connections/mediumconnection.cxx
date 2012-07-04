@@ -14,6 +14,8 @@ MediumConnection::MediumConnection(MediumPin& from, MediumPin& to)
 	_p_eq(from.p(), to.p()),
 	_T_eq(from.T(), to.T()),
 	_h_eq(from.h(), to.h()),
+	_s_eq(from.s(), to.s()),
+	_x_eq(from.x(), to.x()),
 	_D_eq(from.D(), to.D())
 {
 }
@@ -39,6 +41,8 @@ EquationSystem MediumConnection::equations()
 	ret.push_back(&_p_eq);
 	ret.push_back(&_T_eq);
 	ret.push_back(&_h_eq);
+	ret.push_back(&_s_eq);
+	ret.push_back(&_x_eq);
 	ret.push_back(&_D_eq);
 
 	return ret;
