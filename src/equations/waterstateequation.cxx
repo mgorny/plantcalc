@@ -45,6 +45,8 @@ bool WaterStateEquation::solve()
 	else
 		throw std::runtime_error("Unsupported water state equation arguments.");
 
+	if (!_p.is_set())
+		_p.set_value(state.p());
 	if (!_T.is_set())
 		_T.set_value(state.T());
 	if (!_h.is_set())
