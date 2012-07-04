@@ -9,12 +9,13 @@
 
 #include "condenser.hxx"
 
+static Variable xsat("xsat", 0, 0.0, true);
+
 Condenser::Condenser()
 	: _secondary_mass_eq(_sec_in.D(), _sec_out.D()),
-	_primary_pressure_eq(in().p(), out().p())
+	_primary_pressure_eq(in().p(), out().p()),
+	_primary_saturation_eq(out().x(), xsat)
 {
-	// XXX: convert into an equation
-	out().x().set_value(0.0);
 }
 
 MediumPin& Condenser::sec_in()
@@ -33,6 +34,7 @@ EquationSystem Condenser::equations()
 
 	ret.push_back(&_secondary_mass_eq);
 	ret.push_back(&_primary_pressure_eq);
+	ret.push_back(&_primary_saturation_eq);
 
 	return ret;
 }
