@@ -25,14 +25,33 @@ void LinearEquation::update(double coefficient, Variable& v)
 	{
 		list_elem_type& li = *it;
 
-		if (li.variable == &v)
+		if (li.variable1 == &v && !li.variable2)
 		{
 			li.coefficient = coefficient;
 			return;
 		}
 	}
 
-	list_elem_type li = {coefficient, &v};
+	list_elem_type li = {coefficient, &v, 0};
+	_vars.push_back(li);
+}
+
+void LinearEquation::update(double coefficient, Variable& v1, Variable& v2)
+{
+	list_type::iterator it;
+
+	for (it = _vars.begin(); it != _vars.end(); ++it)
+	{
+		list_elem_type& li = *it;
+
+		if (li.variable1 == &v1 && li.variable2 == &v2)
+		{
+			li.coefficient = coefficient;
+			return;
+		}
+	}
+
+	list_elem_type li = {coefficient, &v1, &v2};
 	_vars.push_back(li);
 }
 
@@ -40,22 +59,39 @@ bool LinearEquation::solve()
 {
 	list_type::iterator it;
 	Variable* dest_var = 0;
+	Variable* dest_coeff_var = 0;
 	double dest_coeff;
 
 	for (it = _vars.begin(); it != _vars.end(); ++it)
 	{
 		list_elem_type& el = *it;
 
-		if (!el.variable->is_set())
+		if (!el.variable1->is_set())
 		{
 			if (!dest_var) // single unset
 			{
-				dest_var = el.variable;
+				dest_var = el.variable1;
+				dest_coeff_var = el.variable2;
 				dest_coeff = el.coefficient;
 			}
 			else // more unset
 				return false;
 		}
+		else if (el.variable2 && !el.variable2->is_set())
+		{
+			if (!dest_var) // single unset
+			{
+				dest_var = el.variable2;
+				dest_coeff_var = el.variable1;
+				dest_coeff = el.coefficient;
+			}
+			else // more unset
+				return false;
+		}
+
+		// the other variable must be set
+		if (dest_coeff_var && !dest_coeff_var->is_set())
+			return false;
 	}
 
 	double val = 0;
@@ -64,10 +100,20 @@ bool LinearEquation::solve()
 	{
 		list_elem_type& el = *it;
 
-		if (el.variable->is_set())
-			val += el.coefficient * *el.variable;
+		if (!el.variable1->is_set())
+			assert(el.variable1 == dest_var);
 		else
-			assert(el.variable == dest_var);
+		{
+			if (el.variable2)
+			{
+				if (!el.variable2->is_set())
+					assert(el.variable2 == dest_var);
+				else
+					val += el.coefficient * *el.variable1 * *el.variable2;
+			}
+			else
+				val += el.coefficient * *el.variable1;
+		}
 	}
 
 	if (!dest_var)
@@ -80,6 +126,8 @@ bool LinearEquation::solve()
 		return true;
 	}
 
+	if (dest_coeff_var)
+		dest_coeff *= *dest_coeff_var;
 	val /= -dest_coeff;
 	dest_var->set_value(val);
 
@@ -95,7 +143,10 @@ std::ostream& LinearEquation::print_to(std::ostream& f) const
 	{
 		const list_elem_type& li = *it;
 
-		fp = &(*fp << li.coefficient << " " << *li.variable);
+		fp = &(*fp << li.coefficient << " " << *li.variable1);
+
+		if (li.variable2)
+			fp = &(*fp << " * " << *li.variable2);
 
 		if (++it != _vars.end())
 			fp = &(*fp << " + ");

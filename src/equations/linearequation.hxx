@@ -18,7 +18,8 @@ class LinearEquation : public Equation
 	struct list_elem_type
 	{
 		double coefficient;
-		Variable* variable;
+		Variable* variable1;
+		Variable* variable2;
 	};
 	typedef std::vector<list_elem_type> list_type;
 
@@ -31,6 +32,7 @@ public:
 	LinearEquation();
 
 	void update(double coefficient, Variable& v);
+	void update(double coefficient, Variable& v1, Variable& v2);
 	virtual bool solve();
 };
 
