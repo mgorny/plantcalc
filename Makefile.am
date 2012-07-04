@@ -18,6 +18,9 @@ libplantcalc_la_SOURCES = \
 	src/equations/linearequation.cxx src/equations/linearequation.hxx \
 	src/equations/equalityequation.cxx src/equations/equalityequation.hxx \
 	\
+	src/equationsolver.cxx src/equationsolver.hxx \
+	src/equationsolvers/determinateequationsolver.cxx src/equationsolvers/determinateequationsolver.hxx \
+	\
 	src/equationsystem.cxx src/equationsystem.hxx \
 	src/variable.cxx src/variable.hxx \
 	src/util/sequentialnumbersource.cxx src/util/sequentialnumbersource.hxx \

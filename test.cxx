@@ -7,6 +7,9 @@
 #include "src/equationsystem.hxx"
 
 #include "src/connections/medium/waterconnection.hxx"
+#include "src/equationsolvers/determinateequationsolver.hxx"
+
+#include "src/exceptions/contradictionerror.hxx"
 
 #include <vector>
 #include <iostream>
@@ -48,6 +51,18 @@ int main()
 	}
 
 	std::cout << eqs << std::endl;
+	DeterminateEquationSolver solv(eqs);
+
+	try
+	{
+		while (solv.iterate())
+			std::cout << eqs << std::endl;
+	}
+	catch (ContradictionError& e)
+	{
+		std::cout << eqs << std::endl;
+		throw;
+	}
 
 	return 0;
 }
