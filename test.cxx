@@ -32,6 +32,8 @@ int main()
 	connections.push_back(&bc);
 	connections.push_back(&cb);
 
+	b.out().D().set_value(10);
+
 	EquationSystem eqs;
 
 	for (device_list::iterator it = devices.begin();

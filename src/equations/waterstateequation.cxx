@@ -8,7 +8,7 @@
 #endif
 
 #include "waterstateequation.hxx"
-#include "../exceptions/indeterminateequationerror.hxx"
+#include "../exceptions/contradictionerror.hxx"
 
 #include <stdexcept>
 
@@ -23,8 +23,8 @@ bool WaterStateEquation::solve()
 {
 	int count = _p.is_set() + _T.is_set() + _h.is_set();
 
-	if (count > 2)
-		throw IndeterminateEquationError();
+	if (count > 2) // XXX: handle epsilon comparisons
+		throw ContradictionError();
 	else if (count < 2)
 		return false;
 

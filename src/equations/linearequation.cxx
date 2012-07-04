@@ -8,9 +8,10 @@
 #endif
 
 #include "linearequation.hxx"
-#include "../exceptions/indeterminateequationerror.hxx"
+#include "../exceptions/contradictionerror.hxx"
 
 #include <cassert>
+#include <cmath>
 
 LinearEquation::LinearEquation()
 {
@@ -57,9 +58,6 @@ bool LinearEquation::solve()
 		}
 	}
 
-	if (!dest_var)
-		throw IndeterminateEquationError();
-
 	double val = 0;
 
 	for (it = _vars.begin(); it != _vars.end(); ++it)
@@ -70,6 +68,16 @@ bool LinearEquation::solve()
 			val += el.coefficient * *el.variable;
 		else
 			assert(el.variable == dest_var);
+	}
+
+	if (!dest_var)
+	{
+		const double epsilon = 1E-6;
+
+		if (std::abs(val) >= epsilon)
+			throw ContradictionError();
+
+		return true;
 	}
 
 	val /= -dest_coeff;
