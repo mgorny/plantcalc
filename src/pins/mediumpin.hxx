@@ -14,7 +14,7 @@
 class MediumPin : public Pin
 {
 	int _id;
-	Variable _p, _T, _h, _D;
+	Variable _p, _T, _h, _x, _D;
 
 public:
 	MediumPin();
@@ -25,6 +25,7 @@ public:
 	Variable& p();
 	Variable& T();
 	Variable& h();
+	Variable& x();
 	Variable& D();
 };
 

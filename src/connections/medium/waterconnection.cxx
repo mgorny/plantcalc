@@ -11,7 +11,7 @@
 
 WaterConnection::WaterConnection(MediumPin& from, MediumPin& to)
 	: MediumConnection(from, to),
-	_state_eq(from.p(), from.T(), from.h())
+	_state_eq(from.p(), from.T(), from.h(), from.x())
 {
 }
 
