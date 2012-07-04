@@ -17,22 +17,19 @@ Turbine::Turbine(double eff)
 	_loop_pressure_eq(_loop_out.p(), out().p()),
 	_ideal_expansion_eq(in().s(), _loop_in.s())
 {
-	_real_expansion_eq.update(1 - _isenthropic_efficiency, in().h());
-	_real_expansion_eq.update(_isenthropic_efficiency, _loop_out.h());
 	_real_expansion_eq.update(-1, out().h());
+	isenthropic_efficiency(eff);
 }
 
 Turbine::Turbine(double eff, double pout)
-	: _isenthropic_efficiency(eff),
-	_loop_mass_balance_eq(_loop_in.D(), _loop_out.D()),
+	: _loop_mass_balance_eq(_loop_in.D(), _loop_out.D()),
 	_loop_pressure_eq(_loop_out.p(), out().p()),
 	_ideal_expansion_eq(in().s(), _loop_in.s())
 {
 	out().p().set_value(pout);
 
-	_real_expansion_eq.update(1 - _isenthropic_efficiency, in().h());
-	_real_expansion_eq.update(_isenthropic_efficiency, _loop_out.h());
 	_real_expansion_eq.update(-1, out().h());
+	isenthropic_efficiency(eff);
 }
 
 double Turbine::isenthropic_efficiency()
@@ -46,6 +43,8 @@ void Turbine::isenthropic_efficiency(double new_value)
 	assert(new_value <= 1);
 
 	_isenthropic_efficiency = new_value;
+	_real_expansion_eq.update(1 - _isenthropic_efficiency, in().h());
+	_real_expansion_eq.update(_isenthropic_efficiency, _loop_out.h());
 }
 
 MediumPin& Turbine::loop_out()
