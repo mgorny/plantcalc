@@ -11,6 +11,6 @@
 
 EqualityEquation::EqualityEquation(Variable& v1, Variable& v2)
 {
-	add(1.0, v1);
-	add(-1.0, v2);
+	update(1.0, v1);
+	update(-1.0, v2);
 }

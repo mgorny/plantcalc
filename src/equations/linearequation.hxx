@@ -30,7 +30,7 @@ protected:
 public:
 	LinearEquation();
 
-	void add(double coefficient, Variable& v);
+	void update(double coefficient, Variable& v);
 	virtual bool solve();
 };
 

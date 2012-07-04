@@ -17,7 +17,7 @@ LinearEquation::LinearEquation()
 {
 }
 
-void LinearEquation::add(double coefficient, Variable& v)
+void LinearEquation::update(double coefficient, Variable& v)
 {
 	list_type::iterator it;
 
@@ -27,7 +27,7 @@ void LinearEquation::add(double coefficient, Variable& v)
 
 		if (li.variable == &v)
 		{
-			li.coefficient += coefficient;
+			li.coefficient = coefficient;
 			return;
 		}
 	}
