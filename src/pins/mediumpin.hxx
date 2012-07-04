@@ -14,7 +14,7 @@
 class MediumPin : public Pin
 {
 	int _id;
-	Variable _p, _T, _h;
+	Variable _p, _T, _h, _D;
 
 public:
 	MediumPin();
@@ -25,6 +25,7 @@ public:
 	Variable& p();
 	Variable& T();
 	Variable& h();
+	Variable& D();
 };
 
 #endif /*_PLANTCALC_PINS_MEDIUMPIN_HXX*/

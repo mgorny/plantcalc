@@ -17,7 +17,7 @@ class MediumConnection : public Connection
 	MediumPin& _from;
 	MediumPin& _to;
 
-	EqualityEquation _p_eq, _T_eq, _h_eq;
+	EqualityEquation _p_eq, _T_eq, _h_eq, _D_eq;
 
 protected:
 	MediumConnection(MediumPin& from, MediumPin& to);

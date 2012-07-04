@@ -18,7 +18,8 @@ MediumPin::MediumPin()
 	: _id(seqnum.next()),
 	_p("p", _id),
 	_T("T", _id),
-	_h("h", _id)
+	_h("h", _id),
+	_D("D", _id)
 {
 }
 
@@ -26,7 +27,8 @@ MediumPin::MediumPin(double p, double T)
 	: _id(seqnum.next()),
 	_p("p", _id, p),
 	_T("T", _id, T),
-	_h("h", _id)
+	_h("h", _id),
+	_D("D", _id)
 {
 }
 
@@ -43,4 +45,9 @@ Variable& MediumPin::T()
 Variable& MediumPin::h()
 {
 	return _h;
+}
+
+Variable& MediumPin::D()
+{
+	return _D;
 }
