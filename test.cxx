@@ -4,6 +4,7 @@
 
 #include "src/devices/boiler.hxx"
 #include "src/devices/condenser.hxx"
+#include "src/devices/turbine.hxx"
 #include "src/equationsystem.hxx"
 
 #include "src/connections/medium/waterconnection.hxx"
@@ -17,22 +18,26 @@
 int main()
 {
 	Boiler b(.9, 10, 773.15);
+	Turbine t(.95, 0.1);
 	Condenser c;
 
-	WaterConnection bc(b.out(), c.in());
+	WaterConnection bt(b.out(), t.in());
+	WaterConnection tc(t.out(), c.in());
 	WaterConnection cb(c.out(), b.in());
+	WaterConnection tloop(t.loop_out(), t.loop_in());
 
 	typedef std::vector<Device*> device_list;
 	device_list devices;
 	devices.push_back(&b);
+	devices.push_back(&t);
 	devices.push_back(&c);
 
 	typedef std::vector<Connection*> connection_list;
 	connection_list connections;
-	connections.push_back(&bc);
+	connections.push_back(&bt);
+	connections.push_back(&tc);
 	connections.push_back(&cb);
-
-	b.out().D().set_value(10);
+	connections.push_back(&tloop);
 
 	EquationSystem eqs;
 

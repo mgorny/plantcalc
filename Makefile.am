@@ -14,6 +14,7 @@ libplantcalc_la_SOURCES = \
 	src/devices/mediumflowdevice.cxx src/devices/mediumflowdevice.hxx \
 	src/devices/boiler.cxx src/devices/boiler.hxx \
 	src/devices/condenser.cxx src/devices/condenser.hxx \
+	src/devices/turbine.cxx src/devices/turbine.hxx \
 	\
 	src/equation.cxx src/equation.hxx \
 	src/equations/linearequation.cxx src/equations/linearequation.hxx \
