@@ -18,11 +18,12 @@ class WaterStateEquation : public Equation
 	Variable& _p;
 	Variable& _T;
 	Variable& _h;
+	Variable& _s;
 	Variable& _x;
 
 public:
 	WaterStateEquation(Variable& p, Variable& T, Variable& h,
-			Variable& x);
+			Variable& s, Variable& x);
 
 	virtual bool solve();
 	virtual std::ostream& print_to(std::ostream& f) const;

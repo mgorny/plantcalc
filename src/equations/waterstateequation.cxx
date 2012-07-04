@@ -15,14 +15,15 @@
 #include <h2o>
 
 WaterStateEquation::WaterStateEquation(Variable& p, Variable& T, Variable& h,
-			Variable& x)
-	: _p(p), _T(T), _h(h), _x(x)
+			Variable& s, Variable& x)
+	: _p(p), _T(T), _h(h), _s(s), _x(x)
 {
 }
 
 bool WaterStateEquation::solve()
 {
-	int count = _p.is_set() + _T.is_set() + _h.is_set() + _x.is_set();
+	int count = _p.is_set() + _T.is_set() + _h.is_set()
+		+ _s.is_set() + _x.is_set();
 
 	if (count > 2) // XXX: handle epsilon comparisons
 		throw ContradictionError();
@@ -35,6 +36,8 @@ bool WaterStateEquation::solve()
 		state = h2o::H2O::pT(_p, _T);
 	else if (_p.is_set() && _h.is_set())
 		state = h2o::H2O::ph(_p, _h);
+	else if (_p.is_set() && _s.is_set())
+		state = h2o::H2O::ps(_p, _s);
 	else if (_p.is_set() && _x.is_set())
 		state = h2o::H2O::px(_p, _x);
 	else if (_T.is_set() && _x.is_set())
@@ -46,6 +49,8 @@ bool WaterStateEquation::solve()
 		_T.set_value(state.T());
 	if (!_h.is_set())
 		_h.set_value(state.h());
+	if (!_s.is_set())
+		_s.set_value(state.s());
 	if (!_x.is_set()) // XXX: supercritical?
 		_x.set_value(state.x());
 
@@ -55,7 +60,7 @@ bool WaterStateEquation::solve()
 std::ostream& WaterStateEquation::print_to(std::ostream& f) const
 {
 	return f << "<water state: "
-		<< _p << ", " << _T << ", " << _h << ", " << _x
-		<< ">";
+		<< _p << ", " << _T << ", " << _h << ", "
+		<< _s << ", " << _x << ">";
 
 }

@@ -19,6 +19,7 @@ MediumPin::MediumPin()
 	_p("p", _id),
 	_T("T", _id),
 	_h("h", _id),
+	_s("s", _id),
 	_x("x", _id),
 	_D("D", _id)
 {
@@ -29,6 +30,7 @@ MediumPin::MediumPin(double p, double T)
 	_p("p", _id, p),
 	_T("T", _id, T),
 	_h("h", _id),
+	_s("s", _id),
 	_x("x", _id),
 	_D("D", _id)
 {
@@ -47,6 +49,11 @@ Variable& MediumPin::T()
 Variable& MediumPin::h()
 {
 	return _h;
+}
+
+Variable& MediumPin::s()
+{
+	return _s;
 }
 
 Variable& MediumPin::x()
