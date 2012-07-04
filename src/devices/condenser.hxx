@@ -17,6 +17,7 @@ class Condenser : public MediumFlowDevice
 	MediumPin _sec_in, _sec_out;
 
 	EqualityEquation _secondary_mass_eq;
+	EqualityEquation _primary_pressure_eq;
 
 public:
 	Condenser();

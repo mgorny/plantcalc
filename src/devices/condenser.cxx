@@ -10,8 +10,11 @@
 #include "condenser.hxx"
 
 Condenser::Condenser()
-	: _secondary_mass_eq(_sec_in.D(), _sec_out.D())
+	: _secondary_mass_eq(_sec_in.D(), _sec_out.D()),
+	_primary_pressure_eq(in().p(), out().p())
 {
+	// XXX: convert into an equation
+	out().x().set_value(0.0);
 }
 
 MediumPin& Condenser::sec_in()
@@ -29,6 +32,7 @@ EquationSystem Condenser::equations()
 	EquationSystem ret = MediumFlowDevice::equations();
 
 	ret.push_back(&_secondary_mass_eq);
+	ret.push_back(&_primary_pressure_eq);
 
 	return ret;
 }
