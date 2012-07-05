@@ -20,3 +20,16 @@ PinVariable::PinVariable(PinID& pin_id, const char* name, double value)
 	_var_id(pin_id, name)
 {
 }
+
+std::ostream& PinVariable::print_to(std::ostream& f) const
+{
+	std::ostream& f1 = f << _var_id;
+
+	if (is_set())
+	{
+		double val = *this;
+		return f1 << '(' << val << ')';
+	}
+
+	return f1;
+}

@@ -10,6 +10,11 @@
 #include "deviceid.hxx"
 
 DeviceID::DeviceID(const char* name)
-	: _name(name)
+	: _name(name), _num(0)
 {
+}
+
+std::ostream& operator<<(std::ostream& f, const DeviceID& did)
+{
+	return f << did._name << did._num;
 }

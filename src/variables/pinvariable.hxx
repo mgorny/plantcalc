@@ -16,6 +16,9 @@ class PinVariable : public Variable
 {
 	PinVariableID _var_id;
 
+protected:
+	virtual std::ostream& print_to(std::ostream& f) const;
+
 public:
 	PinVariable(PinID& pin_id, const char* name);
 	PinVariable(PinID& pin_id, const char* name, double value);

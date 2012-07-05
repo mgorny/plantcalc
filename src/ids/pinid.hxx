@@ -10,14 +10,20 @@
 
 #include "deviceid.hxx"
 
+#include <ostream>
+
 class PinID
 {
 private:
 	DeviceID& _device;
 	const char* _name;
 
+	friend std::ostream& operator<<(std::ostream& f, const PinID& pid);
+
 public:
 	PinID(DeviceID& device, const char* name);
 };
+
+std::ostream& operator<<(std::ostream& f, const PinID& pid);
 
 #endif /*_PLANTCALC_IDS_PINID_HXX*/

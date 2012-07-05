@@ -13,3 +13,8 @@ PinID::PinID(DeviceID& device, const char* name)
 	: _device(device), _name(name)
 {
 }
+
+std::ostream& operator<<(std::ostream& f, const PinID& pid)
+{
+	return f << pid._device << "." << pid._name;
+}

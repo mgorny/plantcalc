@@ -10,14 +10,21 @@
 
 #include "pinid.hxx"
 
+#include <ostream>
+
 class PinVariableID
 {
 private:
 	PinID& _pin;
 	const char* _name;
 
+	friend std::ostream&
+		operator<<(std::ostream& f, const PinVariableID& pvid);
+
 public:
 	PinVariableID(PinID& pin, const char* name);
 };
+
+std::ostream& operator<<(std::ostream& f, const PinVariableID& pvid);
 
 #endif /*_PLANTCALC_IDS_PINVARIABLEID_HXX*/
