@@ -19,7 +19,7 @@ class Turbine : public MediumFlowDevice
 	double _isenthropic_efficiency;
 	double _mechanical_efficiency;
 
-	MediumPin _loop_out, _loop_in;
+	MediumPin _loop_in, _loop_out;
 	MechanicalEnergyPin _energy_out;
 
 	EqualityEquation _loop_mass_balance_eq;

@@ -10,8 +10,9 @@
 #include "mechanicalenergypin.hxx"
 #include "../util/sequentialnumbersource.hxx"
 
-MechanicalEnergyPin::MechanicalEnergyPin()
-	: _id(seqnum.next()),
+MechanicalEnergyPin::MechanicalEnergyPin(DeviceID& dev_id, const char* name)
+	: Pin(dev_id, name),
+	_id(seqnum.next()),
 	_P("P", _id)
 {
 }

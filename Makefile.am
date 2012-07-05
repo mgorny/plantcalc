@@ -31,6 +31,7 @@ libplantcalc_la_SOURCES = \
 	src/util/sequentialnumbersource.cxx src/util/sequentialnumbersource.hxx \
 	\
 	src/ids/deviceid.cxx src/ids/deviceid.hxx \
+	src/ids/pinid.cxx src/ids/pinid.hxx \
 	\
 	src/exceptions/contradictionerror.cxx src/exceptions/contradictionerror.hxx
 libplantcalc_la_LDFLAGS = -version-info 0:0:0

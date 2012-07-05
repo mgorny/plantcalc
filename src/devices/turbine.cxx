@@ -14,6 +14,9 @@
 Turbine::Turbine(double isen_eff,
 			double mech_eff)
 	: MediumFlowDevice("T"),
+	_loop_in(_device_id, "loop-in"),
+	_loop_out(_device_id, "loop-out"),
+	_energy_out(_device_id, "energy-out"),
 	_loop_mass_balance_eq(_loop_in.D(), _loop_out.D()),
 	_loop_pressure_eq(_loop_out.p(), out().p()),
 	_ideal_expansion_eq(in().s(), _loop_in.s())
@@ -30,6 +33,9 @@ Turbine::Turbine(double isen_eff,
 Turbine::Turbine(double isen_eff,
 			double mech_eff, double pout)
 	: MediumFlowDevice("T"),
+	_loop_in(_device_id, "loop-in"),
+	_loop_out(_device_id, "loop-out"),
+	_energy_out(_device_id, "energy-out"),
 	_loop_mass_balance_eq(_loop_in.D(), _loop_out.D()),
 	_loop_pressure_eq(_loop_out.p(), out().p()),
 	_ideal_expansion_eq(in().s(), _loop_in.s())

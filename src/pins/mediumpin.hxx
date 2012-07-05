@@ -17,8 +17,8 @@ class MediumPin : public Pin
 	Variable _p, _T, _h, _s, _x, _D;
 
 public:
-	MediumPin();
-	MediumPin(double p, double T);
+	MediumPin(DeviceID& dev_id, const char* name);
+	MediumPin(DeviceID& dev_id, const char* name, double p, double T);
 
 	virtual ~MediumPin();
 

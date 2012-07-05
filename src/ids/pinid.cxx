@@ -7,13 +7,9 @@
 #	include "config.h"
 #endif
 
-#include "pin.hxx"
+#include "pinid.hxx"
 
-Pin::Pin(DeviceID& dev_id, const char* name)
-	: _pin_id(dev_id, name)
-{
-}
-
-Pin::~Pin()
+PinID::PinID(DeviceID& device, const char* name)
+	: _device(device), _name(name)
 {
 }

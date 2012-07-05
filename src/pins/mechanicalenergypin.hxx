@@ -17,7 +17,7 @@ class MechanicalEnergyPin : public Pin
 	Variable _P;
 
 public:
-	MechanicalEnergyPin();
+	MechanicalEnergyPin(DeviceID& dev_id, const char* name);
 
 	Variable& P();
 };

@@ -11,6 +11,8 @@
 
 MediumFlowDevice::MediumFlowDevice(const char* name)
 	: Device(name),
+	_in(_device_id, "in"),
+	_out(_device_id, "out"),
 	_primary_mass_eq(_in.D(), _out.D())
 {
 }
