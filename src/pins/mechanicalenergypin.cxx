@@ -12,8 +12,7 @@
 
 MechanicalEnergyPin::MechanicalEnergyPin(DeviceID& dev_id, const char* name)
 	: Pin(dev_id, name),
-	_id(seqnum.next()),
-	_P("P", _id)
+	_P(_pin_id, "P")
 {
 }
 

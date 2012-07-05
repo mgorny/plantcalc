@@ -16,25 +16,23 @@ MediumPin::~MediumPin()
 
 MediumPin::MediumPin(DeviceID& dev_id, const char* name)
 	: Pin(dev_id, name),
-	_id(seqnum.next()),
-	_p("p", _id),
-	_T("T", _id),
-	_h("h", _id),
-	_s("s", _id),
-	_x("x", _id),
-	_D("D", _id)
+	_p(_pin_id, "p"),
+	_T(_pin_id, "T"),
+	_h(_pin_id, "h"),
+	_s(_pin_id, "s"),
+	_x(_pin_id, "x"),
+	_D(_pin_id, "D")
 {
 }
 
 MediumPin::MediumPin(DeviceID& dev_id, const char* name, double p, double T)
 	: Pin(dev_id, name),
-	_id(seqnum.next()),
-	_p("p", _id, p),
-	_T("T", _id, T),
-	_h("h", _id),
-	_s("s", _id),
-	_x("x", _id),
-	_D("D", _id)
+	_p(_pin_id, "p", p),
+	_T(_pin_id, "T", T),
+	_h(_pin_id, "h"),
+	_s(_pin_id, "s"),
+	_x(_pin_id, "x"),
+	_D(_pin_id, "D")
 {
 }
 

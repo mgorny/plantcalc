@@ -9,12 +9,11 @@
 #define _PLANTCALC_PINS_MEDIUMPIN_HXX 1
 
 #include "../pin.hxx"
-#include "../variable.hxx"
+#include "../variables/pinvariable.hxx"
 
 class MediumPin : public Pin
 {
-	int _id;
-	Variable _p, _T, _h, _s, _x, _D;
+	PinVariable _p, _T, _h, _s, _x, _D;
 
 public:
 	MediumPin(DeviceID& dev_id, const char* name);

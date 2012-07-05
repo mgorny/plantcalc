@@ -9,12 +9,11 @@
 #define _PLANTCALC_PINS_MECHANICALENERGYPIN_HXX 1
 
 #include "../pin.hxx"
-#include "../variable.hxx"
+#include "../variables/pinvariable.hxx"
 
 class MechanicalEnergyPin : public Pin
 {
-	int _id;
-	Variable _P;
+	PinVariable _P;
 
 public:
 	MechanicalEnergyPin(DeviceID& dev_id, const char* name);
