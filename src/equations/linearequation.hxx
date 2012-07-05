@@ -10,6 +10,7 @@
 
 #include "../equation.hxx"
 #include "../variable.hxx"
+#include "../equationsolvers/linearequationsolver.hxx"
 
 #include <vector>
 
@@ -24,6 +25,8 @@ class LinearEquation : public Equation
 	typedef std::vector<list_elem_type> list_type;
 
 	list_type _vars;
+
+	friend class LinearEquationSolver;
 
 protected:
 	virtual std::ostream& print_to(std::ostream& f) const;

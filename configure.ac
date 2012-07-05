@@ -6,6 +6,7 @@ AM_INIT_AUTOMAKE([1.6 foreign dist-bzip2 subdir-objects])
 
 m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES])
 
+PKG_CHECK_MODULES([EIGEN], [eigen3])
 PKG_CHECK_MODULES([LIBH2OXX], [libh2oxx >= 0.2])
 
 AC_PROG_CXX

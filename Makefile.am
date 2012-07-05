@@ -24,6 +24,7 @@ libplantcalc_la_SOURCES = \
 	\
 	src/equationsolver.cxx src/equationsolver.hxx \
 	src/equationsolvers/determinateequationsolver.cxx src/equationsolvers/determinateequationsolver.hxx \
+	src/equationsolvers/linearequationsolver.cxx src/equationsolvers/linearequationsolver.hxx \
 	\
 	src/equationsystem.cxx src/equationsystem.hxx \
 	src/variable.cxx src/variable.hxx \
@@ -31,8 +32,8 @@ libplantcalc_la_SOURCES = \
 	\
 	src/exceptions/contradictionerror.cxx src/exceptions/contradictionerror.hxx
 libplantcalc_la_LDFLAGS = -version-info 0:0:0
-libplantcalc_la_CPPFLAGS = $(LIBH2OXX_CFLAGS)
-libplantcalc_la_LIBADD = $(LIBH2OXX_LIBS)
+libplantcalc_la_CPPFLAGS = $(LIBH2OXX_CFLAGS) $(EIGEN_CFLAGS)
+libplantcalc_la_LIBADD = $(LIBH2OXX_LIBS) $(EIGEN_LIBS)
 
 noinst_PROGRAMS = test
 

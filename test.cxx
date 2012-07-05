@@ -9,6 +9,7 @@
 
 #include "src/connections/medium/waterconnection.hxx"
 #include "src/equationsolvers/determinateequationsolver.hxx"
+#include "src/equationsolvers/linearequationsolver.hxx"
 
 #include "src/exceptions/contradictionerror.hxx"
 
@@ -60,6 +61,8 @@ int main()
 	}
 
 	std::cout << eqs << std::endl;
+
+	// first clean up the system using simple solver
 	DeterminateEquationSolver solv(eqs);
 
 	try
@@ -72,6 +75,25 @@ int main()
 		std::cout << eqs << std::endl;
 		throw;
 	}
+
+	// solve remaining equations using linear solver
+	EquationSystem eqs2 = eqs;
+	LinearEquationSolver lsolv(eqs2);
+
+	try
+	{
+		while (lsolv.iterate())
+			std::cout << eqs2 << std::endl;
+	}
+	catch (ContradictionError& e)
+	{
+		std::cout << eqs2 << std::endl;
+		throw;
+	}
+
+	// do an additional run to ensure everything went fine
+	std::cout << eqs << std::endl;
+	solv.iterate();
 
 	return 0;
 }
