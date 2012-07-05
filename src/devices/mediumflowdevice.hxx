@@ -20,7 +20,7 @@ class MediumFlowDevice : public Device
 	EqualityEquation _primary_mass_eq;
 
 protected:
-	MediumFlowDevice();
+	MediumFlowDevice(const char* name);
 
 	virtual EquationSystem equations();
 

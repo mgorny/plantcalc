@@ -9,9 +9,14 @@
 #define _PLANTCALC_DEVICE_HXX 1
 
 #include "equationsystem.hxx"
+#include "ids/deviceid.hxx"
 
 class Device
 {
+protected:
+	DeviceID _device_id;
+	Device(const char* name);
+
 public:
 	virtual ~Device();
 

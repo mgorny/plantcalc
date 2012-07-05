@@ -30,6 +30,8 @@ libplantcalc_la_SOURCES = \
 	src/variable.cxx src/variable.hxx \
 	src/util/sequentialnumbersource.cxx src/util/sequentialnumbersource.hxx \
 	\
+	src/ids/deviceid.cxx src/ids/deviceid.hxx \
+	\
 	src/exceptions/contradictionerror.cxx src/exceptions/contradictionerror.hxx
 libplantcalc_la_LDFLAGS = -version-info 0:0:0
 libplantcalc_la_CPPFLAGS = $(LIBH2OXX_CFLAGS) $(EIGEN_CFLAGS)

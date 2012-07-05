@@ -12,12 +12,14 @@
 #include "boiler.hxx"
 
 Boiler::Boiler(double eff)
-	: _efficiency(eff)
+	: MediumFlowDevice("B"),
+	_efficiency(eff)
 {
 }
 
 Boiler::Boiler(double eff, double pout, double Tout)
-	: _efficiency(eff)
+	: MediumFlowDevice("B"),
+	_efficiency(eff)
 {
 	MediumPin& mout = out();
 	mout.p().set_value(pout);

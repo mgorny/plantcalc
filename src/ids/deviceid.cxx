@@ -7,13 +7,9 @@
 #	include "config.h"
 #endif
 
-#include "device.hxx"
+#include "deviceid.hxx"
 
-Device::Device(const char* name)
-	: _device_id(name)
-{
-}
-
-Device::~Device()
+DeviceID::DeviceID(const char* name)
+	: _name(name)
 {
 }

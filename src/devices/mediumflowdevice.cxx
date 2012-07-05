@@ -9,8 +9,9 @@
 
 #include "mediumflowdevice.hxx"
 
-MediumFlowDevice::MediumFlowDevice()
-	: _primary_mass_eq(_in.D(), _out.D())
+MediumFlowDevice::MediumFlowDevice(const char* name)
+	: Device(name),
+	_primary_mass_eq(_in.D(), _out.D())
 {
 }
 

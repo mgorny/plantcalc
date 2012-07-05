@@ -12,7 +12,8 @@
 static Variable xsat("xsat", 0, 0.0, true);
 
 Condenser::Condenser()
-	: _secondary_mass_eq(_sec_in.D(), _sec_out.D()),
+	: MediumFlowDevice("C"),
+	_secondary_mass_eq(_sec_in.D(), _sec_out.D()),
 	_primary_pressure_eq(in().p(), out().p()),
 	_primary_saturation_eq(out().x(), xsat)
 {
