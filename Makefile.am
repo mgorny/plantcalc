@@ -27,11 +27,14 @@ libplantcalc_la_SOURCES = \
 	src/equationsolvers/linearequationsolver.cxx src/equationsolvers/linearequationsolver.hxx \
 	\
 	src/equationsystem.cxx src/equationsystem.hxx \
-	src/variable.cxx src/variable.hxx \
 	src/util/sequentialnumbersource.cxx src/util/sequentialnumbersource.hxx \
+	\
+	src/variable.cxx src/variable.hxx \
+	src/variables/pinvariable.cxx src/variables/pinvariable.hxx \
 	\
 	src/ids/deviceid.cxx src/ids/deviceid.hxx \
 	src/ids/pinid.cxx src/ids/pinid.hxx \
+	src/ids/pinvariableid.cxx src/ids/pinvariableid.hxx \
 	\
 	src/exceptions/contradictionerror.cxx src/exceptions/contradictionerror.hxx
 libplantcalc_la_LDFLAGS = -version-info 0:0:0
