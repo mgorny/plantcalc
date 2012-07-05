@@ -12,20 +12,18 @@
 
 class Variable
 {
-	const char* _name;
-	int _id;
-
 	bool _is_set, _read_only;
 	double _val;
 
 	friend std::ostream& operator <<(std::ostream& f, const Variable& v);
 
 protected:
-	virtual std::ostream& print_to(std::ostream& f) const;
+	virtual std::ostream& print_to(std::ostream& f) const = 0;
+
+	Variable();
+	Variable(double value, bool read_only = false);
 
 public:
-	Variable(const char* name, int id);
-	Variable(const char* name, int id, double value, bool read_only = false);
 	virtual ~Variable();
 
 	bool is_set() const;

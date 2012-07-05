@@ -12,18 +12,14 @@
 #include <cassert>
 #include <stdexcept>
 
-Variable::Variable(const char* name, int id)
-	: _name(name),
-	_id(id),
-	_is_set(false),
+Variable::Variable()
+	: _is_set(false),
 	_read_only(false)
 {
 }
 
-Variable::Variable(const char* name, int id, double value, bool read_only)
-	: _name(name),
-	_id(id),
-	_is_set(true),
+Variable::Variable(double value, bool read_only)
+	: _is_set(true),
 	_read_only(read_only),
 	_val(value)
 {
@@ -31,15 +27,6 @@ Variable::Variable(const char* name, int id, double value, bool read_only)
 
 Variable::~Variable()
 {
-}
-
-std::ostream& Variable::print_to(std::ostream& f) const
-{
-	std::ostream& f1 = f << _name << _id;
-
-	if (_is_set)
-		return f1 << '(' << _val << ')';
-	return f1;
 }
 
 bool Variable::is_set() const

@@ -10,7 +10,7 @@
 #include "constant.hxx"
 
 Constant::Constant(double value)
-	: Variable("", -1, value, true)
+	: Variable(value, true)
 {
 }
 

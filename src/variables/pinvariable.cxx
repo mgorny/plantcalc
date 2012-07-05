@@ -10,13 +10,12 @@
 #include "pinvariable.hxx"
 
 PinVariable::PinVariable(PinID& pin_id, const char* name)
-	: Variable(name, -1),
-	_var_id(pin_id, name)
+	: _var_id(pin_id, name)
 {
 }
 
 PinVariable::PinVariable(PinID& pin_id, const char* name, double value)
-	: Variable(name, -1, value),
+	: Variable(value),
 	_var_id(pin_id, name)
 {
 }
