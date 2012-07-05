@@ -20,9 +20,13 @@ class Variable
 
 	friend std::ostream& operator <<(std::ostream& f, const Variable& v);
 
+protected:
+	virtual std::ostream& print_to(std::ostream& f) const;
+
 public:
 	Variable(const char* name, int id);
 	Variable(const char* name, int id, double value, bool read_only = false);
+	virtual ~Variable();
 
 	bool is_set() const;
 

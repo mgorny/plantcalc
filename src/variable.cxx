@@ -29,12 +29,16 @@ Variable::Variable(const char* name, int id, double value, bool read_only)
 {
 }
 
-std::ostream& operator <<(std::ostream& f, const Variable& v)
+Variable::~Variable()
 {
-	std::ostream& f1 = f << v._name << v._id;
+}
 
-	if (v._is_set)
-		return f1 << '(' << v._val << ')';
+std::ostream& Variable::print_to(std::ostream& f) const
+{
+	std::ostream& f1 = f << _name << _id;
+
+	if (_is_set)
+		return f1 << '(' << _val << ')';
 	return f1;
 }
 
@@ -65,4 +69,9 @@ void Variable::unset()
 		throw std::logic_error("unset() unallowed on read-only Variable.");
 
 	_is_set = false;
+}
+
+std::ostream& operator <<(std::ostream& f, const Variable& v)
+{
+	return v.print_to(f);
 }
