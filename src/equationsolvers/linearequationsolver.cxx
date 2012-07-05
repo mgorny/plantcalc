@@ -9,10 +9,12 @@
 
 #include "linearequationsolver.hxx"
 #include "../equations/linearequation.hxx"
+#include "../exceptions/contradictionerror.hxx"
 #include "../variable.hxx"
 
 #include <algorithm>
 #include <cassert>
+#include <cmath>
 #include <map>
 #include <stdexcept>
 #include <vector>
@@ -130,6 +132,11 @@ bool LinearEquationSolver::iterate()
 
 	Eigen::VectorXd sol_vector = coeff_matrix
 			.colPivHouseholderQr().solve(value_vector);
+
+	double error = (coeff_matrix * sol_vector - value_vector).norm();
+
+	if (std::abs(error) > 1E-6)
+		throw ContradictionError();
 
 	variable_map::iterator vt;
 	for (vt = varmap.begin(); vt != varmap.end(); ++vt)
