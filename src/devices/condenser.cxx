@@ -8,8 +8,9 @@
 #endif
 
 #include "condenser.hxx"
+#include "../variables/constant.hxx"
 
-static Variable xsat("xsat", 0, 0.0, true);
+static Constant xsat(0.0);
 
 Condenser::Condenser()
 	: MediumFlowDevice("C"),

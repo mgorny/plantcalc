@@ -30,6 +30,7 @@ libplantcalc_la_SOURCES = \
 	src/util/sequentialnumbersource.cxx src/util/sequentialnumbersource.hxx \
 	\
 	src/variable.cxx src/variable.hxx \
+	src/variables/constant.cxx src/variables/constant.hxx \
 	src/variables/pinvariable.cxx src/variables/pinvariable.hxx \
 	\
 	src/ids/deviceid.cxx src/ids/deviceid.hxx \
