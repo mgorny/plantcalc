@@ -9,6 +9,7 @@
 #define _PLANTCALC_EQUATIONS_WATERSTATEEQUATION_HXX 1
 
 #include "../equation.hxx"
+#include "../media/h2omedium.hxx"
 #include "../variable.hxx"
 
 #include <ostream>
@@ -20,6 +21,8 @@ class WaterStateEquation : public Equation
 	Variable& _h;
 	Variable& _s;
 	Variable& _x;
+
+	H2OMedium _medium;
 
 public:
 	WaterStateEquation(Variable& p, Variable& T, Variable& h,
