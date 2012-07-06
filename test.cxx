@@ -63,11 +63,11 @@ int main()
 	std::cout << eqs << std::endl;
 
 	// first clean up the system using simple solver
-	DeterminateEquationSolver solv(eqs);
+	DeterminateEquationSolver solv;
 
 	try
 	{
-		while (solv.iterate())
+		while (solv.iterate(eqs))
 			std::cout << eqs << std::endl;
 	}
 	catch (ContradictionError& e)
@@ -78,11 +78,11 @@ int main()
 
 	// solve remaining equations using linear solver
 	EquationSystem eqs2 = eqs;
-	LinearEquationSolver lsolv(eqs2);
+	LinearEquationSolver lsolv;
 
 	try
 	{
-		while (lsolv.iterate())
+		while (lsolv.iterate(eqs2))
 			std::cout << eqs2 << std::endl;
 	}
 	catch (ContradictionError& e)
@@ -93,7 +93,7 @@ int main()
 
 	// do an additional run to ensure everything went fine
 	std::cout << eqs << std::endl;
-	solv.iterate();
+	solv.iterate(eqs);
 
 	return 0;
 }

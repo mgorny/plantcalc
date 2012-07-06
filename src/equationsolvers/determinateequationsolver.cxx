@@ -9,24 +9,23 @@
 
 #include "determinateequationsolver.hxx"
 
-DeterminateEquationSolver::DeterminateEquationSolver(EquationSystem& eqs)
-	: _eqs(eqs)
+DeterminateEquationSolver::DeterminateEquationSolver()
 {
 }
 
-bool DeterminateEquationSolver::iterate()
+bool DeterminateEquationSolver::iterate(EquationSystem& eqs)
 {
 	EquationSystem::iterator it;
 	bool any_solved = false;
 
-	for (it = _eqs.begin(); it != _eqs.end();)
+	for (it = eqs.begin(); it != eqs.end();)
 	{
 		Equation& e = **it;
 
 		if (e.solve())
 		{
 			any_solved = true;
-			it = _eqs.erase(it);
+			it = eqs.erase(it);
 		}
 		else
 			++it;

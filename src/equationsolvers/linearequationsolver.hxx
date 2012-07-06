@@ -12,12 +12,10 @@
 
 class LinearEquationSolver : public EquationSolver
 {
-	EquationSystem& _eqs;
-
 public:
-	LinearEquationSolver(EquationSystem& eqs);
+	LinearEquationSolver();
 
-	virtual bool iterate();
+	virtual bool iterate(EquationSystem& eqs);
 };
 
 #endif /*_PLANTCALC_EQUATIONSOLVERS_LINEAREQUATIONSOLVER_HXX*/

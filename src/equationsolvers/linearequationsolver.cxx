@@ -43,18 +43,17 @@ public:
 	}
 };
 
-LinearEquationSolver::LinearEquationSolver(EquationSystem& eqs)
-	: _eqs(eqs)
+LinearEquationSolver::LinearEquationSolver()
 {
 }
 
-bool LinearEquationSolver::iterate()
+bool LinearEquationSolver::iterate(EquationSystem& eqs)
 {
 	typedef std::vector<LinearEquation*> linear_eq_list;
 	linear_eq_list lineqs;
 
 	// collect linear equations
-	for (EquationSystem::iterator it = _eqs.begin(); it != _eqs.end(); ++it)
+	for (EquationSystem::iterator it = eqs.begin(); it != eqs.end(); ++it)
 	{
 		LinearEquation* e = dynamic_cast<LinearEquation*>(*it);
 
@@ -149,18 +148,18 @@ bool LinearEquationSolver::iterate()
 
 	// remove the solved equations
 	// they should be in the same order in both vectors
-	EquationSystem::iterator et = _eqs.begin();
+	EquationSystem::iterator et = eqs.begin();
 	for (it = lineqs.begin(); it != lineqs.end(); ++it)
 	{
 		Equation* eq = *it;
 
-		assert(et != _eqs.end());
+		assert(et != eqs.end());
 		while (*et != eq)
 		{
 			++et;
-			assert(et != _eqs.end());
+			assert(et != eqs.end());
 		}
-		et = _eqs.erase(et);
+		et = eqs.erase(et);
 	}
 
 	return false;

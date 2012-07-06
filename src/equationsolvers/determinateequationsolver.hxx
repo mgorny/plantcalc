@@ -12,12 +12,10 @@
 
 class DeterminateEquationSolver : public EquationSolver
 {
-	EquationSystem& _eqs;
-
 public:
-	DeterminateEquationSolver(EquationSystem& eqs);
+	DeterminateEquationSolver();
 
-	virtual bool iterate();
+	virtual bool iterate(EquationSystem& eqs);
 };
 
 #endif /*_PLANTCALC_EQUATIONSOLVERS_DETERMINATEEQUATIONSOLVER_HXX*/
