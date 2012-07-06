@@ -8,7 +8,6 @@
 #endif
 
 #include "mechanicalenergypin.hxx"
-#include "../util/sequentialnumbersource.hxx"
 
 MechanicalEnergyPin::MechanicalEnergyPin(DeviceID& dev_id, const char* name)
 	: Pin(dev_id, name),

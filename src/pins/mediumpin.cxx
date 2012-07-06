@@ -8,7 +8,6 @@
 #endif
 
 #include "mediumpin.hxx"
-#include "../util/sequentialnumbersource.hxx"
 
 MediumPin::~MediumPin()
 {
