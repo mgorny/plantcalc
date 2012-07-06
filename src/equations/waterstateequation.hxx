@@ -8,28 +8,13 @@
 #ifndef _PLANTCALC_EQUATIONS_WATERSTATEEQUATION_HXX
 #define _PLANTCALC_EQUATIONS_WATERSTATEEQUATION_HXX 1
 
-#include "../equation.hxx"
-#include "../media/h2omedium.hxx"
-#include "../variable.hxx"
+#include "mediumstateequation.hxx"
 
-#include <ostream>
-
-class WaterStateEquation : public Equation
+class WaterStateEquation : public MediumStateEquation
 {
-	Variable& _p;
-	Variable& _T;
-	Variable& _h;
-	Variable& _s;
-	Variable& _x;
-
-	H2OMedium _medium;
-
 public:
 	WaterStateEquation(Variable& p, Variable& T, Variable& h,
 			Variable& s, Variable& x);
-
-	virtual bool solve();
-	virtual std::ostream& print_to(std::ostream& f) const;
 };
 
 #endif /*_PLANTCALC_EQUATIONS_WATERSTATEEQUATION_HXX*/

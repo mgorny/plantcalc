@@ -20,6 +20,7 @@ libplantcalc_la_SOURCES = \
 	src/equation.cxx src/equation.hxx \
 	src/equations/linearequation.cxx src/equations/linearequation.hxx \
 	src/equations/equalityequation.cxx src/equations/equalityequation.hxx \
+	src/equations/mediumstateequation.cxx src/equations/mediumstateequation.hxx \
 	src/equations/waterstateequation.cxx src/equations/waterstateequation.hxx \
 	\
 	src/equationsolver.cxx src/equationsolver.hxx \

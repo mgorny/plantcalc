@@ -8,22 +8,13 @@
 #endif
 
 #include "waterstateequation.hxx"
+#include "../media/h2omedium.hxx"
+
+static H2OMedium h2o_medium;
 
 WaterStateEquation::WaterStateEquation(Variable& p, Variable& T, Variable& h,
 			Variable& s, Variable& x)
-	: _p(p), _T(T), _h(h), _s(s), _x(x)
+	: MediumStateEquation(p, T, h, s, x)
 {
-}
-
-bool WaterStateEquation::solve()
-{
-	return _medium.solve(_p, _T, _h, _s, _x);
-}
-
-std::ostream& WaterStateEquation::print_to(std::ostream& f) const
-{
-	return f << "<water state: "
-		<< _p << ", " << _T << ", " << _h << ", "
-		<< _s << ", " << _x << ">";
-
+	medium(&h2o_medium);
 }
