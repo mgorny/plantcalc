@@ -6,6 +6,7 @@
 #include "src/devices/condenser.hxx"
 #include "src/devices/turbine.hxx"
 #include "src/equationsystem.hxx"
+#include "src/system.hxx"
 
 #include "src/connections/medium/waterconnection.hxx"
 #include "src/equationsolvers/determinateequationsolver.hxx"
@@ -28,6 +29,15 @@ int main()
 	WaterConnection tloop(t.loop_out(), t.loop_in());
 
 	t.energy_out().P().set_value(1000);
+
+	System plant;
+	plant.push_back(b);
+	plant.push_back(t);
+	plant.push_back(c);
+	plant.push_back(bt);
+	plant.push_back(tc);
+	plant.push_back(cb);
+	plant.push_back(tloop);
 
 	typedef std::vector<Device*> device_list;
 	device_list devices;
