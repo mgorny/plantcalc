@@ -10,19 +10,25 @@
 
 #include "device.hxx"
 #include "connection.hxx"
+#include "equationsystem.hxx"
 
 #include <vector>
 
 class System
 {
-	std::vector<Device*> _devices;
-	std::vector<Connection*> _connections;
+	typedef std::vector<Device*> device_list;
+	typedef std::vector<Connection*> connection_list;
+
+	device_list _devices;
+	connection_list _connections;
 
 public:
 	System();
 
 	void push_back(Device& dev);
 	void push_back(Connection& conn);
+
+	EquationSystem equations();
 };
 
 #endif /*_PLANTCALC_SYSTEM_HXX*/

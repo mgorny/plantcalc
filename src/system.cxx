@@ -22,3 +22,26 @@ void System::push_back(Connection& conn)
 {
 	_connections.push_back(&conn);
 }
+
+EquationSystem System::equations()
+{
+	EquationSystem eqs;
+
+	for (device_list::iterator it = _devices.begin();
+			it != _devices.end(); ++it)
+	{
+		Device& d = **it;
+
+		eqs += d.equations();
+	}
+
+	for (connection_list::iterator it = _connections.begin();
+			it != _connections.end(); ++it)
+	{
+		Connection& c = **it;
+
+		eqs += c.equations();
+	}
+
+	return eqs;
+}
