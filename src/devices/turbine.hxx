@@ -19,12 +19,15 @@ class Turbine : public MediumFlowDevice
 {
 	DeviceVariable _isenthropic_efficiency;
 	DeviceVariable _one_minus_isenthropic_efficiency;
-	double _mechanical_efficiency;
+
+	DeviceVariable _mechanical_efficiency;
+	DeviceVariable _mechanical_efficiency_reciprocal;
 
 	MediumPin _loop_in, _loop_out;
 	MechanicalEnergyPin _energy_out;
 
 	LinearEquation _one_minus_isen_eff_eq;
+	LinearEquation _mech_eff_reciprocal_eq;
 
 	EqualityEquation _loop_mass_balance_eq;
 	EqualityEquation _loop_pressure_eq;
@@ -39,8 +42,7 @@ public:
 			double mechanical_efficiency, double pout);
 
 	Variable& isenthropic_efficiency();
-	double mechanical_efficiency();
-	void mechanical_efficiency(double new_value);
+	Variable& mechanical_efficiency();
 
 	MediumPin& loop_out();
 	MediumPin& loop_in();
