@@ -31,9 +31,11 @@ libplantcalc_la_SOURCES = \
 	\
 	src/variable.cxx src/variable.hxx \
 	src/variables/constant.cxx src/variables/constant.hxx \
+	src/variables/devicevariable.cxx src/variables/devicevariable.hxx \
 	src/variables/pinvariable.cxx src/variables/pinvariable.hxx \
 	\
 	src/ids/deviceid.cxx src/ids/deviceid.hxx \
+	src/ids/devicevariableid.cxx src/ids/devicevariableid.hxx \
 	src/ids/pinid.cxx src/ids/pinid.hxx \
 	src/ids/pinvariableid.cxx src/ids/pinvariableid.hxx \
 	\
