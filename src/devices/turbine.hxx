@@ -13,14 +13,18 @@
 #include "../pins/mediumpin.hxx"
 #include "../equations/equalityequation.hxx"
 #include "../equations/linearequation.hxx"
+#include "../variables/devicevariable.hxx"
 
 class Turbine : public MediumFlowDevice
 {
-	double _isenthropic_efficiency;
+	DeviceVariable _isenthropic_efficiency;
+	DeviceVariable _one_minus_isenthropic_efficiency;
 	double _mechanical_efficiency;
 
 	MediumPin _loop_in, _loop_out;
 	MechanicalEnergyPin _energy_out;
+
+	LinearEquation _one_minus_isen_eff_eq;
 
 	EqualityEquation _loop_mass_balance_eq;
 	EqualityEquation _loop_pressure_eq;
@@ -34,8 +38,7 @@ public:
 	Turbine(double isenthropic_efficiency,
 			double mechanical_efficiency, double pout);
 
-	double isenthropic_efficiency();
-	void isenthropic_efficiency(double new_value);
+	Variable& isenthropic_efficiency();
 	double mechanical_efficiency();
 	void mechanical_efficiency(double new_value);
 
