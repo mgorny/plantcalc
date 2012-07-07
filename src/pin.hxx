@@ -19,6 +19,8 @@ protected:
 
 public:
 	virtual ~Pin();
+
+	PinID& pin_id();
 };
 
 #endif /*_PLANTCALC_PIN_HXX*/

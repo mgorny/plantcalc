@@ -18,3 +18,8 @@ std::ostream& operator<<(std::ostream& f, const PinID& pid)
 {
 	return f << pid._device << "." << pid._name;
 }
+
+DeviceID& PinID::device_id()
+{
+	return _device;
+}

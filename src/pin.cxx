@@ -17,3 +17,8 @@ Pin::Pin(DeviceID& dev_id, const char* name)
 Pin::~Pin()
 {
 }
+
+PinID& Pin::pin_id()
+{
+	return _pin_id;
+}
