@@ -5,7 +5,6 @@ lib_LTLIBRARIES = libplantcalc.la
 libplantcalc_la_SOURCES = \
 	src/connection.cxx src/connection.hxx \
 	src/connections/mediumconnection.cxx src/connections/mediumconnection.hxx \
-	src/connections/medium/waterconnection.cxx src/connections/medium/waterconnection.hxx \
 	\
 	src/pin.cxx src/pin.hxx \
 	src/pins/mediumpin.cxx src/pins/mediumpin.hxx \
