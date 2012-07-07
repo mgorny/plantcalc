@@ -11,16 +11,17 @@
 
 #include <stdexcept>
 
-MediumStateEquation::MediumStateEquation(Variable& p, Variable& T, Variable& h,
-			Variable& s, Variable& x)
-	: _p(p), _T(T), _h(h), _s(s), _x(x), _medium(0)
+MediumStateEquation::MediumStateEquation(MediumSubstance*& subst_var,
+		Variable& p, Variable& T, Variable& h,
+		Variable& s, Variable& x)
+	: _p(p), _T(T), _h(h), _s(s), _x(x), _medium(subst_var)
 {
 }
 
 bool MediumStateEquation::solve()
 {
 	if (!_medium)
-		throw std::logic_error("No medium specified.");
+		return true;
 
 	return _medium->solve(_p, _T, _h, _s, _x);
 }
@@ -35,14 +36,4 @@ std::ostream& MediumStateEquation::print_to(std::ostream& f) const
 	return f << "<" << m_name << " state: "
 		<< _p << ", " << _T << ", " << _h << ", "
 		<< _s << ", " << _x << ">";
-}
-
-MediumSubstance* MediumStateEquation::medium()
-{
-	return _medium;
-}
-
-void MediumStateEquation::medium(MediumSubstance* m)
-{
-	_medium = m;
 }

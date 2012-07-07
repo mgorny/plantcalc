@@ -17,7 +17,7 @@ MediumConnection::MediumConnection(MediumPin& from, MediumPin& to)
 	_s_eq(from.s(), to.s()),
 	_x_eq(from.x(), to.x()),
 	_D_eq(from.D(), to.D()),
-	_state_eq(from.p(), from.T(), from.h(), from.s(), from.x())
+	_state_eq(_substance, from.p(), from.T(), from.h(), from.s(), from.x())
 {
 }
 
@@ -59,13 +59,7 @@ EquationSystem MediumConnection::equations()
 {
 	EquationSystem ret;
 
-	if (_substance)
-	{
-		// XXX: MediumSubstance*& instead?
-		_state_eq.medium(_substance);
-		ret.push_back(&_state_eq);
-	}
-
+	ret.push_back(&_state_eq);
 	ret.push_back(&_p_eq);
 	ret.push_back(&_T_eq);
 	ret.push_back(&_h_eq);

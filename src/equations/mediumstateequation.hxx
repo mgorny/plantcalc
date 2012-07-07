@@ -22,17 +22,15 @@ class MediumStateEquation : public Equation
 	Variable& _s;
 	Variable& _x;
 
-	MediumSubstance* _medium;
+	MediumSubstance*& _medium;
 
 public:
-	MediumStateEquation(Variable& p, Variable& T, Variable& h,
+	MediumStateEquation(MediumSubstance*& subst_var,
+			Variable& p, Variable& T, Variable& h,
 			Variable& s, Variable& x);
 
 	virtual bool solve();
 	virtual std::ostream& print_to(std::ostream& f) const;
-
-	MediumSubstance* medium();
-	void medium(MediumSubstance* m);
 };
 
 #endif /*_PLANTCALC_EQUATIONS_MEDIUMSTATEEQUATION_HXX*/
