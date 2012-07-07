@@ -23,10 +23,8 @@ class MediumConnection : public Connection
 	MediumSubstance* _substance;
 	MediumStateEquation _state_eq;
 
-protected:
-	MediumConnection(MediumPin& from, MediumPin& to);
-
 public:
+	MediumConnection(MediumPin& from, MediumPin& to);
 	virtual ~MediumConnection();
 
 	virtual MediumPin& from();
