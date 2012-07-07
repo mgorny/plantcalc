@@ -29,6 +29,7 @@ public:
 	void push_back(Connection& conn);
 
 	void set_device_ids();
+	void set_substances();
 
 	EquationSystem equations();
 };

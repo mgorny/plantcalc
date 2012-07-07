@@ -8,9 +8,10 @@
 #include "src/equationsystem.hxx"
 #include "src/system.hxx"
 
-#include "src/connections/medium/waterconnection.hxx"
+#include "src/connections/mediumconnection.hxx"
 #include "src/equationsolvers/determinateequationsolver.hxx"
 #include "src/equationsolvers/linearequationsolver.hxx"
+#include "src/substances/media/h2omedium.hxx"
 
 #include "src/exceptions/contradictionerror.hxx"
 
@@ -23,11 +24,14 @@ int main()
 	Turbine t(.95, .99, 0.1);
 	Condenser c;
 
-	WaterConnection bt(b.out(), t.in());
-	WaterConnection tc(t.out(), c.in());
-	WaterConnection cb(c.out(), b.in());
-	WaterConnection tloop(t.loop_out(), t.loop_in());
+	MediumConnection bt(b.out(), t.in());
+	MediumConnection tc(t.out(), c.in());
+	MediumConnection cb(c.out(), b.in());
+	MediumConnection tloop(t.loop_out(), t.loop_in());
 
+	H2OMedium water;
+
+	bt.substance(&water);
 	t.energy_out().P().set_value(1000);
 
 	System plant;
@@ -40,6 +44,7 @@ int main()
 	plant.push_back(tloop);
 
 	plant.set_device_ids();
+	plant.set_substances();
 
 	EquationSystem eqs = plant.equations();
 	std::cout << eqs << std::endl;

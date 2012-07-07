@@ -44,7 +44,8 @@ libplantcalc_la_SOURCES = \
 	\
 	src/system.cxx src/system.hxx \
 	\
-	src/exceptions/contradictionerror.cxx src/exceptions/contradictionerror.hxx
+	src/exceptions/contradictionerror.cxx src/exceptions/contradictionerror.hxx \
+	src/exceptions/nonhomogeneoussubstanceerror.cxx src/exceptions/nonhomogeneoussubstanceerror.hxx
 libplantcalc_la_LDFLAGS = -version-info 0:0:0
 libplantcalc_la_CPPFLAGS = $(LIBH2OXX_CFLAGS) $(EIGEN_CFLAGS)
 libplantcalc_la_LIBADD = $(LIBH2OXX_LIBS) $(EIGEN_LIBS)
