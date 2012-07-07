@@ -13,17 +13,7 @@
 static H2OMedium h2o_medium;
 
 WaterConnection::WaterConnection(MediumPin& from, MediumPin& to)
-	: MediumConnection(from, to),
-	_state_eq(from.p(), from.T(), from.h(), from.s(), from.x())
+	: MediumConnection(from, to)
 {
-	_state_eq.medium(&h2o_medium);
-}
-
-EquationSystem WaterConnection::equations()
-{
-	EquationSystem ret = MediumConnection::equations();
-
-	ret.push_back(&_state_eq);
-
-	return ret;
+	substance(&h2o_medium);
 }

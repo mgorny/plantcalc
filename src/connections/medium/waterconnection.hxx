@@ -13,12 +13,8 @@
 
 class WaterConnection : public MediumConnection
 {
-	MediumStateEquation _state_eq;
-
 public:
 	WaterConnection(MediumPin& from, MediumPin& to);
-
-	virtual EquationSystem equations();
 };
 
 #endif /*_PLANTCALC_CONNECTIONS_MEDIUM_WATERCONNECTION_HXX*/

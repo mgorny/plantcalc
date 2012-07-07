@@ -10,6 +10,7 @@
 
 #include "equationsystem.hxx"
 #include "pin.hxx"
+#include "substance.hxx"
 
 class Connection
 {
@@ -18,6 +19,9 @@ public:
 
 	virtual Pin& from() = 0;
 	virtual Pin& to() = 0;
+
+	virtual Substance* substance();
+	virtual void substance(Substance* new_subst);
 
 	virtual EquationSystem equations() = 0;
 };

@@ -9,6 +9,19 @@
 
 #include "connection.hxx"
 
+#include <stdexcept>
+
 Connection::~Connection()
 {
+}
+
+Substance* Connection::substance()
+{
+	return 0;
+}
+
+void Connection::substance(Substance* new_subst)
+{
+	if (new_subst)
+		throw std::runtime_error("This connection type does not support substances.");
 }

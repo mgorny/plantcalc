@@ -16,7 +16,8 @@ MediumConnection::MediumConnection(MediumPin& from, MediumPin& to)
 	_h_eq(from.h(), to.h()),
 	_s_eq(from.s(), to.s()),
 	_x_eq(from.x(), to.x()),
-	_D_eq(from.D(), to.D())
+	_D_eq(from.D(), to.D()),
+	_state_eq(from.p(), from.T(), from.h(), from.s(), from.x())
 {
 }
 
@@ -34,9 +35,36 @@ MediumPin& MediumConnection::to()
 	return _to;
 }
 
+MediumSubstance* MediumConnection::substance()
+{
+	return _substance;
+}
+
+void MediumConnection::substance(Substance* new_subst)
+{
+	MediumSubstance* subst = 0;
+
+	if (new_subst) // use references to throw an exception
+		subst = &dynamic_cast<MediumSubstance&>(*new_subst);
+
+	substance(subst);
+}
+
+void MediumConnection::substance(MediumSubstance* new_subst)
+{
+	_substance = new_subst;
+}
+
 EquationSystem MediumConnection::equations()
 {
 	EquationSystem ret;
+
+	if (_substance)
+	{
+		// XXX: MediumSubstance*& instead?
+		_state_eq.medium(_substance);
+		ret.push_back(&_state_eq);
+	}
 
 	ret.push_back(&_p_eq);
 	ret.push_back(&_T_eq);
