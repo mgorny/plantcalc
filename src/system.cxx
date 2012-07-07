@@ -9,6 +9,8 @@
 
 #include "system.hxx"
 
+#include <map>
+
 System::System()
 {
 }
@@ -21,6 +23,22 @@ void System::push_back(Device& dev)
 void System::push_back(Connection& conn)
 {
 	_connections.push_back(&conn);
+}
+
+void System::set_device_ids()
+{
+	std::map<const char*, int> device_numbering_table;
+
+	for (device_list::iterator it = _devices.begin();
+			it != _devices.end(); ++it)
+	{
+		Device& d = **it;
+		DeviceID& id = d.device_id();
+
+		int new_num = ++device_numbering_table[id.name()];
+
+		id.num(new_num);
+	}
 }
 
 EquationSystem System::equations()

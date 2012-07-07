@@ -20,6 +20,10 @@ private:
 
 public:
 	DeviceID(const char* name);
+
+	const char* name() const;
+	int num() const;
+	void num(int new_num);
 };
 
 std::ostream& operator<<(std::ostream& f, const DeviceID& did);

@@ -39,6 +39,8 @@ int main()
 	plant.push_back(cb);
 	plant.push_back(tloop);
 
+	plant.set_device_ids();
+
 	EquationSystem eqs = plant.equations();
 	std::cout << eqs << std::endl;
 

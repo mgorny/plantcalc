@@ -17,3 +17,8 @@ Device::Device(const char* name)
 Device::~Device()
 {
 }
+
+DeviceID& Device::device_id()
+{
+	return _device_id;
+}

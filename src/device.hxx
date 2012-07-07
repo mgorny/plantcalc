@@ -21,6 +21,8 @@ public:
 	virtual ~Device();
 
 	virtual EquationSystem equations() = 0;
+
+	DeviceID& device_id();
 };
 
 #endif /*_PLANTCALC_DEVICE_HXX*/

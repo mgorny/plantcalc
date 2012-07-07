@@ -18,3 +18,18 @@ std::ostream& operator<<(std::ostream& f, const DeviceID& did)
 {
 	return f << did._name << did._num;
 }
+
+const char* DeviceID::name() const
+{
+	return _name;
+}
+
+int DeviceID::num() const
+{
+	return _num;
+}
+
+void DeviceID::num(int new_num)
+{
+	_num = new_num;
+}
