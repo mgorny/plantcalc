@@ -37,12 +37,12 @@ std::ostream& MediumStateEquation::print_to(std::ostream& f) const
 		<< _s << ", " << _x << ">";
 }
 
-Medium* MediumStateEquation::medium()
+MediumSubstance* MediumStateEquation::medium()
 {
 	return _medium;
 }
 
-void MediumStateEquation::medium(Medium* m)
+void MediumStateEquation::medium(MediumSubstance* m)
 {
 	_medium = m;
 }

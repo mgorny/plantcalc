@@ -28,8 +28,9 @@ libplantcalc_la_SOURCES = \
 	\
 	src/equationsystem.cxx src/equationsystem.hxx \
 	\
-	src/medium.cxx src/medium.hxx \
-	src/media/h2omedium.cxx src/media/h2omedium.hxx \
+	src/substance.cxx src/substance.hxx \
+	src/substances/mediumsubstance.cxx src/substances/mediumsubstance.hxx \
+	src/substances/media/h2omedium.cxx src/substances/media/h2omedium.hxx \
 	\
 	src/variable.cxx src/variable.hxx \
 	src/variables/constant.cxx src/variables/constant.hxx \

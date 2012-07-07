@@ -7,8 +7,8 @@
 #	include "config.h"
 #endif
 
-#include "medium.hxx"
+#include "substance.hxx"
 
-Medium::~Medium()
+Substance::~Substance()
 {
 }

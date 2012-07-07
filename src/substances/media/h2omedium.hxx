@@ -5,12 +5,12 @@
 
 #pragma once
 
-#ifndef _PLANTCALC_MEDIA_H2O_HXX
-#define _PLANTCALC_MEDIA_H2O_HXX 1
+#ifndef _PLANTCALC_SUBSTANCES_MEDIA_H2OMEDIUM_HXX
+#define _PLANTCALC_SUBSTANCES_MEDIA_H2OMEDIUM_HXX 1
 
-#include "../medium.hxx"
+#include "../mediumsubstance.hxx"
 
-class H2OMedium : public Medium
+class H2OMedium : public MediumSubstance
 {
 public:
 	virtual const char* name() const;
@@ -19,4 +19,4 @@ public:
 			Variable& h, Variable& s, Variable& x);
 };
 
-#endif /*_PLANTCALC_MEDIA_H2O_HXX*/
+#endif /*_PLANTCALC_SUBSTANCES_MEDIA_H2OMEDIUM_HXX*/

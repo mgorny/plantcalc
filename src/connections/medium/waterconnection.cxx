@@ -8,7 +8,7 @@
 #endif
 
 #include "waterconnection.hxx"
-#include "../../media/h2omedium.hxx"
+#include "../../substances/media/h2omedium.hxx"
 
 static H2OMedium h2o_medium;
 

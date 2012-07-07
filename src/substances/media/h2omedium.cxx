@@ -8,7 +8,7 @@
 #endif
 
 #include "h2omedium.hxx"
-#include "../exceptions/contradictionerror.hxx"
+#include "../../exceptions/contradictionerror.hxx"
 
 #include <stdexcept>
 

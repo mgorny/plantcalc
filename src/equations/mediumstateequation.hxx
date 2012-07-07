@@ -9,7 +9,7 @@
 #define _PLANTCALC_EQUATIONS_MEDIUMSTATEEQUATION_HXX 1
 
 #include "../equation.hxx"
-#include "../medium.hxx"
+#include "../substances/mediumsubstance.hxx"
 #include "../variable.hxx"
 
 #include <ostream>
@@ -22,7 +22,7 @@ class MediumStateEquation : public Equation
 	Variable& _s;
 	Variable& _x;
 
-	Medium* _medium;
+	MediumSubstance* _medium;
 
 public:
 	MediumStateEquation(Variable& p, Variable& T, Variable& h,
@@ -31,8 +31,8 @@ public:
 	virtual bool solve();
 	virtual std::ostream& print_to(std::ostream& f) const;
 
-	Medium* medium();
-	void medium(Medium* m);
+	MediumSubstance* medium();
+	void medium(MediumSubstance* m);
 };
 
 #endif /*_PLANTCALC_EQUATIONS_MEDIUMSTATEEQUATION_HXX*/
