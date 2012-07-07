@@ -17,6 +17,16 @@ MediumFlowDevice::MediumFlowDevice(const char* name)
 {
 }
 
+bool MediumFlowDevice::pins_connected(const Pin& lhs, const Pin& rhs) const
+{
+	if (&lhs == &_in && &rhs == &_out)
+		return true;
+	if (&lhs == &_out && &rhs == &_in)
+		return true;
+
+	return false;
+}
+
 EquationSystem MediumFlowDevice::equations()
 {
 	EquationSystem ret;

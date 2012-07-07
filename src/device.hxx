@@ -9,6 +9,7 @@
 #define _PLANTCALC_DEVICE_HXX 1
 
 #include "equationsystem.hxx"
+#include "pin.hxx"
 #include "ids/deviceid.hxx"
 
 class Device
@@ -21,6 +22,8 @@ public:
 	virtual ~Device();
 
 	virtual EquationSystem equations() = 0;
+
+	virtual bool pins_connected(const Pin& lhs, const Pin& rhs) const = 0;
 
 	DeviceID& device_id();
 };

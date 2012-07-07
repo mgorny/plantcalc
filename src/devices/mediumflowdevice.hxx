@@ -22,6 +22,8 @@ class MediumFlowDevice : public Device
 protected:
 	MediumFlowDevice(const char* name);
 
+	virtual bool pins_connected(const Pin& lhs, const Pin& rhs) const;
+
 	virtual EquationSystem equations();
 
 public:

@@ -26,6 +26,7 @@ public:
 	MediumPin& sec_in();
 	MediumPin& sec_out();
 
+	virtual bool pins_connected(const Pin& lhs, const Pin& rhs) const;
 	virtual EquationSystem equations();
 };
 

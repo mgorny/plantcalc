@@ -32,6 +32,19 @@ MediumPin& Condenser::sec_out()
 	return _sec_out;
 }
 
+bool Condenser::pins_connected(const Pin& lhs, const Pin& rhs) const
+{
+	if (MediumFlowDevice::pins_connected(lhs, rhs))
+		return true;
+
+	if (&lhs == &_sec_in && &rhs == &_sec_out)
+		return true;
+	if (&lhs == &_sec_out && &rhs == &_sec_in)
+		return true;
+
+	return false;
+}
+
 EquationSystem Condenser::equations()
 {
 	EquationSystem ret = MediumFlowDevice::equations();

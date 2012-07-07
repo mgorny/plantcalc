@@ -104,6 +104,14 @@ MechanicalEnergyPin& Turbine::energy_out()
 	return _energy_out;
 }
 
+bool Turbine::pins_connected(const Pin& lhs, const Pin& rhs) const
+{
+	if (&lhs != &_energy_out && &rhs != &_energy_out)
+		return true;
+
+	return false;
+}
+
 EquationSystem Turbine::equations()
 {
 	EquationSystem ret = MediumFlowDevice::equations();
