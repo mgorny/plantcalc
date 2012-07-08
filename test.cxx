@@ -77,6 +77,7 @@ int main()
 		std::cout << eqs2 << std::endl;
 		throw;
 	}
+	std::cout << eqs2 << std::endl;
 
 	// do an additional run to ensure everything went fine
 	std::cout << eqs << std::endl;
