@@ -7,6 +7,7 @@ libplantcalc_la_SOURCES = \
 	src/connections/mediumconnection.cxx src/connections/mediumconnection.hxx \
 	\
 	src/pin.cxx src/pin.hxx \
+	src/pins/fuelpin.cxx src/pins/fuelpin.hxx \
 	src/pins/mediumpin.cxx src/pins/mediumpin.hxx \
 	src/pins/mechanicalenergypin.cxx src/pins/mechanicalenergypin.hxx \
 	\
