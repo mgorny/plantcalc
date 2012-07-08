@@ -9,11 +9,16 @@
 #define _PLANTCALC_DEVICES_BOILER_HXX 1
 
 #include "mediumflowdevice.hxx"
+#include "../pins/fuelpin.hxx"
 #include "../variables/devicevariable.hxx"
 
 class Boiler : public MediumFlowDevice
 {
 	DeviceVariable _efficiency;
+
+	FuelPin _fuel_in;
+	LinearEquation _energy_balance_eq;
+	LinearEquation _fuel_energy_eq;
 
 public:
 	Boiler(double efficiency = 1);
