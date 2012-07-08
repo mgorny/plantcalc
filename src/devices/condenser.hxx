@@ -20,6 +20,8 @@ class Condenser : public MediumFlowDevice
 	EqualityEquation _primary_pressure_eq;
 	EqualityEquation _primary_saturation_eq;
 
+	LinearEquation _energy_balance_eq;
+
 public:
 	Condenser();
 

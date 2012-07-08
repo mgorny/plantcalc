@@ -20,6 +20,10 @@ Condenser::Condenser()
 	_primary_pressure_eq(in().p(), out().p()),
 	_primary_saturation_eq(out().x(), xsat)
 {
+	_energy_balance_eq.update(1, in().D(), in().h());
+	_energy_balance_eq.update(1, _sec_in.D(), _sec_in.h());
+	_energy_balance_eq.update(-1, out().D(), out().h());
+	_energy_balance_eq.update(-1, _sec_out.D(), _sec_out.h());
 }
 
 MediumPin& Condenser::sec_in()
@@ -52,6 +56,7 @@ EquationSystem Condenser::equations()
 	ret.push_back(&_secondary_mass_eq);
 	ret.push_back(&_primary_pressure_eq);
 	ret.push_back(&_primary_saturation_eq);
+	ret.push_back(&_energy_balance_eq);
 
 	return ret;
 }
