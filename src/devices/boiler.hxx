@@ -9,17 +9,17 @@
 #define _PLANTCALC_DEVICES_BOILER_HXX 1
 
 #include "mediumflowdevice.hxx"
+#include "../variables/devicevariable.hxx"
 
 class Boiler : public MediumFlowDevice
 {
-	double _efficiency;
+	DeviceVariable _efficiency;
 
 public:
 	Boiler(double efficiency = 1);
 	Boiler(double efficiency, double pout, double Tout);
 
-	double efficiency();
-	void efficiency(double new_value);
+	Variable& efficiency();
 
 	virtual EquationSystem equations();
 };

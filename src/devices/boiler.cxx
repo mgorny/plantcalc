@@ -13,30 +13,22 @@
 
 Boiler::Boiler(double eff)
 	: MediumFlowDevice("B"),
-	_efficiency(eff)
+	_efficiency(_device_id, "eta", eff)
 {
 }
 
 Boiler::Boiler(double eff, double pout, double Tout)
 	: MediumFlowDevice("B"),
-	_efficiency(eff)
+	_efficiency(_device_id, "eta", eff)
 {
 	MediumPin& mout = out();
 	mout.p().set_value(pout);
 	mout.T().set_value(Tout);
 }
 
-double Boiler::efficiency()
+Variable& Boiler::efficiency()
 {
 	return _efficiency;
-}
-
-void Boiler::efficiency(double new_value)
-{
-	assert(new_value >= 0);
-	assert(new_value <= 1);
-
-	_efficiency = new_value;
 }
 
 EquationSystem Boiler::equations()
