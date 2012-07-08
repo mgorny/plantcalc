@@ -24,6 +24,7 @@ Turbine::Turbine(double isen_eff,
 	_loop_in(_device_id, "loop-in"),
 	_loop_out(_device_id, "loop-out"),
 	_energy_out(_device_id, "energy-out"),
+	_loop_mass_eq(in().D(), _loop_in.D()),
 	_loop_mass_balance_eq(_loop_in.D(), _loop_out.D()),
 	_loop_pressure_eq(_loop_out.p(), out().p()),
 	_ideal_expansion_eq(in().s(), _loop_in.s())
@@ -56,6 +57,7 @@ Turbine::Turbine(double isen_eff,
 	_loop_in(_device_id, "loop-in"),
 	_loop_out(_device_id, "loop-out"),
 	_energy_out(_device_id, "energy-out"),
+	_loop_mass_eq(in().D(), _loop_in.D()),
 	_loop_mass_balance_eq(_loop_in.D(), _loop_out.D()),
 	_loop_pressure_eq(_loop_out.p(), out().p()),
 	_ideal_expansion_eq(in().s(), _loop_in.s())
@@ -118,6 +120,7 @@ EquationSystem Turbine::equations()
 
 	ret.push_back(&_one_minus_isen_eff_eq);
 	ret.push_back(&_mech_eff_reciprocal_eq);
+	ret.push_back(&_loop_mass_eq);
 	ret.push_back(&_loop_mass_balance_eq);
 	ret.push_back(&_loop_pressure_eq);
 	ret.push_back(&_ideal_expansion_eq);
