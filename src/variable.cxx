@@ -58,6 +58,14 @@ void Variable::unset()
 	_is_set = false;
 }
 
+std::ostream& Variable::print_value(std::ostream& f) const
+{
+	if (is_set())
+		return f << static_cast<double>(*this);
+	else
+		return f << '?';
+}
+
 std::ostream& operator <<(std::ostream& f, const Variable& v)
 {
 	return v.print_to(f);

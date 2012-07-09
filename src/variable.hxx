@@ -31,6 +31,8 @@ public:
 	operator double() const;
 	void set_value(double user_val);
 	void unset();
+
+	std::ostream& print_value(std::ostream& f) const;
 };
 
 std::ostream& operator <<(std::ostream& f, const Variable& v);
