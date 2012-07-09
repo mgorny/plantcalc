@@ -7,13 +7,13 @@
 #	include "config.h"
 #endif
 
-#include "determinateequationsolver.hxx"
+#include "singleequationsolver.hxx"
 
-DeterminateEquationSolver::DeterminateEquationSolver()
+SingleEquationSolver::SingleEquationSolver()
 {
 }
 
-bool DeterminateEquationSolver::iterate(EquationSystem& eqs)
+bool SingleEquationSolver::iterate(EquationSystem& eqs)
 {
 	EquationSystem::iterator it;
 	bool any_solved = false;

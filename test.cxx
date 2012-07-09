@@ -9,7 +9,7 @@
 #include "src/system.hxx"
 
 #include "src/connections/mediumconnection.hxx"
-#include "src/equationsolvers/determinateequationsolver.hxx"
+#include "src/equationsolvers/singleequationsolver.hxx"
 #include "src/equationsolvers/linearequationsolver.hxx"
 #include "src/substances/media/h2omedium.hxx"
 
@@ -50,7 +50,7 @@ int main()
 	std::cout << eqs << std::endl;
 
 	// first clean up the system using simple solver
-	DeterminateEquationSolver solv;
+	SingleEquationSolver solv;
 
 	try
 	{
