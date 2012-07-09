@@ -23,6 +23,7 @@ libplantcalc_la_SOURCES = \
 	src/equations/mediumstateequation.cxx src/equations/mediumstateequation.hxx \
 	\
 	src/equationsolver.cxx src/equationsolver.hxx \
+	src/equationsolvers/autoequationsolver.cxx src/equationsolvers/autoequationsolver.hxx \
 	src/equationsolvers/linearequationsolver.cxx src/equationsolvers/linearequationsolver.hxx \
 	src/equationsolvers/singleequationsolver.cxx src/equationsolvers/singleequationsolver.hxx \
 	\

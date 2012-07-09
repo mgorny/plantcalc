@@ -9,8 +9,7 @@
 #include "src/system.hxx"
 
 #include "src/connections/mediumconnection.hxx"
-#include "src/equationsolvers/singleequationsolver.hxx"
-#include "src/equationsolvers/linearequationsolver.hxx"
+#include "src/equationsolvers/autoequationsolver.hxx"
 #include "src/substances/media/h2omedium.hxx"
 
 #include "src/exceptions/contradictionerror.hxx"
@@ -49,8 +48,7 @@ int main()
 	EquationSystem eqs = plant.equations();
 	std::cout << eqs << std::endl;
 
-	// first clean up the system using simple solver
-	SingleEquationSolver solv;
+	AutoEquationSolver solv;
 
 	try
 	{
@@ -63,25 +61,7 @@ int main()
 		throw;
 	}
 
-	// solve remaining equations using linear solver
-	EquationSystem eqs2 = eqs;
-	LinearEquationSolver lsolv;
-
-	try
-	{
-		while (lsolv.iterate(eqs2))
-			std::cout << eqs2 << std::endl;
-	}
-	catch (ContradictionError& e)
-	{
-		std::cout << eqs2 << std::endl;
-		throw;
-	}
-	std::cout << eqs2 << std::endl;
-
-	// do an additional run to ensure everything went fine
 	std::cout << eqs << std::endl;
-	solv.iterate(eqs);
 
 	return 0;
 }
