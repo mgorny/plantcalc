@@ -43,9 +43,8 @@ public:
 	}
 };
 
-static const double epsilon = 1E-6;
-
-LinearEquationSolver::LinearEquationSolver()
+LinearEquationSolver::LinearEquationSolver(double epsilon)
+	: _epsilon(epsilon)
 {
 }
 
@@ -171,7 +170,7 @@ bool LinearEquationSolver::iterate(EquationSystem& eqs)
 
 	double error = (coeff_matrix * sol_vector - value_vector).norm();
 
-	if (std::abs(error) > epsilon)
+	if (std::abs(error) > _epsilon)
 		throw ContradictionError();
 
 	// a random value; used for underdetermination checks
@@ -189,7 +188,7 @@ bool LinearEquationSolver::iterate(EquationSystem& eqs)
 		// if it's 0 and changing it to some reasonable value
 		// does not make a contradiction, it's random
 		// XXX: a better way of doing that?
-		if (std::abs(sol_vector(col)) < epsilon)
+		if (std::abs(sol_vector(col)) < _epsilon)
 		{
 			coeff_matrix(num_eqs, col) = 1;
 
@@ -201,7 +200,7 @@ bool LinearEquationSolver::iterate(EquationSystem& eqs)
 
 			coeff_matrix(num_eqs, col) = 0;
 
-			if (std::abs(check_error) < epsilon)
+			if (std::abs(check_error) < _epsilon)
 			{
 				// find all equations with the variable and remove them
 				// so they will remain in the original system of equations

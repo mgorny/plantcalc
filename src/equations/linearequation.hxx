@@ -36,7 +36,7 @@ public:
 
 	void update(double coefficient, Variable& v);
 	void update(double coefficient, Variable& v1, Variable& v2);
-	virtual bool solve();
+	virtual bool solve(double epsilon);
 };
 
 #endif /*_PLANTCALC_EQUATIONS_LINEAREQUATION_HXX*/

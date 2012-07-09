@@ -29,7 +29,7 @@ public:
 			Variable& p, Variable& T, Variable& h,
 			Variable& s, Variable& x);
 
-	virtual bool solve();
+	virtual bool solve(double epsilon);
 	virtual std::ostream& print_to(std::ostream& f) const;
 };
 

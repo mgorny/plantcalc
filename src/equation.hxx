@@ -21,7 +21,7 @@ protected:
 public:
 	virtual ~Equation();
 
-	virtual bool solve() = 0;
+	virtual bool solve(double epsilon) = 0;
 };
 
 std::ostream& operator <<(std::ostream& f, const Equation& eq);

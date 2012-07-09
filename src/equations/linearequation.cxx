@@ -55,7 +55,7 @@ void LinearEquation::update(double coefficient, Variable& v1, Variable& v2)
 	_vars.push_back(li);
 }
 
-bool LinearEquation::solve()
+bool LinearEquation::solve(double epsilon)
 {
 	list_type::iterator it;
 	Variable* dest_var = 0;
@@ -118,8 +118,6 @@ bool LinearEquation::solve()
 
 	if (!dest_var)
 	{
-		const double epsilon = 1E-6;
-
 		if (std::abs(val) >= epsilon)
 			throw ContradictionError();
 

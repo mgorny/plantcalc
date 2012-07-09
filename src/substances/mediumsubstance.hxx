@@ -15,7 +15,8 @@ class MediumSubstance : public Substance
 {
 public:
 	virtual bool solve(Variable& p, Variable& T,
-			Variable& h, Variable& s, Variable& x) = 0;
+			Variable& h, Variable& s, Variable& x,
+			double epsilon) = 0;
 };
 
 #endif /*_PLANTCALC_SUBSTANCES_MEDIUMSUBSTANCE_HXX*/

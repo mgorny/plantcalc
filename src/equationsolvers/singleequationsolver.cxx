@@ -9,7 +9,8 @@
 
 #include "singleequationsolver.hxx"
 
-SingleEquationSolver::SingleEquationSolver()
+SingleEquationSolver::SingleEquationSolver(double epsilon)
+	: _epsilon(epsilon)
 {
 }
 
@@ -22,7 +23,7 @@ bool SingleEquationSolver::iterate(EquationSystem& eqs)
 	{
 		Equation& e = **it;
 
-		if (e.solve())
+		if (e.solve(_epsilon))
 		{
 			any_solved = true;
 			it = eqs.erase(it);

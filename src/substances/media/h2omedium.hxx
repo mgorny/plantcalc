@@ -16,7 +16,8 @@ public:
 	virtual const char* name() const;
 
 	virtual bool solve(Variable& p, Variable& T,
-			Variable& h, Variable& s, Variable& x);
+			Variable& h, Variable& s, Variable& x,
+			double epsilon);
 };
 
 #endif /*_PLANTCALC_SUBSTANCES_MEDIA_H2OMEDIUM_HXX*/

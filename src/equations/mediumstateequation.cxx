@@ -18,12 +18,12 @@ MediumStateEquation::MediumStateEquation(MediumSubstance*& subst_var,
 {
 }
 
-bool MediumStateEquation::solve()
+bool MediumStateEquation::solve(double epsilon)
 {
 	if (!_medium)
 		return true;
 
-	return _medium->solve(_p, _T, _h, _s, _x);
+	return _medium->solve(_p, _T, _h, _s, _x, epsilon);
 }
 
 std::ostream& MediumStateEquation::print_to(std::ostream& f) const

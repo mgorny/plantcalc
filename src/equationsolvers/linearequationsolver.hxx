@@ -12,8 +12,10 @@
 
 class LinearEquationSolver : public EquationSolver
 {
+	double _epsilon;
+
 public:
-	LinearEquationSolver();
+	LinearEquationSolver(double epsilon = 1E-6);
 
 	virtual bool iterate(EquationSystem& eqs);
 };

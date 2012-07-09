@@ -20,7 +20,8 @@ const char* H2OMedium::name() const
 }
 
 bool H2OMedium::solve(Variable& p, Variable& T,
-			Variable& h, Variable& s, Variable& x)
+			Variable& h, Variable& s, Variable& x,
+			double epsilon)
 {
 	int count = p.is_set() + T.is_set() + h.is_set()
 		+ s.is_set() + x.is_set();
