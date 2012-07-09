@@ -46,6 +46,11 @@ Variable& Boiler::efficiency()
 	return _efficiency;
 }
 
+FuelPin& Boiler::fuel_in()
+{
+	return _fuel_in;
+}
+
 EquationSystem Boiler::equations()
 {
 	EquationSystem ret = MediumFlowDevice::equations();

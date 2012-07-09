@@ -26,6 +26,8 @@ public:
 
 	Variable& efficiency();
 
+	FuelPin& fuel_in();
+
 	virtual EquationSystem equations();
 };
 
