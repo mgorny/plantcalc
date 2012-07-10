@@ -20,7 +20,7 @@
 #include <vector>
 
 #include <Eigen/Core>
-#include <Eigen/QR>
+#include <Eigen/LU>
 
 class col_index
 {
@@ -165,18 +165,17 @@ bool LinearEquationSolver::iterate(EquationSystem& eqs)
 		++row;
 	}
 
-	Eigen::VectorXd sol_vector = coeff_matrix
-			.colPivHouseholderQr().solve(value_vector);
+	Eigen::FullPivLU<Eigen::MatrixXd> lu = coeff_matrix.fullPivLu();
+
+	Eigen::VectorXd sol_vector = lu.solve(value_vector);
+	Eigen::VectorXd null_vector = lu.kernel().rowwise().sum();
 
 	double error = (coeff_matrix * sol_vector - value_vector).norm();
 
 	if (std::abs(error) > _epsilon)
 		throw ContradictionError();
 
-	// a random value; used for underdetermination checks
-	value_vector(num_eqs) = 1E6;
-
-	std::vector<bool> keep_equations(num_eqs, false);;
+	std::vector<bool> keep_equations(num_eqs, false);
 
 	variable_map::iterator vt;
 	for (vt = varmap.begin(); vt != varmap.end(); ++vt)
@@ -184,35 +183,18 @@ bool LinearEquationSolver::iterate(EquationSystem& eqs)
 		Variable& v = *(*vt).first;
 		col_index& col = (*vt).second;
 
-		// check whether the solution is actually useful...
-		// if it's 0 and changing it to some reasonable value
-		// does not make a contradiction, it's random
-		// XXX: a better way of doing that?
-		if (std::abs(sol_vector(col)) < _epsilon)
+		if (null_vector(col) > 0.5)
 		{
-			coeff_matrix(num_eqs, col) = 1;
+			// find all equations with the variable and remove them
+			// so they will remain in the original system of equations
 
-			Eigen::VectorXd check_vector = coeff_matrix
-					.colPivHouseholderQr().solve(value_vector);
-
-			double check_error = (coeff_matrix * check_vector
-					- value_vector).norm();
-
-			coeff_matrix(num_eqs, col) = 0;
-
-			if (std::abs(check_error) < _epsilon)
+			for (int i = 0; i < num_eqs; ++i)
 			{
-				// find all equations with the variable and remove them
-				// so they will remain in the original system of equations
-
-				for (int i = 0; i < num_eqs; ++i)
-				{
-					if (coeff_matrix(i, col) != 0)
-						keep_equations[i] = true;
-				}
-
-				continue;
+				if (std::abs(coeff_matrix(i, col)) > _epsilon)
+					keep_equations[i] = true;
 			}
+
+			continue;
 		}
 
 		v.set_value(sol_vector(col));
