@@ -23,3 +23,8 @@ DeviceID& PinID::device_id()
 {
 	return _device;
 }
+
+const char* PinID::name() const
+{
+	return _name;
+}

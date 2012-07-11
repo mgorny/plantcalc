@@ -24,6 +24,8 @@ public:
 	PinID(DeviceID& device, const char* name);
 
 	DeviceID& device_id();
+
+	const char* name() const;
 };
 
 std::ostream& operator<<(std::ostream& f, const PinID& pid);

@@ -38,3 +38,40 @@ Device::variable_iterable Device::variables()
 {
 	return variable_iterable(*this, &Device::iter_var_get);
 }
+
+std::ostream& operator<<(std::ostream& f, Device& dev)
+{
+	std::ostream* f2 = &(f << dev._device_id << ":");
+
+	Device::variable_iterable vars = dev.variables();
+	Device::pin_iterable pins = dev.pins();
+
+	for (Device::variable_iterable::iterator it = vars.begin();
+			it != vars.end(); ++it)
+	{
+		DeviceVariable& v = *it;
+
+		f2 = &(*f2 << "\n- " << v.variable_id().name() << " = ");
+		f2 = &v.print_value(*f2);
+	}
+
+	for (Device::pin_iterable::iterator it = pins.begin();
+			it != pins.end(); ++it)
+	{
+		Pin& pin = *it;
+
+		f2 = &(*f2 << "\n* " << pin.pin_id().name() << ":");
+
+		Pin::variable_iterable lvars = pin.variables();
+		for (Pin::variable_iterable::iterator vt = lvars.begin();
+				vt != lvars.end(); ++vt)
+		{
+			PinVariable& v = *vt;
+
+			f2 = &(*f2 << "\n  - " << v.variable_id().name() << " = ");
+			f2 = &v.print_value(*f2);
+		}
+	}
+
+	return *f2;
+}

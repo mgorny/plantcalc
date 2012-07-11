@@ -23,6 +23,8 @@ protected:
 	virtual Pin* iter_pin_get(int index) = 0;
 	virtual DeviceVariable* iter_var_get(int index) = 0;
 
+	friend std::ostream& operator<<(std::ostream& f, Device& dev);
+
 public:
 	virtual ~Device();
 
@@ -38,5 +40,7 @@ public:
 	pin_iterable pins();
 	variable_iterable variables();
 };
+
+std::ostream& operator<<(std::ostream& f, Device& dev);
 
 #endif /*_PLANTCALC_DEVICE_HXX*/
