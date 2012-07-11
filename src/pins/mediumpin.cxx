@@ -35,9 +35,9 @@ MediumPin::MediumPin(DeviceID& dev_id, const char* name, double p, double T)
 {
 }
 
-Variable* MediumPin::iter_variable_get(int index)
+PinVariable* MediumPin::iter_variable_get(int index)
 {
-	Variable* ret;
+	PinVariable* ret;
 
 	switch (index)
 	{

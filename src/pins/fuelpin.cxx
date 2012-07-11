@@ -21,9 +21,9 @@ FuelPin::FuelPin(DeviceID& dev_id, const char* name)
 {
 }
 
-Variable* FuelPin::iter_variable_get(int index)
+PinVariable* FuelPin::iter_variable_get(int index)
 {
-	Variable* ret;
+	PinVariable* ret;
 
 	switch (index)
 	{

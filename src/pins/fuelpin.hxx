@@ -16,7 +16,7 @@ class FuelPin : public Pin
 	PinVariable _Q, _B, _Qw;
 
 protected:
-	virtual Variable* iter_variable_get(int index);
+	virtual PinVariable* iter_variable_get(int index);
 
 public:
 	FuelPin(DeviceID& dev_id, const char* name);

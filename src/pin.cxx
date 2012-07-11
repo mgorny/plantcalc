@@ -24,11 +24,11 @@ PinID& Pin::pin_id()
 	return _pin_id;
 }
 
-template class MethodBasedIterator<Pin, Variable>;
-template class MethodBasedIterable<Pin, Variable>;
+template class MethodBasedIterator<Pin, PinVariable>;
+template class MethodBasedIterable<Pin, PinVariable>;
 
-MethodBasedIterable<Pin, Variable> Pin::variables()
+MethodBasedIterable<Pin, PinVariable> Pin::variables()
 {
-	return MethodBasedIterable<Pin, Variable>
+	return MethodBasedIterable<Pin, PinVariable>
 		(*this, &Pin::iter_variable_get);
 }
