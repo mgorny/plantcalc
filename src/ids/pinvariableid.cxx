@@ -14,6 +14,11 @@ PinVariableID::PinVariableID(PinID& pin, const char* name)
 {
 }
 
+const char* PinVariableID::name() const
+{
+	return _name;
+}
+
 std::ostream& operator <<(std::ostream& f, const PinVariableID& pvid)
 {
 	return f << pvid._pin << "." << pvid._name;

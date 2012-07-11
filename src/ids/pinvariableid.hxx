@@ -23,6 +23,8 @@ private:
 
 public:
 	PinVariableID(PinID& pin, const char* name);
+
+	const char* name() const;
 };
 
 std::ostream& operator<<(std::ostream& f, const PinVariableID& pvid);
