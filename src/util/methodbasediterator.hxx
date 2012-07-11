@@ -27,40 +27,13 @@ private:
 
 public:
 	MethodBasedIterator(Source& source, getter_method getter,
-			bool end = false)
-		: _source(source), _getter(getter), _curr_index(0)
-	{
-		if (end)
-			_curr_val = 0;
-		else
-			++*this;
-	}
+			bool end = false);
 
-	void operator++()
-	{
-		_curr_val = (_source.*_getter)(_curr_index++);
-	}
+	void operator++();
+	ReturnType& operator*();
 
-	ReturnType& operator*()
-	{
-		assert(_curr_val);
-
-		return *_curr_val;
-	}
-
-	bool operator==(MethodBasedIterator<Source, ReturnType> rhs)
-	{
-		return &_source == &rhs._source
-			&& _getter == rhs._getter
-			&& _curr_val == rhs._curr_val;
-	}
-
-	bool operator!=(MethodBasedIterator<Source, ReturnType> rhs)
-	{
-		return &_source != &rhs._source
-			|| _getter != rhs._getter
-			|| _curr_val != rhs._curr_val;
-	}
+	bool operator==(MethodBasedIterator<Source, ReturnType> rhs);
+	bool operator!=(MethodBasedIterator<Source, ReturnType> rhs);
 };
 
 #endif /*_PLANTCALC_UTIL_METHODBASEDITERATOR_HXX*/

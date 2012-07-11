@@ -8,6 +8,7 @@
 #endif
 
 #include "pin.hxx"
+#include "util/methodbasediterable.ixx"
 
 Pin::Pin(DeviceID& dev_id, const char* name)
 	: _pin_id(dev_id, name)
@@ -22,6 +23,9 @@ PinID& Pin::pin_id()
 {
 	return _pin_id;
 }
+
+template class MethodBasedIterator<Pin, Variable>;
+template class MethodBasedIterable<Pin, Variable>;
 
 MethodBasedIterable<Pin, Variable> Pin::variables()
 {

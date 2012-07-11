@@ -22,20 +22,10 @@ private:
 	getter_method _getter;
 
 public:
-	MethodBasedIterable(Source& source, getter_method getter)
-		: _source(source), _getter(getter)
-	{
-	}
+	MethodBasedIterable(Source& source, getter_method getter);
 
-	MethodBasedIterator<Source, ReturnType> begin()
-	{
-		return iterator(_source, _getter);
-	}
-
-	MethodBasedIterator<Source, ReturnType> end()
-	{
-		return iterator(_source, _getter, true);
-	}
+	MethodBasedIterator<Source, ReturnType> begin();
+	MethodBasedIterator<Source, ReturnType> end();
 };
 
 #endif /*_PLANTCALC_UTIL_METHODBASEDITERABLE_HXX*/

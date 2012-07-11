@@ -32,8 +32,8 @@ libplantcalc_base_la_SOURCES = \
 	src/exceptions/contradictionerror.cxx src/exceptions/contradictionerror.hxx \
 	src/exceptions/nonhomogeneoussubstanceerror.cxx src/exceptions/nonhomogeneoussubstanceerror.hxx \
 	\
-	src/util/methodbasediterator.hxx \
-	src/util/methodbasediterable.hxx
+	src/util/methodbasediterator.hxx src/util/methodbasediterator.ixx \
+	src/util/methodbasediterable.hxx src/util/methodbasediterable.ixx
 libplantcalc_base_la_LDFLAGS = -version-info 0:0:0
 
 libplantcalc_solvers_la_SOURCES = \
