@@ -12,6 +12,7 @@
 #include "connection.hxx"
 #include "equationsystem.hxx"
 
+#include <ostream>
 #include <vector>
 
 class System
@@ -21,6 +22,8 @@ class System
 
 	device_list _devices;
 	connection_list _connections;
+
+	friend std::ostream& operator<<(std::ostream& f, System& s);
 
 public:
 	System();
@@ -35,5 +38,7 @@ public:
 	device_list& devices();
 	connection_list& connections();
 };
+
+std::ostream& operator<<(std::ostream& f, System& s);
 
 #endif /*_PLANTCALC_SYSTEM_HXX*/

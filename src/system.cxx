@@ -179,3 +179,63 @@ System::connection_list& System::connections()
 {
 	return _connections;
 }
+
+std::ostream& operator<<(std::ostream& f, System& s)
+{
+	std::map<Pin*, Pin*> conn_map;
+
+	for (System::connection_list::iterator it = s._connections.begin();
+			it != s._connections.end(); ++it)
+	{
+		Connection& c = **it;
+
+		conn_map[&c.from()] = &c.to();
+		conn_map[&c.to()] = &c.from();
+	}
+
+	std::ostream* f2 = &(f << "[System]");
+
+	for (System::device_list::iterator dt = s._devices.begin();
+			dt != s._devices.end(); ++dt)
+	{
+		Device& dev = **dt;
+
+		f2 = &(f << "\n\n" << dev.device_id() << ":");
+
+		Device::variable_iterable vars = dev.variables();
+		Device::pin_iterable pins = dev.pins();
+
+		for (Device::variable_iterable::iterator it = vars.begin();
+				it != vars.end(); ++it)
+		{
+			DeviceVariable& v = *it;
+
+			f2 = &(*f2 << "\n- " << v.variable_id().name() << " = ");
+			f2 = &v.print_value(*f2);
+		}
+
+		for (Device::pin_iterable::iterator it = pins.begin();
+				it != pins.end(); ++it)
+		{
+			Pin& pin = *it;
+			Pin* pair = conn_map[&pin];
+
+			f2 = &(*f2 << "\n* " << pin.pin_id().name());
+			if (pair)
+				f2 = &(*f2 << " [-> " << pair->pin_id() << "]");
+			f2 = &(*f2 << ":");
+
+			Pin::variable_iterable lvars = pin.variables();
+			for (Pin::variable_iterable::iterator vt = lvars.begin();
+					vt != lvars.end(); ++vt)
+			{
+				PinVariable& v = *vt;
+
+				f2 = &(*f2 << "\n  - " << v.variable_id().name() << " = ");
+				f2 = &v.print_value(*f2);
+			}
+		}
+	}
+
+	return *f2;
+}
