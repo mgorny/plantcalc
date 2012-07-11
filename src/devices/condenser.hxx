@@ -22,6 +22,9 @@ class Condenser : public MediumFlowDevice
 
 	LinearEquation _energy_balance_eq;
 
+protected:
+	virtual Pin* iter_pin_get(int index);
+
 public:
 	Condenser();
 

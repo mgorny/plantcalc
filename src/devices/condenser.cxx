@@ -26,6 +26,30 @@ Condenser::Condenser()
 	_energy_balance_eq.update(-1, _sec_out.D(), _sec_out.h());
 }
 
+Pin* Condenser::iter_pin_get(int index)
+{
+	Pin* ret;
+
+	if (index < _iter_first_free_index)
+		return MediumFlowDevice::iter_pin_get(index);
+	else
+		index -= _iter_first_free_index;
+
+	switch (index)
+	{
+		case 0:
+			ret = &_sec_in;
+			break;
+		case 1:
+			ret = &_sec_out;
+			break;
+		default:
+			ret = 0;
+	}
+
+	return ret;
+}
+
 MediumPin& Condenser::sec_in()
 {
 	return _sec_in;

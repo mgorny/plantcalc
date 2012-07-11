@@ -8,6 +8,7 @@
 #endif
 
 #include "device.hxx"
+#include "util/methodbasediterable.ixx"
 
 Device::Device(const char* name)
 	: _device_id(name)
@@ -21,4 +22,13 @@ Device::~Device()
 DeviceID& Device::device_id()
 {
 	return _device_id;
+}
+
+template class MethodBasedIterator<Device, Pin>;
+template class MethodBasedIterable<Device, Pin>;
+
+MethodBasedIterable<Device, Pin> Device::pins()
+{
+	return MethodBasedIterable<Device, Pin>
+		(*this, &Device::iter_pin_get);
 }

@@ -41,6 +41,27 @@ Boiler::Boiler(double eff, double pout, double Tout)
 	_fuel_energy_eq.update(-1, _fuel_in.B(), _fuel_in.Qw());
 }
 
+Pin* Boiler::iter_pin_get(int index)
+{
+	Pin* ret;
+
+	if (index < _iter_first_free_index)
+		return MediumFlowDevice::iter_pin_get(index);
+	else
+		index -= _iter_first_free_index;
+
+	switch (index)
+	{
+		case 0:
+			ret = &_fuel_in;
+			break;
+		default:
+			ret = 0;
+	}
+
+	return ret;
+}
+
 Variable& Boiler::efficiency()
 {
 	return _efficiency;

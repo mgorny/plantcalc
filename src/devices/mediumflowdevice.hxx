@@ -26,6 +26,9 @@ protected:
 
 	virtual EquationSystem equations();
 
+	int _iter_first_free_index;
+	virtual Pin* iter_pin_get(int index);
+
 public:
 	MediumPin& in();
 	MediumPin& out();

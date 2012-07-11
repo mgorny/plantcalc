@@ -86,6 +86,27 @@ Variable& Turbine::isenthropic_efficiency()
 	return _isenthropic_efficiency;
 }
 
+Pin* Turbine::iter_pin_get(int index)
+{
+	Pin* ret;
+
+	if (index < _iter_first_free_index)
+		return MediumFlowDevice::iter_pin_get(index);
+	else
+		index -= _iter_first_free_index;
+
+	switch (index)
+	{
+		case 0:
+			ret = &_energy_out;
+			break;
+		default:
+			ret = 0;
+	}
+
+	return ret;
+}
+
 Variable& Turbine::mechanical_efficiency()
 {
 	return _mechanical_efficiency;

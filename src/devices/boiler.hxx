@@ -20,6 +20,9 @@ class Boiler : public MediumFlowDevice
 	LinearEquation _energy_balance_eq;
 	LinearEquation _fuel_energy_eq;
 
+protected:
+	virtual Pin* iter_pin_get(int index);
+
 public:
 	Boiler(double efficiency = 1);
 	Boiler(double efficiency, double pout, double Tout);

@@ -36,6 +36,9 @@ class Turbine : public MediumFlowDevice
 	LinearEquation _real_expansion_eq;
 	LinearEquation _energy_balance_eq;
 
+protected:
+	virtual Pin* iter_pin_get(int index);
+
 public:
 	Turbine(double isenthropic_efficiency = 1,
 			double mechanical_efficiency = 1);
