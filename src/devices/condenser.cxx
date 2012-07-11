@@ -50,6 +50,11 @@ Pin* Condenser::iter_pin_get(int index)
 	return ret;
 }
 
+DeviceVariable* Condenser::iter_var_get(int index)
+{
+	return 0;
+}
+
 MediumPin& Condenser::sec_in()
 {
 	return _sec_in;

@@ -62,6 +62,22 @@ Pin* Boiler::iter_pin_get(int index)
 	return ret;
 }
 
+DeviceVariable* Boiler::iter_var_get(int index)
+{
+	DeviceVariable* ret;
+
+	switch (index)
+	{
+		case 0:
+			ret = &_efficiency;
+			break;
+		default:
+			ret = 0;
+	}
+
+	return ret;
+}
+
 Variable& Boiler::efficiency()
 {
 	return _efficiency;

@@ -22,6 +22,7 @@ class Boiler : public MediumFlowDevice
 
 protected:
 	virtual Pin* iter_pin_get(int index);
+	virtual DeviceVariable* iter_var_get(int index);
 
 public:
 	Boiler(double efficiency = 1);

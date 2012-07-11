@@ -12,6 +12,7 @@
 #include "pin.hxx"
 #include "ids/deviceid.hxx"
 #include "util/methodbasediterable.hxx"
+#include "variables/devicevariable.hxx"
 
 class Device
 {
@@ -20,6 +21,7 @@ protected:
 	Device(const char* name);
 
 	virtual Pin* iter_pin_get(int index) = 0;
+	virtual DeviceVariable* iter_var_get(int index) = 0;
 
 public:
 	virtual ~Device();
@@ -30,7 +32,11 @@ public:
 
 	DeviceID& device_id();
 
-	MethodBasedIterable<Device, Pin> pins();
+	typedef MethodBasedIterable<Device, Pin> pin_iterable;
+	typedef MethodBasedIterable<Device, DeviceVariable> variable_iterable;
+
+	pin_iterable pins();
+	variable_iterable variables();
 };
 
 #endif /*_PLANTCALC_DEVICE_HXX*/

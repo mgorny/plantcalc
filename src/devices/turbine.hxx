@@ -38,6 +38,7 @@ class Turbine : public MediumFlowDevice
 
 protected:
 	virtual Pin* iter_pin_get(int index);
+	virtual DeviceVariable* iter_var_get(int index);
 
 public:
 	Turbine(double isenthropic_efficiency = 1,

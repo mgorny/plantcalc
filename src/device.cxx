@@ -26,9 +26,15 @@ DeviceID& Device::device_id()
 
 template class MethodBasedIterator<Device, Pin>;
 template class MethodBasedIterable<Device, Pin>;
+template class MethodBasedIterator<Device, DeviceVariable>;
+template class MethodBasedIterable<Device, DeviceVariable>;
 
-MethodBasedIterable<Device, Pin> Device::pins()
+Device::pin_iterable Device::pins()
 {
-	return MethodBasedIterable<Device, Pin>
-		(*this, &Device::iter_pin_get);
+	return pin_iterable(*this, &Device::iter_pin_get);
+}
+
+Device::variable_iterable Device::variables()
+{
+	return variable_iterable(*this, &Device::iter_var_get);
 }

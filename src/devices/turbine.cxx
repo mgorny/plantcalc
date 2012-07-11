@@ -107,6 +107,25 @@ Pin* Turbine::iter_pin_get(int index)
 	return ret;
 }
 
+DeviceVariable* Turbine::iter_var_get(int index)
+{
+	DeviceVariable* ret;
+
+	switch (index)
+	{
+		case 0:
+			ret = &_isenthropic_efficiency;
+			break;
+		case 1:
+			ret = &_mechanical_efficiency;
+			break;
+		default:
+			ret = 0;
+	}
+
+	return ret;
+}
+
 Variable& Turbine::mechanical_efficiency()
 {
 	return _mechanical_efficiency;
