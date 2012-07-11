@@ -22,6 +22,8 @@ protected:
 public:
 	PinVariable(PinID& pin_id, const char* name);
 	PinVariable(PinID& pin_id, const char* name, double value);
+
+	PinVariableID& variable_id();
 };
 
 #endif /*_PLANTCALC_VARIABLES_PINVARIABLE_HXX*/

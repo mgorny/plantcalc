@@ -22,6 +22,8 @@ protected:
 public:
 	DeviceVariable(DeviceID& dev_id, const char* name);
 	DeviceVariable(DeviceID& dev_id, const char* name, double value);
+
+	DeviceVariableID& variable_id();
 };
 
 #endif /*_PLANTCALC_VARIABLES_DEVICEVARIABLE_HXX*/

@@ -32,3 +32,8 @@ std::ostream& PinVariable::print_to(std::ostream& f) const
 
 	return f1;
 }
+
+PinVariableID& PinVariable::variable_id()
+{
+	return _var_id;
+}
