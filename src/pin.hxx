@@ -13,8 +13,12 @@
 #include "util/methodbasediterable.hxx"
 #include "variables/pinvariable.hxx"
 
+#include <ostream>
+
 class Pin
 {
+	friend std::ostream& operator<<(std::ostream& f, Pin& pin);
+
 protected:
 	PinID _pin_id;
 	Pin(DeviceID& dev_id, const char* name);
@@ -26,7 +30,10 @@ public:
 
 	PinID& pin_id();
 
-	MethodBasedIterable<Pin, PinVariable> variables();
+	typedef MethodBasedIterable<Pin, PinVariable> variable_iterable;
+	variable_iterable variables();
 };
+
+std::ostream& operator<<(std::ostream& f, Pin& pin);
 
 #endif /*_PLANTCALC_PIN_HXX*/

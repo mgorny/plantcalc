@@ -27,8 +27,25 @@ PinID& Pin::pin_id()
 template class MethodBasedIterator<Pin, PinVariable>;
 template class MethodBasedIterable<Pin, PinVariable>;
 
-MethodBasedIterable<Pin, PinVariable> Pin::variables()
+Pin::variable_iterable Pin::variables()
 {
-	return MethodBasedIterable<Pin, PinVariable>
-		(*this, &Pin::iter_variable_get);
+	return variable_iterable(*this, &Pin::iter_variable_get);
+}
+
+std::ostream& operator<<(std::ostream& f, Pin& pin)
+{
+	std::ostream* f2 = &(f << pin._pin_id << ":");
+
+	Pin::variable_iterable vars = pin.variables();
+
+	for (Pin::variable_iterable::iterator it = vars.begin();
+			it != vars.end(); ++it)
+	{
+		PinVariable& v = *it;
+
+		f2 = &(*f2 << "\n- " << v.variable_id().name() << " = ");
+		f2 = &v.print_value(*f2);
+	}
+
+	return *f2;
 }
