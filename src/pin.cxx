@@ -22,3 +22,9 @@ PinID& Pin::pin_id()
 {
 	return _pin_id;
 }
+
+MethodBasedIterable<Pin, Variable> Pin::variables()
+{
+	return MethodBasedIterable<Pin, Variable>
+		(*this, &Pin::iter_variable_get);
+}

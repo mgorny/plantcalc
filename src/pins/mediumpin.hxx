@@ -15,6 +15,9 @@ class MediumPin : public Pin
 {
 	PinVariable _p, _T, _h, _s, _x, _D;
 
+protected:
+	virtual Variable* iter_variable_get(int index);
+
 public:
 	MediumPin(DeviceID& dev_id, const char* name);
 	MediumPin(DeviceID& dev_id, const char* name, double p, double T);

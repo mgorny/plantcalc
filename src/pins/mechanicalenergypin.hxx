@@ -15,6 +15,9 @@ class MechanicalEnergyPin : public Pin
 {
 	PinVariable _P;
 
+protected:
+	virtual Variable* iter_variable_get(int index);
+
 public:
 	MechanicalEnergyPin(DeviceID& dev_id, const char* name);
 
