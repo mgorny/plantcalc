@@ -32,6 +32,8 @@ public:
 	void set_substances();
 
 	EquationSystem equations();
+	device_list& devices();
+	connection_list& connections();
 };
 
 #endif /*_PLANTCALC_SYSTEM_HXX*/

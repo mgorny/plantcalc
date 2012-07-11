@@ -169,3 +169,13 @@ EquationSystem System::equations()
 
 	return eqs;
 }
+
+System::device_list& System::devices()
+{
+	return _devices;
+}
+
+System::connection_list& System::connections()
+{
+	return _connections;
+}
