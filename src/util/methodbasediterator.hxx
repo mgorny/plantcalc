@@ -29,8 +29,11 @@ public:
 	MethodBasedIterator(Source& source, getter_method getter,
 			bool end = false);
 
-	void operator++();
+	MethodBasedIterator& operator++();
+	MethodBasedIterator operator++(int);
+
 	ReturnType& operator*();
+	ReturnType* operator->();
 
 	bool operator==(MethodBasedIterator<Source, ReturnType> rhs);
 	bool operator!=(MethodBasedIterator<Source, ReturnType> rhs);

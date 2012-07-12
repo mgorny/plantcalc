@@ -22,9 +22,23 @@ MethodBasedIterator<Source, ReturnType>
 }
 
 template <class Source, class ReturnType>
-void MethodBasedIterator<Source, ReturnType>::operator++()
+MethodBasedIterator<Source, ReturnType>&
+MethodBasedIterator<Source, ReturnType>::operator++()
 {
 	_curr_val = (_source.*_getter)(_curr_index++);
+
+	return *this;
+}
+
+template <class Source, class ReturnType>
+MethodBasedIterator<Source, ReturnType>
+MethodBasedIterator<Source, ReturnType>::operator++(int)
+{
+	MethodBasedIterator<Source, ReturnType> ret = *this;
+
+	++*this;
+
+	return ret;
 }
 
 template <class Source, class ReturnType>
@@ -33,6 +47,14 @@ ReturnType& MethodBasedIterator<Source, ReturnType>::operator*()
 	assert(_curr_val);
 
 	return *_curr_val;
+}
+
+template <class Source, class ReturnType>
+ReturnType* MethodBasedIterator<Source, ReturnType>::operator->()
+{
+	assert(_curr_val);
+
+	return _curr_val;
 }
 
 template <class Source, class ReturnType>
