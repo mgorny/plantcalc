@@ -39,18 +39,14 @@ template <class Source, class ReturnType>
 bool MethodBasedIterator<Source, ReturnType>::operator==(
 		MethodBasedIterator<Source, ReturnType> rhs)
 {
-	return &_source == &rhs._source
-		&& _getter == rhs._getter
-		&& _curr_val == rhs._curr_val;
+	return _curr_val == rhs._curr_val;
 }
 
 template <class Source, class ReturnType>
 bool MethodBasedIterator<Source, ReturnType>::operator!=(
 		MethodBasedIterator<Source, ReturnType> rhs)
 {
-	return &_source != &rhs._source
-		|| _getter != rhs._getter
-		|| _curr_val != rhs._curr_val;
+	return _curr_val != rhs._curr_val;
 }
 
 #endif /*_PLANTCALC_UTIL_METHODBASEDITERATOR_IXX*/
