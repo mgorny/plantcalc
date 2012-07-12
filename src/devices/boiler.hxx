@@ -8,7 +8,7 @@
 #ifndef _PLANTCALC_DEVICES_BOILER_HXX
 #define _PLANTCALC_DEVICES_BOILER_HXX 1
 
-#include "mediumflowdevice.hxx"
+#include "common/mediumflowdevice.hxx"
 #include "../pins/fuelpin.hxx"
 #include "../variables/devicevariable.hxx"
 

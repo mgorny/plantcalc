@@ -8,10 +8,10 @@
 #ifndef _PLANTCALC_DEVICES_MEDIUMFLOWDEVICE_HXX
 #define _PLANTCALC_DEVICES_MEDIUMFLOWDEVICE_HXX 1
 
-#include "../device.hxx"
-#include "../equationsystem.hxx"
-#include "../pins/mediumpin.hxx"
-#include "../equations/equalityequation.hxx"
+#include "../../device.hxx"
+#include "../../equationsystem.hxx"
+#include "../../pins/mediumpin.hxx"
+#include "../../equations/equalityequation.hxx"
 
 class MediumFlowDevice : public Device
 {

@@ -48,7 +48,7 @@ libplantcalc_powerplant_la_SOURCES = \
 	src/connections/fuelconnection.cxx src/connections/fuelconnection.hxx \
 	src/connections/mediumconnection.cxx src/connections/mediumconnection.hxx \
 	\
-	src/devices/mediumflowdevice.cxx src/devices/mediumflowdevice.hxx \
+	src/devices/common/mediumflowdevice.cxx src/devices/common/mediumflowdevice.hxx \
 	src/devices/boiler.cxx src/devices/boiler.hxx \
 	src/devices/condenser.cxx src/devices/condenser.hxx \
 	src/devices/turbine.cxx src/devices/turbine.hxx \

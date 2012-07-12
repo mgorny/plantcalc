@@ -8,7 +8,7 @@
 #ifndef _PLANTCALC_DEVICES_TURBINE_HXX
 #define _PLANTCALC_DEVICES_TURBINE_HXX 1
 
-#include "mediumflowdevice.hxx"
+#include "common/mediumflowdevice.hxx"
 #include "../pins/mechanicalenergypin.hxx"
 #include "../pins/mediumpin.hxx"
 #include "../equations/equalityequation.hxx"
