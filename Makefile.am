@@ -17,6 +17,8 @@ libplantcalc_base_la_SOURCES = \
 	src/system.cxx src/system.hxx \
 	src/variable.cxx src/variable.hxx \
 	\
+	src/devices/common/endpoint.hxx src/devices/common/endpoint.ixx \
+	\
 	src/equations/linearequation.cxx src/equations/linearequation.hxx \
 	src/equations/equalityequation.cxx src/equations/equalityequation.hxx \
 	\
