@@ -11,6 +11,11 @@
 #include "../common/endpoint.hxx"
 #include "../../pins/mediumpin.hxx"
 
-typedef Endpoint<MediumPin> MediumEndpoint;
+class MediumEndpoint : public Endpoint<MediumPin>
+{
+public:
+	MediumEndpoint(double p = 0.1);
+	MediumEndpoint(double p, double T);
+};
 
 #endif /*_PLANTCALC_DEVICES_ENDPOINTS_MEDIUMENDPOINT_HXX*/

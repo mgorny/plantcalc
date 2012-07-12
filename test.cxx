@@ -26,7 +26,8 @@ int main()
 	Turbine t(.95, .99, 0.1);
 	Condenser c;
 
-	MediumEndpoint c1, c2;
+	MediumEndpoint c1(0.1, 288.15);
+	MediumEndpoint c2(0.1, 298.15);
 	FuelEndpoint fe;
 
 	MediumConnection bt(b.out(), t.in());
@@ -44,6 +45,8 @@ int main()
 	bt.substance(&water);
 	t.energy_out().P().set_value(1000);
 	b.fuel_in().Qw().set_value(22000);
+
+	cs1.substance(&water);
 
 	System plant;
 	plant.push_back(b);

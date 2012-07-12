@@ -11,3 +11,18 @@
 #include "../common/endpoint.ixx"
 
 template class Endpoint<MediumPin>;
+
+MediumEndpoint::MediumEndpoint(double p)
+{
+	MediumPin& pin = *this;
+
+	pin.p().set_value(p);
+}
+
+MediumEndpoint::MediumEndpoint(double p, double T)
+{
+	MediumPin& pin = *this;
+
+	pin.p().set_value(p);
+	pin.T().set_value(T);
+}
