@@ -19,9 +19,6 @@ Boiler::Boiler(double eff)
 	_energy_balance_eq.update(1, in().D(), in().h());
 	_energy_balance_eq.update(1, _efficiency, _fuel_in.Q());
 	_energy_balance_eq.update(-1, out().D(), out().h());
-
-	_fuel_energy_eq.update(1, _fuel_in.Q());
-	_fuel_energy_eq.update(-1, _fuel_in.B(), _fuel_in.Qw());
 }
 
 Boiler::Boiler(double eff, double pout, double Tout)
@@ -36,9 +33,6 @@ Boiler::Boiler(double eff, double pout, double Tout)
 	_energy_balance_eq.update(1, in().D(), in().h());
 	_energy_balance_eq.update(1, _efficiency, _fuel_in.Q());
 	_energy_balance_eq.update(-1, out().D(), out().h());
-
-	_fuel_energy_eq.update(1, _fuel_in.Q());
-	_fuel_energy_eq.update(-1, _fuel_in.B(), _fuel_in.Qw());
 }
 
 Pin* Boiler::iter_pin_get(int index)
@@ -93,7 +87,6 @@ EquationSystem Boiler::equations()
 	EquationSystem ret = MediumFlowDevice::equations();
 
 	ret.push_back(&_energy_balance_eq);
-	ret.push_back(&_fuel_energy_eq);
 
 	return ret;
 }

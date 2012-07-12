@@ -18,7 +18,6 @@ class Boiler : public MediumFlowDevice
 
 	FuelPin _fuel_in;
 	LinearEquation _energy_balance_eq;
-	LinearEquation _fuel_energy_eq;
 
 protected:
 	virtual Pin* iter_pin_get(int index);
