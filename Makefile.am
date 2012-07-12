@@ -48,6 +48,7 @@ libplantcalc_solvers_la_LIBADD = libplantcalc-base.la $(EIGEN_LIBS)
 
 libplantcalc_powerplant_la_SOURCES = \
 	src/connections/fuelconnection.cxx src/connections/fuelconnection.hxx \
+	src/connections/mechanicalenergyconnection.cxx src/connections/mechanicalenergyconnection.hxx \
 	src/connections/mediumconnection.cxx src/connections/mediumconnection.hxx \
 	\
 	src/devices/common/mediumflowdevice.cxx src/devices/common/mediumflowdevice.hxx \
