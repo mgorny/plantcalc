@@ -63,7 +63,7 @@ std::ostream& Variable::print_value(std::ostream& f) const
 	if (is_set())
 		return f << static_cast<double>(*this);
 	else
-		return f << '?';
+		return f << '~';
 }
 
 std::ostream& operator <<(std::ostream& f, const Variable& v)

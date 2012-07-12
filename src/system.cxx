@@ -193,7 +193,7 @@ std::ostream& operator<<(std::ostream& f, System& s)
 		conn_map[&c.to()] = &c.from();
 	}
 
-	std::ostream* f2 = &(f << "[System]");
+	std::ostream* f2 = &(f << "---");
 
 	for (System::device_list::iterator dt = s._devices.begin();
 			dt != s._devices.end(); ++dt)
@@ -210,7 +210,7 @@ std::ostream& operator<<(std::ostream& f, System& s)
 		{
 			DeviceVariable& v = *it;
 
-			f2 = &(*f2 << "\n- " << v.variable_id().name() << " = ");
+			f2 = &(*f2 << "\n  " << v.variable_id().name() << ": ");
 			f2 = &v.print_value(*f2);
 		}
 
@@ -220,10 +220,9 @@ std::ostream& operator<<(std::ostream& f, System& s)
 			Pin& pin = *it;
 			Pin* pair = conn_map[&pin];
 
-			f2 = &(*f2 << "\n* " << pin.pin_id().name());
+			f2 = &(*f2 << "\n  " << pin.pin_id().name() << ":");
 			if (pair)
-				f2 = &(*f2 << " [-> " << pair->pin_id() << "]");
-			f2 = &(*f2 << ":");
+				f2 = &(*f2 << " # -> " << pair->pin_id());
 
 			Pin::variable_iterable lvars = pin.variables();
 			for (Pin::variable_iterable::iterator vt = lvars.begin();
@@ -231,7 +230,7 @@ std::ostream& operator<<(std::ostream& f, System& s)
 			{
 				PinVariable& v = *vt;
 
-				f2 = &(*f2 << "\n  - " << v.variable_id().name() << " = ");
+				f2 = &(*f2 << "\n    " << v.variable_id().name() << ": ");
 				f2 = &v.print_value(*f2);
 			}
 		}

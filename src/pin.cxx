@@ -43,7 +43,7 @@ std::ostream& operator<<(std::ostream& f, Pin& pin)
 	{
 		PinVariable& v = *it;
 
-		f2 = &(*f2 << "\n- " << v.variable_id().name() << " = ");
+		f2 = &(*f2 << "\n  " << v.variable_id().name() << ": ");
 		f2 = &v.print_value(*f2);
 	}
 
