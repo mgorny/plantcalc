@@ -42,7 +42,7 @@ bool H2OMedium::solve(Variable& p, Variable& T,
 	else if (p.is_set() && x.is_set())
 		state = h2o::H2O::px(p, x);
 	else if (T.is_set() && x.is_set())
-		state = h2o::H2O::px(T, x);
+		state = h2o::H2O::Tx(T, x);
 	else
 		throw std::runtime_error("Unsupported water state equation arguments.");
 
