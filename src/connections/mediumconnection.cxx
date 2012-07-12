@@ -21,10 +21,6 @@ MediumConnection::MediumConnection(MediumPin& from, MediumPin& to)
 {
 }
 
-MediumConnection::~MediumConnection()
-{
-}
-
 MediumPin& MediumConnection::from()
 {
 	return _from;

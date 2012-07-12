@@ -25,7 +25,6 @@ class MediumConnection : public Connection
 
 public:
 	MediumConnection(MediumPin& from, MediumPin& to);
-	virtual ~MediumConnection();
 
 	virtual MediumPin& from();
 	virtual MediumPin& to();
