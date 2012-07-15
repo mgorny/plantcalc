@@ -51,6 +51,7 @@ libplantcalc_powerplant_la_SOURCES = \
 	src/connections/mechanicalenergyconnection.cxx src/connections/mechanicalenergyconnection.hxx \
 	src/connections/mediumconnection.cxx src/connections/mediumconnection.hxx \
 	\
+	src/devices/common/condensingheatexchanger.cxx src/devices/common/condensingheatexchanger.hxx \
 	src/devices/common/mediumflowdevice.cxx src/devices/common/mediumflowdevice.hxx \
 	src/devices/endpoints/fuelendpoint.cxx src/devices/endpoints/fuelendpoint.hxx \
 	src/devices/endpoints/mediumendpoint.cxx src/devices/endpoints/mediumendpoint.hxx \

@@ -8,32 +8,12 @@
 #ifndef _PLANTCALC_DEVICES_CONDENSER_HXX
 #define _PLANTCALC_DEVICES_CONDENSER_HXX 1
 
-#include "common/mediumflowdevice.hxx"
-#include "../pins/mediumpin.hxx"
-#include "../equations/equalityequation.hxx"
+#include "common/condensingheatexchanger.hxx"
 
-class Condenser : public MediumFlowDevice
+class Condenser : public CondensingHeatExchanger
 {
-	MediumPin _sec_in, _sec_out;
-
-	EqualityEquation _secondary_mass_eq;
-	EqualityEquation _primary_pressure_eq;
-	EqualityEquation _primary_saturation_eq;
-
-	LinearEquation _energy_balance_eq;
-
-protected:
-	virtual Pin* iter_pin_get(int index);
-	virtual DeviceVariable* iter_var_get(int index);
-
 public:
 	Condenser();
-
-	MediumPin& sec_in();
-	MediumPin& sec_out();
-
-	virtual bool pins_connected(const Pin& lhs, const Pin& rhs) const;
-	virtual EquationSystem equations();
 };
 
 #endif /*_PLANTCALC_DEVICES_CONDENSER_HXX*/
