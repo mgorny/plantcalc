@@ -10,6 +10,49 @@
 #include "condenser.hxx"
 
 Condenser::Condenser()
-	: CondensingHeatExchanger("C")
+	: CondensingHeatExchanger("C"),
+	_DeltaT(_device_id, "DeltaT")
 {
+	_DeltaT_equation.update(1, sec_in().T());
+	_DeltaT_equation.update(1, _DeltaT);
+	_DeltaT_equation.update(-1, sec_out().T());
+}
+
+Condenser::Condenser(double DeltaT)
+	: CondensingHeatExchanger("C"),
+	_DeltaT(_device_id, "DeltaT", DeltaT)
+{
+	_DeltaT_equation.update(1, sec_in().T());
+	_DeltaT_equation.update(1, _DeltaT);
+	_DeltaT_equation.update(-1, sec_out().T());
+}
+
+DeviceVariable* Condenser::iter_var_get(int index)
+{
+	DeviceVariable* ret;
+
+	switch (index)
+	{
+		case 0:
+			ret = &_DeltaT;
+			break;
+		default:
+			ret = 0;
+	}
+
+	return ret;
+}
+
+Variable& Condenser::DeltaT()
+{
+	return _DeltaT;
+}
+
+EquationSystem Condenser::equations()
+{
+	EquationSystem ret = CondensingHeatExchanger::equations();
+
+	ret.push_back(&_DeltaT_equation);
+
+	return ret;
 }

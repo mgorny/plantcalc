@@ -24,10 +24,10 @@ int main()
 {
 	Boiler b(.9, 10, 773.15);
 	Turbine t(.95, .99, 0.1);
-	Condenser c;
+	Condenser c(10);
 
 	MediumEndpoint c1(0.1, 288.15);
-	MediumEndpoint c2(0.1, 298.15);
+	MediumEndpoint c2(0.1);
 	FuelEndpoint fe;
 
 	MediumConnection bt(b.out(), t.in());
