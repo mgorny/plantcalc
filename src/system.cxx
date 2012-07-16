@@ -12,6 +12,7 @@
 #include "exceptions/nonhomogeneoussubstanceerror.hxx"
 
 #include <map>
+#include <typeinfo>
 #include <vector>
 
 #include <iostream>
@@ -232,6 +233,66 @@ std::ostream& operator<<(std::ostream& f, System& s)
 
 				f2 = &(*f2 << "\n    " << v.variable_id().name() << ": ");
 				f2 = &v.print_value(*f2);
+			}
+		}
+	}
+
+	return *f2;
+}
+
+std::ostream& operator<<(std::ostream& f, System::connection_list& cl)
+{
+	typedef std::map<const char*, System::connection_list> connection_group_map;
+	connection_group_map cgmap;
+
+	for (System::connection_list::iterator it = cl.begin();
+			it != cl.end(); ++it)
+	{
+		Connection& c = **it;
+
+		cgmap[typeid(c).name()].push_back(&c);
+	}
+
+	std::ostream* f2 = &f;
+
+	for (connection_group_map::iterator it = cgmap.begin();
+			it != cgmap.end(); ++it)
+	{
+		const char* type_name = it->first;
+		System::connection_list gl = it->second;
+
+		bool first = true;
+
+		for (System::connection_list::iterator jt = gl.begin();
+				jt != gl.end(); ++jt)
+		{
+			Connection& c = **jt;
+			Pin::variable_iterable vi = c.from().variables();
+
+			if (first)
+			{
+				f2 = &(*f2 << "\n\n" << type_name);
+
+				for (Pin::variable_iterable::iterator vt = vi.begin();
+						vt != vi.end(); ++vt)
+				{
+					PinVariable& v = *vt;
+
+					f2 = &(*f2 << "\t" << v.variable_id().name());
+				}
+
+				first = false;
+			}
+
+			f2 = &(*f2 << "\n" << c.from().pin_id() << " -> "
+					<< c.to().pin_id());
+
+			for (Pin::variable_iterable::iterator vt = vi.begin();
+					vt != vi.end(); ++vt)
+			{
+				Variable& v = *vt;
+
+				f2 = &(v.print_value(*f2 << "\t"));
 			}
 		}
 	}

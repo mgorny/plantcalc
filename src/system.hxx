@@ -17,9 +17,11 @@
 
 class System
 {
+public:
 	typedef std::vector<Device*> device_list;
 	typedef std::vector<Connection*> connection_list;
 
+private:
 	device_list _devices;
 	connection_list _connections;
 
@@ -40,5 +42,6 @@ public:
 };
 
 std::ostream& operator<<(std::ostream& f, System& s);
+std::ostream& operator<<(std::ostream& f, System::connection_list& cl);
 
 #endif /*_PLANTCALC_SYSTEM_HXX*/

@@ -87,5 +87,7 @@ int main()
 
 	std::cout << plant << std::endl;
 
+	std::cout << plant.connections() << std::endl;
+
 	return 0;
 }
