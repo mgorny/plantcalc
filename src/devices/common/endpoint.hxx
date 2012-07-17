@@ -14,9 +14,9 @@
 template <class PinType>
 class Endpoint : public Device
 {
+protected:
 	PinType _pin;
 
-protected:
 	virtual Pin* iter_pin_get(int index);
 	virtual DeviceVariable* iter_var_get(int index);
 

@@ -15,9 +15,9 @@ Boiler::Boiler(double eff)
 	: MediumFlowDevice("B"),
 	_efficiency(_device_id, "eta", eff),
 	_fuel_in(_device_id, "fuel-in"),
-	_energy_balance_eq(1.0, in().D(), in().h(),
+	_energy_balance_eq(1.0, _in.D(), _in.h(),
 			1.0, _efficiency, _fuel_in.Q(),
-			-1.0, out().D(), out().h())
+			-1.0, _out.D(), _out.h())
 {
 }
 
@@ -25,11 +25,11 @@ Boiler::Boiler(double eff, double pout, double Tout)
 	: MediumFlowDevice("B"),
 	_efficiency(_device_id, "eta", eff),
 	_fuel_in(_device_id, "fuel-in"),
-	_energy_balance_eq(1.0, in().D(), in().h(),
+	_energy_balance_eq(1.0, _in.D(), _in.h(),
 			1.0, _efficiency, _fuel_in.Q(),
-			-1.0, out().D(), out().h())
+			-1.0, _out.D(), _out.h())
 {
-	MediumPin& mout = out();
+	MediumPin& mout = _out;
 	mout.p().set_value(pout);
 	mout.T().set_value(Tout);
 }

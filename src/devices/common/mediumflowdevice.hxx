@@ -15,11 +15,11 @@
 
 class MediumFlowDevice : public Device
 {
-	MediumPin _in, _out;
-
 	EqualityEquation _primary_mass_eq;
 
 protected:
+	MediumPin _in, _out;
+
 	MediumFlowDevice(const char* name);
 
 	virtual bool pins_connected(const Pin& lhs, const Pin& rhs) const;

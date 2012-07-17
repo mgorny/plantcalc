@@ -29,15 +29,15 @@ Turbine::Turbine(double isen_eff,
 			-1.0, _one_minus_isenthropic_efficiency),
 	_mech_eff_reciprocal_eq(1.0, one,
 			-1.0, _mechanical_efficiency, _mechanical_efficiency_reciprocal),
-	_loop_mass_eq(in().D(), _loop_in.D()),
+	_loop_mass_eq(_in.D(), _loop_in.D()),
 	_loop_mass_balance_eq(_loop_in.D(), _loop_out.D()),
-	_loop_pressure_eq(_loop_out.p(), out().p()),
-	_ideal_expansion_eq(in().s(), _loop_in.s()),
-	_real_expansion_eq(1.0, out().h(),
-			-1.0, _one_minus_isenthropic_efficiency, in().h(),
+	_loop_pressure_eq(_loop_out.p(), _out.p()),
+	_ideal_expansion_eq(_in.s(), _loop_in.s()),
+	_real_expansion_eq(1.0, _out.h(),
+			-1.0, _one_minus_isenthropic_efficiency, _in.h(),
 			-1.0, _isenthropic_efficiency, _loop_out.h()),
-	_energy_balance_eq(1.0, out().D(), out().h(),
-			-1.0, in().D(), in().h(),
+	_energy_balance_eq(1.0, _out.D(), _out.h(),
+			-1.0, _in.D(), _in.h(),
 			1.0, _mechanical_efficiency_reciprocal, _energy_out.P())
 {
 	// XXX: add boundaries to efficiences
@@ -58,18 +58,18 @@ Turbine::Turbine(double isen_eff,
 			-1.0, _one_minus_isenthropic_efficiency),
 	_mech_eff_reciprocal_eq(1.0, one,
 			-1.0, _mechanical_efficiency, _mechanical_efficiency_reciprocal),
-	_loop_mass_eq(in().D(), _loop_in.D()),
+	_loop_mass_eq(_in.D(), _loop_in.D()),
 	_loop_mass_balance_eq(_loop_in.D(), _loop_out.D()),
-	_loop_pressure_eq(_loop_out.p(), out().p()),
-	_ideal_expansion_eq(in().s(), _loop_in.s()),
-	_real_expansion_eq(1.0, out().h(),
-			-1.0, _one_minus_isenthropic_efficiency, in().h(),
+	_loop_pressure_eq(_loop_out.p(), _out.p()),
+	_ideal_expansion_eq(_in.s(), _loop_in.s()),
+	_real_expansion_eq(1.0, _out.h(),
+			-1.0, _one_minus_isenthropic_efficiency, _in.h(),
 			-1.0, _isenthropic_efficiency, _loop_out.h()),
-	_energy_balance_eq(1.0, out().D(), out().h(),
-			-1.0, in().D(), in().h(),
+	_energy_balance_eq(1.0, _out.D(), _out.h(),
+			-1.0, _in.D(), _in.h(),
 			1.0, _mechanical_efficiency_reciprocal, _energy_out.P())
 {
-	out().p().set_value(pout);
+	_out.p().set_value(pout);
 }
 
 Variable& Turbine::isenthropic_efficiency()

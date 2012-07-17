@@ -15,8 +15,6 @@
 
 class CondensingHeatExchanger : public MediumFlowDevice
 {
-	MediumPin _sec_in, _sec_out;
-
 	EqualityEquation _secondary_mass_eq;
 	EqualityEquation _primary_pressure_eq;
 	EqualityEquation _primary_saturation_eq;
@@ -24,6 +22,8 @@ class CondensingHeatExchanger : public MediumFlowDevice
 	LinearEquation _energy_balance_eq;
 
 protected:
+	MediumPin _sec_in, _sec_out;
+
 	virtual Pin* iter_pin_get(int index);
 	virtual DeviceVariable* iter_var_get(int index);
 
