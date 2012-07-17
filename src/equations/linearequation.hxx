@@ -31,11 +31,27 @@ class LinearEquation : public Equation
 protected:
 	virtual std::ostream& print_to(std::ostream& f) const;
 
-public:
-	LinearEquation();
+	void push_back(double coefficient, Variable& v);
+	void push_back(double coefficient, Variable& v1, Variable& v2);
 
-	void update(double coefficient, Variable& v);
-	void update(double coefficient, Variable& v1, Variable& v2);
+public:
+	LinearEquation(double c1, Variable& v1, double c2, Variable& v2);
+	LinearEquation(double c1, Variable& v1,
+			double c2, Variable& v2a, Variable& v2b);
+	LinearEquation(double c1, Variable& v1,
+			double c2, Variable& v2,
+			double c3, Variable& v3);
+	LinearEquation(double c1, Variable& v1,
+			double c2, Variable& v2a, Variable& v2b,
+			double c3, Variable& v3a, Variable& v3b);
+	LinearEquation(double c1, Variable& v1a, Variable& v1b,
+			double c2, Variable& v2a, Variable& v2b,
+			double c3, Variable& v3a, Variable& v3b);
+	LinearEquation(double c1, Variable& v1a, Variable& v1b,
+			double c2, Variable& v2a, Variable& v2b,
+			double c3, Variable& v3a, Variable& v3b,
+			double c4, Variable& v4a, Variable& v4b);
+
 	virtual bool solve(double epsilon);
 };
 

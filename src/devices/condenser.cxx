@@ -11,20 +11,20 @@
 
 Condenser::Condenser()
 	: CondensingHeatExchanger("C"),
-	_DeltaT(_device_id, "DeltaT")
+	_DeltaT(_device_id, "DeltaT"),
+	_DeltaT_equation(1.0, sec_in().T(),
+			1.0, _DeltaT,
+			-1.0, sec_out().T())
 {
-	_DeltaT_equation.update(1, sec_in().T());
-	_DeltaT_equation.update(1, _DeltaT);
-	_DeltaT_equation.update(-1, sec_out().T());
 }
 
 Condenser::Condenser(double DeltaT)
 	: CondensingHeatExchanger("C"),
-	_DeltaT(_device_id, "DeltaT", DeltaT)
+	_DeltaT(_device_id, "DeltaT", DeltaT),
+	_DeltaT_equation(1.0, sec_in().T(),
+			1.0, _DeltaT,
+			-1.0, sec_out().T())
 {
-	_DeltaT_equation.update(1, sec_in().T());
-	_DeltaT_equation.update(1, _DeltaT);
-	_DeltaT_equation.update(-1, sec_out().T());
 }
 
 DeviceVariable* Condenser::iter_var_get(int index)

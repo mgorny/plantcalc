@@ -13,44 +13,65 @@
 #include <cassert>
 #include <cmath>
 
-LinearEquation::LinearEquation()
+LinearEquation::LinearEquation(double c1, Variable& v1, double c2, Variable& v2)
 {
+	push_back(c1, v1);
+	push_back(c2, v2);
 }
 
-void LinearEquation::update(double coefficient, Variable& v)
+LinearEquation::LinearEquation(double c1, Variable& v1,
+		double c2, Variable& v2a, Variable& v2b)
 {
-	list_type::iterator it;
+	push_back(c1, v1);
+	push_back(c2, v2a, v2b);
+}
 
-	for (it = _vars.begin(); it != _vars.end(); ++it)
-	{
-		list_elem_type& li = *it;
+LinearEquation::LinearEquation(double c1, Variable& v1,
+		double c2, Variable& v2,
+		double c3, Variable& v3)
+{
+	push_back(c1, v1);
+	push_back(c2, v2);
+	push_back(c3, v3);
+}
 
-		if (li.variable1 == &v && !li.variable2)
-		{
-			li.coefficient = coefficient;
-			return;
-		}
-	}
+LinearEquation::LinearEquation(double c1, Variable& v1,
+		double c2, Variable& v2a, Variable& v2b,
+		double c3, Variable& v3a, Variable& v3b)
+{
+	push_back(c1, v1);
+	push_back(c2, v2a, v2b);
+	push_back(c3, v3a, v3b);
+}
 
+LinearEquation::LinearEquation(double c1, Variable& v1a, Variable& v1b,
+		double c2, Variable& v2a, Variable& v2b,
+		double c3, Variable& v3a, Variable& v3b)
+{
+	push_back(c1, v1a, v1b);
+	push_back(c2, v2a, v2b);
+	push_back(c3, v3a, v3b);
+}
+
+LinearEquation::LinearEquation(double c1, Variable& v1a, Variable& v1b,
+		double c2, Variable& v2a, Variable& v2b,
+		double c3, Variable& v3a, Variable& v3b,
+		double c4, Variable& v4a, Variable& v4b)
+{
+	push_back(c1, v1a, v1b);
+	push_back(c2, v2a, v2b);
+	push_back(c3, v3a, v3b);
+	push_back(c4, v4a, v4b);
+}
+
+void LinearEquation::push_back(double coefficient, Variable& v)
+{
 	list_elem_type li = {coefficient, &v, 0};
 	_vars.push_back(li);
 }
 
-void LinearEquation::update(double coefficient, Variable& v1, Variable& v2)
+void LinearEquation::push_back(double coefficient, Variable& v1, Variable& v2)
 {
-	list_type::iterator it;
-
-	for (it = _vars.begin(); it != _vars.end(); ++it)
-	{
-		list_elem_type& li = *it;
-
-		if (li.variable1 == &v1 && li.variable2 == &v2)
-		{
-			li.coefficient = coefficient;
-			return;
-		}
-	}
-
 	list_elem_type li = {coefficient, &v1, &v2};
 	_vars.push_back(li);
 }

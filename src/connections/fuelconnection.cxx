@@ -11,12 +11,11 @@
 
 FuelConnection::FuelConnection(FuelPin& from, FuelPin& to)
 	: _from(from), _to(to),
+	_energy_eq(1.0, to.Q(), -1, to.B(), to.Qw()),
 	_Q_eq(from.Q(), to.Q()),
 	_B_eq(from.B(), to.B()),
 	_Qw_eq(from.Qw(), to.Qw())
 {
-	_energy_eq.update(1, to.Q());
-	_energy_eq.update(-1, to.B(), to.Qw());
 }
 
 FuelPin& FuelConnection::from()

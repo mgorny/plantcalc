@@ -10,7 +10,6 @@
 #include "equalityequation.hxx"
 
 EqualityEquation::EqualityEquation(Variable& v1, Variable& v2)
+	: LinearEquation(1.0, v1, -1.0, v2)
 {
-	update(1.0, v1);
-	update(-1.0, v2);
 }

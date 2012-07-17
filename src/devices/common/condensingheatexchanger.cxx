@@ -18,12 +18,12 @@ CondensingHeatExchanger::CondensingHeatExchanger(const char* name)
 	_sec_out(_device_id, "sec-out"),
 	_secondary_mass_eq(_sec_in.D(), _sec_out.D()),
 	_primary_pressure_eq(in().p(), out().p()),
-	_primary_saturation_eq(out().x(), xsat)
+	_primary_saturation_eq(out().x(), xsat),
+	_energy_balance_eq(1, in().D(), in().h(),
+			1, _sec_in.D(), _sec_in.h(),
+			-1, out().D(), out().h(),
+			-1, _sec_out.D(), _sec_out.h())
 {
-	_energy_balance_eq.update(1, in().D(), in().h());
-	_energy_balance_eq.update(1, _sec_in.D(), _sec_in.h());
-	_energy_balance_eq.update(-1, out().D(), out().h());
-	_energy_balance_eq.update(-1, _sec_out.D(), _sec_out.h());
 }
 
 Pin* CondensingHeatExchanger::iter_pin_get(int index)

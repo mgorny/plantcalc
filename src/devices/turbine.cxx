@@ -24,27 +24,23 @@ Turbine::Turbine(double isen_eff,
 	_loop_in(_device_id, "loop-in"),
 	_loop_out(_device_id, "loop-out"),
 	_energy_out(_device_id, "energy-out"),
+	_one_minus_isen_eff_eq(1.0, one,
+			-1.0, _isenthropic_efficiency,
+			-1.0, _one_minus_isenthropic_efficiency),
+	_mech_eff_reciprocal_eq(1.0, one,
+			-1.0, _mechanical_efficiency, _mechanical_efficiency_reciprocal),
 	_loop_mass_eq(in().D(), _loop_in.D()),
 	_loop_mass_balance_eq(_loop_in.D(), _loop_out.D()),
 	_loop_pressure_eq(_loop_out.p(), out().p()),
-	_ideal_expansion_eq(in().s(), _loop_in.s())
+	_ideal_expansion_eq(in().s(), _loop_in.s()),
+	_real_expansion_eq(1.0, out().h(),
+			-1.0, _one_minus_isenthropic_efficiency, in().h(),
+			-1.0, _isenthropic_efficiency, _loop_out.h()),
+	_energy_balance_eq(1.0, out().D(), out().h(),
+			-1.0, in().D(), in().h(),
+			1.0, _mechanical_efficiency_reciprocal, _energy_out.P())
 {
 	// XXX: add boundaries to efficiences
-
-	_one_minus_isen_eff_eq.update(1, one);
-	_one_minus_isen_eff_eq.update(1, _isenthropic_efficiency);
-
-	_real_expansion_eq.update(-1, out().h());
-	_real_expansion_eq.update(1, _one_minus_isenthropic_efficiency, in().h());
-	_real_expansion_eq.update(1, _isenthropic_efficiency, _loop_out.h());
-
-	_mech_eff_reciprocal_eq.update(1,
-			_mechanical_efficiency, _mechanical_efficiency_reciprocal);
-	_mech_eff_reciprocal_eq.update(-1, one);
-
-	_energy_balance_eq.update(1, out().D(), out().h());
-	_energy_balance_eq.update(-1, in().D(), in().h());
-	_energy_balance_eq.update(1, _mechanical_efficiency_reciprocal, _energy_out.P());
 }
 
 Turbine::Turbine(double isen_eff,
@@ -57,28 +53,23 @@ Turbine::Turbine(double isen_eff,
 	_loop_in(_device_id, "loop-in"),
 	_loop_out(_device_id, "loop-out"),
 	_energy_out(_device_id, "energy-out"),
+	_one_minus_isen_eff_eq(1.0, one,
+			-1.0, _isenthropic_efficiency,
+			-1.0, _one_minus_isenthropic_efficiency),
+	_mech_eff_reciprocal_eq(1.0, one,
+			-1.0, _mechanical_efficiency, _mechanical_efficiency_reciprocal),
 	_loop_mass_eq(in().D(), _loop_in.D()),
 	_loop_mass_balance_eq(_loop_in.D(), _loop_out.D()),
 	_loop_pressure_eq(_loop_out.p(), out().p()),
-	_ideal_expansion_eq(in().s(), _loop_in.s())
+	_ideal_expansion_eq(in().s(), _loop_in.s()),
+	_real_expansion_eq(1.0, out().h(),
+			-1.0, _one_minus_isenthropic_efficiency, in().h(),
+			-1.0, _isenthropic_efficiency, _loop_out.h()),
+	_energy_balance_eq(1.0, out().D(), out().h(),
+			-1.0, in().D(), in().h(),
+			1.0, _mechanical_efficiency_reciprocal, _energy_out.P())
 {
 	out().p().set_value(pout);
-
-	_one_minus_isen_eff_eq.update(1, one);
-	_one_minus_isen_eff_eq.update(-1, _isenthropic_efficiency);
-	_one_minus_isen_eff_eq.update(-1, _one_minus_isenthropic_efficiency);
-
-	_real_expansion_eq.update(-1, out().h());
-	_real_expansion_eq.update(1, _one_minus_isenthropic_efficiency, in().h());
-	_real_expansion_eq.update(1, _isenthropic_efficiency, _loop_out.h());
-
-	_mech_eff_reciprocal_eq.update(1,
-			_mechanical_efficiency, _mechanical_efficiency_reciprocal);
-	_mech_eff_reciprocal_eq.update(-1, one);
-
-	_energy_balance_eq.update(1, out().D(), out().h());
-	_energy_balance_eq.update(-1, in().D(), in().h());
-	_energy_balance_eq.update(1, _mechanical_efficiency_reciprocal, _energy_out.P());
 }
 
 Variable& Turbine::isenthropic_efficiency()
