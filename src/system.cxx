@@ -326,17 +326,36 @@ System::graph_generator::graph_generator(System& s)
 std::ostream& operator<<(std::ostream& f, System::graph_generator g)
 {
 	System& s = g._s;
-	System::connection_list& conns = s.connections();
+	System::connection_group_list groups = s.grouped_connections();
 
-	f << "digraph system {\n";
+	f << "digraph system\n"
+		"{\n"
+		"\tedge\n"
+		"\t[\n"
+		"\t\tcolorscheme = \"dark28\"\n"
+		"\t];\n"
+		"\n";
 
-	for (System::connection_list::iterator it = conns.begin();
-			it != conns.end(); ++it)
+	int color = 1;
+
+	for (System::connection_group_list::iterator gt = groups.begin();
+			gt != groups.end(); ++gt)
 	{
-		Connection& c = **it;
+		System::connection_list& conns = *gt;
 
-		f << "\t" << c.from().pin_id().device_id()
-			<< " -> " << c.to().pin_id().device_id() << ";\n";
+		for (System::connection_list::iterator it = conns.begin();
+				it != conns.end(); ++it)
+		{
+			Connection& c = **it;
+
+			f << "\t" << c.from().pin_id().device_id()
+				<< " -> " << c.to().pin_id().device_id() << "\n"
+				"\t[\n"
+				"\t\tcolor = \"" << color << "\"\n"
+				"\t];\n";
+		}
+
+		++color;
 	}
 
 	f << "}";
