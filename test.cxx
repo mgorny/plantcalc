@@ -85,6 +85,8 @@ int main()
 
 	std::cout << eqs << std::endl;
 
+	std::cout << plant.graph() << std::endl;
+
 	std::cout << plant << std::endl;
 
 	std::cout << plant.connections() << std::endl;

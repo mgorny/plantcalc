@@ -297,3 +297,34 @@ std::ostream& operator<<(std::ostream& f, System::connection_list& cl)
 
 	return f;
 }
+
+System::graph_generator System::graph()
+{
+	return graph_generator(*this);
+}
+
+System::graph_generator::graph_generator(System& s)
+	: _s(s)
+{
+}
+
+std::ostream& operator<<(std::ostream& f, System::graph_generator g)
+{
+	System& s = g._s;
+	System::connection_list& conns = s.connections();
+
+	f << "digraph system {\n";
+
+	for (System::connection_list::iterator it = conns.begin();
+			it != conns.end(); ++it)
+	{
+		Connection& c = **it;
+
+		f << "\t" << c.from().pin_id().device_id()
+			<< " -> " << c.to().pin_id().device_id() << ";\n";
+	}
+
+	f << "}";
+
+	return f;
+}
