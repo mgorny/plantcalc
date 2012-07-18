@@ -20,6 +20,7 @@ class System
 public:
 	typedef std::vector<Device*> device_list;
 	typedef std::vector<Connection*> connection_list;
+	typedef std::vector<connection_list> connection_group_list;
 
 private:
 	class graph_generator
@@ -51,6 +52,7 @@ public:
 	EquationSystem equations();
 	device_list& devices();
 	connection_list& connections();
+	connection_group_list grouped_connections();
 	graph_generator graph();
 };
 

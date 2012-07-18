@@ -49,72 +49,12 @@ void System::set_device_ids()
 
 void System::set_substances()
 {
-	std::map<DeviceID*, Device*> device_map;
+	connection_group_list groups = grouped_connections();
 
-	for (device_list::iterator it = _devices.begin();
-			it != _devices.end(); ++it)
+	for (connection_group_list::iterator it = groups.begin();
+			it != groups.end(); ++it)
 	{
-		Device& d = **it;
-		DeviceID& id = d.device_id();
-
-		device_map[&id] = &d;
-	}
-
-	connection_list ungrouped_connections(_connections);
-
-	while (ungrouped_connections.size() > 0)
-	{
-		connection_list group;
-
-		group.push_back(ungrouped_connections.back());
-		ungrouped_connections.pop_back();
-
-		// can't use an iterator here because we're appending
-		for (connection_list::size_type i = 0; i < group.size(); ++i)
-		{
-			Connection* c = group[i];
-
-			DeviceID* ldev_id = &c->from().pin_id().device_id();
-			Device& ldev = *device_map[ldev_id];
-
-			DeviceID* rdev_id = &c->to().pin_id().device_id();
-			Device& rdev = *device_map[rdev_id];
-
-			for (connection_list::iterator it = ungrouped_connections.begin();
-					it != ungrouped_connections.end();)
-			{
-				Connection* c2 = *it;
-				Pin* lpin = 0;
-				Pin* rpin = 0;
-
-				if (&c2->from().pin_id().device_id() == ldev_id)
-					lpin = &c2->from();
-				else if (&c2->to().pin_id().device_id() == ldev_id)
-					lpin = &c2->to();
-
-				if (lpin && ldev.pins_connected(*lpin, c->from()))
-				{
-					group.push_back(c2);
-					it = ungrouped_connections.erase(it);
-					continue;
-				}
-
-				if (&c2->from().pin_id().device_id() == rdev_id)
-					rpin = &c2->from();
-				else if (&c2->to().pin_id().device_id() == rdev_id)
-					rpin = &c2->to();
-
-				if (rpin && rdev.pins_connected(*rpin, c->to()))
-				{
-					group.push_back(c2);
-					it = ungrouped_connections.erase(it);
-					continue;
-				}
-
-				++it;
-			}
-		}
-
+		connection_list& group = *it;
 		Substance* group_substance = 0;
 
 		for (connection_list::iterator gt = group.begin();
@@ -179,6 +119,81 @@ System::device_list& System::devices()
 System::connection_list& System::connections()
 {
 	return _connections;
+}
+
+System::connection_group_list System::grouped_connections()
+{
+	std::map<DeviceID*, Device*> device_map;
+
+	for (device_list::iterator it = _devices.begin();
+			it != _devices.end(); ++it)
+	{
+		Device& d = **it;
+		DeviceID& id = d.device_id();
+
+		device_map[&id] = &d;
+	}
+
+	connection_list ungrouped_connections(_connections);
+
+	connection_group_list ret;
+
+	while (ungrouped_connections.size() > 0)
+	{
+		ret.push_back(connection_list());
+		connection_list& group = ret.back();
+
+		group.push_back(ungrouped_connections.back());
+		ungrouped_connections.pop_back();
+
+		// can't use an iterator here because we're appending
+		for (connection_list::size_type i = 0; i < group.size(); ++i)
+		{
+			Connection* c = group[i];
+
+			DeviceID* ldev_id = &c->from().pin_id().device_id();
+			Device& ldev = *device_map[ldev_id];
+
+			DeviceID* rdev_id = &c->to().pin_id().device_id();
+			Device& rdev = *device_map[rdev_id];
+
+			for (connection_list::iterator it = ungrouped_connections.begin();
+					it != ungrouped_connections.end();)
+			{
+				Connection* c2 = *it;
+				Pin* lpin = 0;
+				Pin* rpin = 0;
+
+				if (&c2->from().pin_id().device_id() == ldev_id)
+					lpin = &c2->from();
+				else if (&c2->to().pin_id().device_id() == ldev_id)
+					lpin = &c2->to();
+
+				if (lpin && ldev.pins_connected(*lpin, c->from()))
+				{
+					group.push_back(c2);
+					it = ungrouped_connections.erase(it);
+					continue;
+				}
+
+				if (&c2->from().pin_id().device_id() == rdev_id)
+					rpin = &c2->from();
+				else if (&c2->to().pin_id().device_id() == rdev_id)
+					rpin = &c2->to();
+
+				if (rpin && rdev.pins_connected(*rpin, c->to()))
+				{
+					group.push_back(c2);
+					it = ungrouped_connections.erase(it);
+					continue;
+				}
+
+				++it;
+			}
+		}
+	}
+
+	return ret;
 }
 
 std::ostream& operator<<(std::ostream& f, System& s)
