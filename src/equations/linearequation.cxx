@@ -156,20 +156,19 @@ bool LinearEquation::solve(double epsilon)
 std::ostream& LinearEquation::print_to(std::ostream& f) const
 {
 	list_type::const_iterator it;
-	std::ostream* fp = &f;
 
 	for (it = _vars.begin(); it != _vars.end();)
 	{
 		const list_elem_type& li = *it;
 
-		fp = &(*fp << li.coefficient << " " << *li.variable1);
+		f << li.coefficient << " " << *li.variable1;
 
 		if (li.variable2)
-			fp = &(*fp << " * " << *li.variable2);
+			f << " * " << *li.variable2;
 
 		if (++it != _vars.end())
-			fp = &(*fp << " + ");
+			f << " + ";
 	}
 
-	return *fp << " = 0";
+	return f << " = 0";
 }

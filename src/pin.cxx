@@ -34,7 +34,7 @@ Pin::variable_iterable Pin::variables()
 
 std::ostream& operator<<(std::ostream& f, Pin& pin)
 {
-	std::ostream* f2 = &(f << pin._pin_id << ":");
+	f << pin._pin_id << ":";
 
 	Pin::variable_iterable vars = pin.variables();
 
@@ -43,9 +43,9 @@ std::ostream& operator<<(std::ostream& f, Pin& pin)
 	{
 		PinVariable& v = *it;
 
-		f2 = &(*f2 << "\n  " << v.variable_id().name() << ": ");
-		f2 = &v.print_value(*f2);
+		f << "\n  " << v.variable_id().name() << ": ";
+		v.print_value(f);
 	}
 
-	return *f2;
+	return f;
 }

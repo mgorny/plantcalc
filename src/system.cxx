@@ -194,14 +194,14 @@ std::ostream& operator<<(std::ostream& f, System& s)
 		conn_map[&c.to()] = &c.from();
 	}
 
-	std::ostream* f2 = &(f << "---");
+	f << "---";
 
 	for (System::device_list::iterator dt = s._devices.begin();
 			dt != s._devices.end(); ++dt)
 	{
 		Device& dev = **dt;
 
-		f2 = &(f << "\n\n" << dev.device_id() << ":");
+		f << "\n\n" << dev.device_id() << ":";
 
 		Device::variable_iterable vars = dev.variables();
 		Device::pin_iterable pins = dev.pins();
@@ -211,8 +211,8 @@ std::ostream& operator<<(std::ostream& f, System& s)
 		{
 			DeviceVariable& v = *it;
 
-			f2 = &(*f2 << "\n  " << v.variable_id().name() << ": ");
-			f2 = &v.print_value(*f2);
+			f << "\n  " << v.variable_id().name() << ": ";
+			v.print_value(f);
 		}
 
 		for (Device::pin_iterable::iterator it = pins.begin();
@@ -221,9 +221,9 @@ std::ostream& operator<<(std::ostream& f, System& s)
 			Pin& pin = *it;
 			Pin* pair = conn_map[&pin];
 
-			f2 = &(*f2 << "\n  " << pin.pin_id().name() << ":");
+			f << "\n  " << pin.pin_id().name() << ":";
 			if (pair)
-				f2 = &(*f2 << " # -> " << pair->pin_id());
+				f << " # -> " << pair->pin_id();
 
 			Pin::variable_iterable lvars = pin.variables();
 			for (Pin::variable_iterable::iterator vt = lvars.begin();
@@ -231,13 +231,13 @@ std::ostream& operator<<(std::ostream& f, System& s)
 			{
 				PinVariable& v = *vt;
 
-				f2 = &(*f2 << "\n    " << v.variable_id().name() << ": ");
-				f2 = &v.print_value(*f2);
+				f << "\n    " << v.variable_id().name() << ": ";
+				v.print_value(f);
 			}
 		}
 	}
 
-	return *f2;
+	return f;
 }
 
 std::ostream& operator<<(std::ostream& f, System::connection_list& cl)
@@ -252,8 +252,6 @@ std::ostream& operator<<(std::ostream& f, System::connection_list& cl)
 
 		cgmap[typeid(c).name()].push_back(&c);
 	}
-
-	std::ostream* f2 = &f;
 
 	for (connection_group_map::iterator it = cgmap.begin();
 			it != cgmap.end(); ++it)
@@ -271,31 +269,31 @@ std::ostream& operator<<(std::ostream& f, System::connection_list& cl)
 
 			if (first)
 			{
-				f2 = &(*f2 << "\n\n" << type_name);
+				f << "\n\n" << type_name;
 
 				for (Pin::variable_iterable::iterator vt = vi.begin();
 						vt != vi.end(); ++vt)
 				{
 					PinVariable& v = *vt;
 
-					f2 = &(*f2 << "\t" << v.variable_id().name());
+					f << "\t" << v.variable_id().name();
 				}
 
 				first = false;
 			}
 
-			f2 = &(*f2 << "\n" << c.from().pin_id() << " -> "
-					<< c.to().pin_id());
+			f << "\n" << c.from().pin_id() << " -> " << c.to().pin_id();
 
 			for (Pin::variable_iterable::iterator vt = vi.begin();
 					vt != vi.end(); ++vt)
 			{
 				Variable& v = *vt;
 
-				f2 = &(v.print_value(*f2 << "\t"));
+				f << "\t";
+				v.print_value(f);
 			}
 		}
 	}
 
-	return *f2;
+	return f;
 }

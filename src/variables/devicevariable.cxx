@@ -22,15 +22,15 @@ DeviceVariable::DeviceVariable(DeviceID& dev_id, const char* name, double value)
 
 std::ostream& DeviceVariable::print_to(std::ostream& f) const
 {
-	std::ostream& f1 = f << _var_id;
+	f << _var_id;
 
 	if (is_set())
 	{
 		double val = *this;
-		return f1 << '(' << val << ')';
+		f << '(' << val << ')';
 	}
 
-	return f1;
+	return f;
 }
 
 DeviceVariableID& DeviceVariable::variable_id()

@@ -41,7 +41,7 @@ Device::variable_iterable Device::variables()
 
 std::ostream& operator<<(std::ostream& f, Device& dev)
 {
-	std::ostream* f2 = &(f << dev._device_id << ":");
+	f << dev._device_id << ":";
 
 	Device::variable_iterable vars = dev.variables();
 	Device::pin_iterable pins = dev.pins();
@@ -51,8 +51,8 @@ std::ostream& operator<<(std::ostream& f, Device& dev)
 	{
 		DeviceVariable& v = *it;
 
-		f2 = &(*f2 << "\n  " << v.variable_id().name() << ": ");
-		f2 = &v.print_value(*f2);
+		f << "\n  " << v.variable_id().name() << ": ";
+		v.print_value(f);
 	}
 
 	for (Device::pin_iterable::iterator it = pins.begin();
@@ -60,7 +60,7 @@ std::ostream& operator<<(std::ostream& f, Device& dev)
 	{
 		Pin& pin = *it;
 
-		f2 = &(*f2 << "\n  " << pin.pin_id().name() << ":");
+		f << "\n  " << pin.pin_id().name() << ":";
 
 		Pin::variable_iterable lvars = pin.variables();
 		for (Pin::variable_iterable::iterator vt = lvars.begin();
@@ -68,10 +68,10 @@ std::ostream& operator<<(std::ostream& f, Device& dev)
 		{
 			PinVariable& v = *vt;
 
-			f2 = &(*f2 << "\n    " << v.variable_id().name() << ": ");
-			f2 = &v.print_value(*f2);
+			f << "\n    " << v.variable_id().name() << ": ";
+			v.print_value(f);
 		}
 	}
 
-	return *f2;
+	return f;
 }
