@@ -14,6 +14,7 @@ static Constant xsat(0.0);
 
 CondensingHeatExchanger::CondensingHeatExchanger(const char* name)
 	: MediumFlowDevice(name),
+	_secondary_pressure_eq(_sec_in.p(), _sec_out.p()),
 	_secondary_mass_eq(_sec_in.D(), _sec_out.D()),
 	_primary_pressure_eq(in().p(), out().p()),
 	_primary_saturation_eq(out().x(), xsat),
@@ -82,6 +83,7 @@ EquationSystem CondensingHeatExchanger::equations()
 {
 	EquationSystem ret = MediumFlowDevice::equations();
 
+	ret.push_back(&_secondary_pressure_eq);
 	ret.push_back(&_secondary_mass_eq);
 	ret.push_back(&_primary_pressure_eq);
 	ret.push_back(&_primary_saturation_eq);

@@ -15,6 +15,7 @@
 
 class CondensingHeatExchanger : public MediumFlowDevice
 {
+	EqualityEquation _secondary_pressure_eq;
 	EqualityEquation _secondary_mass_eq;
 	EqualityEquation _primary_pressure_eq;
 	EqualityEquation _primary_saturation_eq;
