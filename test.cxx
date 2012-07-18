@@ -8,10 +8,13 @@
 #include "src/devices/endpoints/fuelendpoint.hxx"
 #include "src/devices/endpoints/mediumendpoint.hxx"
 #include "src/devices/splittingjunctions/mediumsplittingjunction.hxx"
+#include "src/devices/mixingjunctions/mechanicalenergymixingjunction.hxx"
+#include "src/devices/mixingjunctions/approximatemediummixingjunction.hxx"
 #include "src/equationsystem.hxx"
 #include "src/system.hxx"
 
 #include "src/connections/fuelconnection.hxx"
+#include "src/connections/mechanicalenergyconnection.hxx"
 #include "src/connections/mediumconnection.hxx"
 #include "src/equationsolvers/autoequationsolver.hxx"
 #include "src/substances/media/h2omedium.hxx"
@@ -33,12 +36,15 @@ int main()
 	FuelEndpoint fe;
 
 	MediumSplittingJunction msj;
+	MechanicalEnergyMixingJunction memj;
+	ApproximateMediumMixingJunction fw1mj;
 
 	MediumConnection bt(b.out(), t.in());
 	MediumConnection tt1(t.out(), msj.in());
 	MediumConnection tt2(msj.out1(), t2.in());
 	MediumConnection tc(t2.out(), c.in());
-	MediumConnection cb(c.out(), b.in());
+	MediumConnection c1m(c.out(), fw1mj.in1());
+	MediumConnection cb(fw1mj.out(), b.in());
 	MediumConnection tloop(t.loop_out(), t.loop_in());
 	MediumConnection tloop2(t2.loop_out(), t2.loop_in());
 
@@ -46,12 +52,13 @@ int main()
 	MediumConnection cs2(c.sec_out(), c2);
 
 	FuelConnection ff(fe, b.fuel_in());
+	MechanicalEnergyConnection tout1(t.energy_out(), memj.in1());
+	MechanicalEnergyConnection tout2(t2.energy_out(), memj.in2());
 
 	H2OMedium water;
 
 	bt.substance(&water);
-	t.energy_out().P().set_value(900);
-	t2.energy_out().P().set_value(100);
+	memj.out().P().set_value(1000);
 	b.fuel_in().Qw().set_value(22000);
 
 	cs1.substance(&water);
@@ -65,11 +72,16 @@ int main()
 	plant.push_back(c2);
 	plant.push_back(fe);
 	plant.push_back(msj);
+	plant.push_back(memj);
+	plant.push_back(fw1mj);
 
 	plant.push_back(bt);
 	plant.push_back(tc);
 	plant.push_back(tt1);
 	plant.push_back(tt2);
+	plant.push_back(tout1);
+	plant.push_back(tout2);
+	plant.push_back(c1m);
 	plant.push_back(cb);
 	plant.push_back(tloop);
 	plant.push_back(tloop2);

@@ -18,6 +18,7 @@ libplantcalc_base_la_SOURCES = \
 	src/variable.cxx src/variable.hxx \
 	\
 	src/devices/common/endpoint.hxx src/devices/common/endpoint.ixx \
+	src/devices/common/mixingjunction.hxx src/devices/common/mixingjunction.ixx \
 	src/devices/common/splittingjunction.hxx src/devices/common/splittingjunction.ixx \
 	\
 	src/equations/linearequation.cxx src/equations/linearequation.hxx \
@@ -53,6 +54,8 @@ libplantcalc_powerplant_la_SOURCES = \
 	src/devices/common/mediumflowdevice.cxx src/devices/common/mediumflowdevice.hxx \
 	src/devices/endpoints/fuelendpoint.cxx src/devices/endpoints/fuelendpoint.hxx \
 	src/devices/endpoints/mediumendpoint.cxx src/devices/endpoints/mediumendpoint.hxx \
+	src/devices/mixingjunctions/approximatemediummixingjunction.cxx src/devices/mixingjunctions/approximatemediummixingjunction.hxx \
+	src/devices/mixingjunctions/mechanicalenergymixingjunction.cxx src/devices/mixingjunctions/mechanicalenergymixingjunction.hxx \
 	src/devices/splittingjunctions/mediumsplittingjunction.cxx src/devices/splittingjunctions/mediumsplittingjunction.hxx \
 	src/devices/boiler.cxx src/devices/boiler.hxx \
 	src/devices/condenser.cxx src/devices/condenser.hxx \
