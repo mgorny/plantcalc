@@ -4,6 +4,7 @@
 
 #include "src/devices/boiler.hxx"
 #include "src/devices/condenser.hxx"
+#include "src/devices/feedwaterheater.hxx"
 #include "src/devices/turbine.hxx"
 #include "src/devices/endpoints/fuelendpoint.hxx"
 #include "src/devices/endpoints/mediumendpoint.hxx"
@@ -31,6 +32,8 @@ int main()
 	Turbine t2(.95, .99, 0.1);
 	Condenser c(10);
 
+	FeedwaterHeater fw1(10);
+
 	MediumEndpoint c1(0.1, 288.15);
 	MediumEndpoint c2(0.1);
 	FuelEndpoint fe;
@@ -44,9 +47,13 @@ int main()
 	MediumConnection tt2(msj.out1(), t2.in());
 	MediumConnection tc(t2.out(), c.in());
 	MediumConnection c1m(c.out(), fw1mj.in1());
-	MediumConnection cb(fw1mj.out(), b.in());
 	MediumConnection tloop(t.loop_out(), t.loop_in());
 	MediumConnection tloop2(t2.loop_out(), t2.loop_in());
+
+	MediumConnection fw1i(msj.out2(), fw1.in());
+	MediumConnection fw1m(fw1.out(), fw1mj.in2());
+	MediumConnection fw1s(fw1mj.out(), fw1.sec_in());
+	MediumConnection fw1o(fw1.sec_out(), b.in());
 
 	MediumConnection cs1(c.sec_in(), c1);
 	MediumConnection cs2(c.sec_out(), c2);
@@ -74,6 +81,7 @@ int main()
 	plant.push_back(msj);
 	plant.push_back(memj);
 	plant.push_back(fw1mj);
+	plant.push_back(fw1);
 
 	plant.push_back(bt);
 	plant.push_back(tc);
@@ -82,12 +90,15 @@ int main()
 	plant.push_back(tout1);
 	plant.push_back(tout2);
 	plant.push_back(c1m);
-	plant.push_back(cb);
 	plant.push_back(tloop);
 	plant.push_back(tloop2);
 	plant.push_back(cs1);
 	plant.push_back(cs2);
 	plant.push_back(ff);
+	plant.push_back(fw1i);
+	plant.push_back(fw1m);
+	plant.push_back(fw1s);
+	plant.push_back(fw1o);
 
 	plant.set_device_ids();
 	plant.set_substances();
