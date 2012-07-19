@@ -351,7 +351,21 @@ std::ostream& operator<<(std::ostream& f, System::graph_generator g)
 			f << "\t" << c.from().pin_id().device_id()
 				<< " -> " << c.to().pin_id().device_id() << "\n"
 				"\t[\n"
-				"\t\tcolor = \"" << color << "\"\n"
+				"\t\tcolor = \"" << color << "\",\n"
+				"\t\tlabel = \"\\E";
+
+			Pin::variable_iterable vi = c.from().variables();
+
+			for (Pin::variable_iterable::iterator vt = vi.begin();
+					vt != vi.end(); ++vt)
+			{
+				PinVariable& v = *vt;
+
+				f << "\\n" << v.variable_id().name() << " = ";
+				v.print_value(f);
+			}
+
+			f << "\"\n"
 				"\t];\n";
 		}
 
