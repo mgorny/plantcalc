@@ -17,11 +17,17 @@ AutoEquationSolver::AutoEquationSolver(double epsilon)
 
 bool AutoEquationSolver::iterate(EquationSystem& eqs)
 {
+	EquationSystem::size_type prev_size = eqs.size();
+
 	if (_single_solver.iterate(eqs))
 		return true;
+	if (eqs.size() != prev_size)
+		return true;
+	prev_size = eqs.size();
+
 	if (_linear_solver.iterate(eqs))
 		return true;
-	if (_single_solver.iterate(eqs))
+	if (eqs.size() != prev_size)
 		return true;
 
 	return false;
