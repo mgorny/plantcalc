@@ -5,6 +5,7 @@
 #include "src/devices/boiler.hxx"
 #include "src/devices/condenser.hxx"
 #include "src/devices/feedwaterheater.hxx"
+#include "src/devices/pump.hxx"
 #include "src/devices/turbine.hxx"
 #include "src/devices/endpoints/fuelendpoint.hxx"
 #include "src/devices/endpoints/mediumendpoint.hxx"
@@ -32,7 +33,7 @@ int main()
 	Turbine t2(.95, .99, 0.1);
 	Condenser c(10);
 
-	Turbine pump(0.97, .99, 10);
+	Pump pump(0.97, .99, 10);
 
 	FeedwaterHeater fw1(10);
 
@@ -63,10 +64,10 @@ int main()
 	MediumConnection cs2(c.sec_out(), c2);
 
 	FuelConnection ff(fe, b.fuel_in());
-	MechanicalEnergyConnection tout1(t.energy_out(), memj.in1());
-	MechanicalEnergyConnection tout2(t2.energy_out(), memj.in2());
+	MechanicalEnergyConnection tout1(t.energy_pin(), memj.in1());
+	MechanicalEnergyConnection tout2(t2.energy_pin(), memj.in2());
 	MechanicalEnergyConnection pumptm(memj.out(), pumptj.in1());
-	MechanicalEnergyConnection pumpm(pump.energy_out(), pumptj.in2());
+	MechanicalEnergyConnection pumpm(pump.energy_pin(), pumptj.in2());
 
 	H2OMedium water;
 

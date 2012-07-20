@@ -5,18 +5,18 @@
 
 #pragma once
 
-#ifndef _PLANTCALC_DEVICES_TURBINE_HXX
-#define _PLANTCALC_DEVICES_TURBINE_HXX 1
+#ifndef _PLANTCALC_DEVICES_PUMP_HXX
+#define _PLANTCALC_DEVICES_PUMP_HXX 1
 
 #include "common/reversibleturbine.hxx"
 
-class Turbine : public ReversibleTurbine
+class Pump : public ReversibleTurbine
 {
 public:
-	Turbine(double isenthropic_efficiency = 1,
+	Pump(double isenthropic_efficiency = 1,
 			double mechanical_efficiency = 1);
-	Turbine(double isenthropic_efficiency,
+	Pump(double isenthropic_efficiency,
 			double mechanical_efficiency, double pout);
 };
 
-#endif /*_PLANTCALC_DEVICES_TURBINE_HXX*/
+#endif /*_PLANTCALC_DEVICES_PUMP_HXX*/

@@ -52,6 +52,7 @@ libplantcalc_powerplant_la_SOURCES = \
 	\
 	src/devices/common/condensingheatexchanger.cxx src/devices/common/condensingheatexchanger.hxx \
 	src/devices/common/mediumflowdevice.cxx src/devices/common/mediumflowdevice.hxx \
+	src/devices/common/reversibleturbine.cxx src/devices/common/reversibleturbine.hxx \
 	src/devices/endpoints/fuelendpoint.cxx src/devices/endpoints/fuelendpoint.hxx \
 	src/devices/endpoints/mediumendpoint.cxx src/devices/endpoints/mediumendpoint.hxx \
 	src/devices/mixingjunctions/approximatemediummixingjunction.cxx src/devices/mixingjunctions/approximatemediummixingjunction.hxx \
@@ -60,6 +61,7 @@ libplantcalc_powerplant_la_SOURCES = \
 	src/devices/boiler.cxx src/devices/boiler.hxx \
 	src/devices/condenser.cxx src/devices/condenser.hxx \
 	src/devices/feedwaterheater.cxx src/devices/feedwaterheater.hxx \
+	src/devices/pump.cxx src/devices/pump.hxx \
 	src/devices/turbine.cxx src/devices/turbine.hxx \
 	\
 	src/equations/mediumstateequation.cxx src/equations/mediumstateequation.hxx \
