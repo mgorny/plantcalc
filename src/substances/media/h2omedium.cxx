@@ -10,6 +10,7 @@
 #include "h2omedium.hxx"
 #include "../../exceptions/contradictionerror.hxx"
 
+#include <cassert>
 #include <cmath>
 #include <stdexcept>
 
@@ -80,10 +81,21 @@ bool H2OMedium::solve(Variable& p, Variable& T,
 		s.set_value(state.s());
 	else if (!used_s && std::abs(state.s() - s) >= epsilon)
 		throw ContradictionError();
-	if (!x.is_set()) // XXX: supercritical?
-		x.set_value(state.x());
-	else if (!used_x && std::abs(state.x() - x) >= epsilon)
-		throw ContradictionError();
+	if (state.region() != h2o::Region::R3)
+	{
+		// subcritical
+		if (!x.is_set())
+			x.set_value(state.x());
+		else if (!used_x && std::abs(state.x() - x) >= epsilon)
+			throw ContradictionError();
+	}
+	else
+	{
+		// supercritical
+		assert(!used_x);
+		if (x.is_set())
+			throw ContradictionError();
+	}
 
 	return true;
 }
