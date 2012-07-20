@@ -41,7 +41,7 @@ int main()
 	FuelEndpoint fe;
 
 	MediumSplittingJunction msj;
-	MechanicalEnergyMixingJunction memj;
+	MechanicalEnergyMixingJunction memj, pumptj;
 	ApproximateMediumMixingJunction fw1mj;
 
 	MediumConnection bt(b.out(), t.in());
@@ -65,11 +65,13 @@ int main()
 	FuelConnection ff(fe, b.fuel_in());
 	MechanicalEnergyConnection tout1(t.energy_out(), memj.in1());
 	MechanicalEnergyConnection tout2(t2.energy_out(), memj.in2());
+	MechanicalEnergyConnection pumptm(memj.out(), pumptj.in1());
+	MechanicalEnergyConnection pumpm(pump.energy_out(), pumptj.in2());
 
 	H2OMedium water;
 
 	bt.substance(&water);
-	memj.out().P().set_value(1000);
+	pumptj.out().P().set_value(1000);
 	b.fuel_in().Qw().set_value(22000);
 
 	cs1.substance(&water);
@@ -87,6 +89,7 @@ int main()
 	plant.push_back(fw1mj);
 	plant.push_back(fw1);
 	plant.push_back(pump);
+	plant.push_back(pumptj);
 
 	plant.push_back(bt);
 	plant.push_back(tc);
@@ -106,6 +109,8 @@ int main()
 	plant.push_back(fw1o);
 	plant.push_back(pumpc);
 	plant.push_back(pumpl);
+	plant.push_back(pumpm);
+	plant.push_back(pumptm);
 
 	plant.set_device_ids();
 	plant.set_substances();
