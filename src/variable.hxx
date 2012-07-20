@@ -12,6 +12,17 @@
 
 class Variable
 {
+	class value_printer
+	{
+		const Variable& _v;
+
+		friend std::ostream& operator <<(std::ostream& f,
+				const Variable::value_printer& v);
+
+	public:
+		value_printer(const Variable& v);
+	};
+
 	bool _is_set, _read_only;
 	double _val;
 
@@ -32,9 +43,10 @@ public:
 	void set_value(double user_val);
 	void unset();
 
-	std::ostream& print_value(std::ostream& f) const;
+	value_printer value() const;
 };
 
 std::ostream& operator <<(std::ostream& f, const Variable& v);
+std::ostream& operator <<(std::ostream& f, const Variable::value_printer& v);
 
 #endif /*_PLANTCALC_VARIABLE_HXX*/

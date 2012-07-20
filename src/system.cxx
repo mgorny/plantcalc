@@ -226,8 +226,7 @@ std::ostream& operator<<(std::ostream& f, System& s)
 		{
 			DeviceVariable& v = **it;
 
-			f << "\n  " << v.variable_id().name() << ": ";
-			v.print_value(f);
+			f << "\n  " << v.variable_id().name() << ": " << v.value();
 		}
 
 		for (Device::pin_list_type::iterator it = pins.begin();
@@ -246,8 +245,7 @@ std::ostream& operator<<(std::ostream& f, System& s)
 			{
 				PinVariable& v = **vt;
 
-				f << "\n    " << v.variable_id().name() << ": ";
-				v.print_value(f);
+				f << "\n    " << v.variable_id().name() << ": " << v.value();
 			}
 		}
 	}
@@ -304,8 +302,7 @@ std::ostream& operator<<(std::ostream& f, System::connection_list& cl)
 			{
 				Variable& v = **vt;
 
-				f << "\t";
-				v.print_value(f);
+				f << "\t" << v.value();
 			}
 		}
 	}
@@ -361,8 +358,7 @@ std::ostream& operator<<(std::ostream& f, System::graph_generator g)
 			{
 				PinVariable& v = **vt;
 
-				f << "\\n" << v.variable_id().name() << " = ";
-				v.print_value(f);
+				f << "\\n" << v.variable_id().name() << " = " << v.value();
 			}
 
 			f << "\"\n"

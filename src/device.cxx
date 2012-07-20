@@ -35,8 +35,7 @@ std::ostream& operator<<(std::ostream& f, Device& dev)
 	{
 		DeviceVariable& v = **it;
 
-		f << "\n  " << v.variable_id().name() << ": ";
-		v.print_value(f);
+		f << "\n  " << v.variable_id().name() << ": " << v.value();
 	}
 
 	for (Device::pin_list_type::iterator it = pins.begin();
@@ -52,8 +51,7 @@ std::ostream& operator<<(std::ostream& f, Device& dev)
 		{
 			PinVariable& v = **vt;
 
-			f << "\n    " << v.variable_id().name() << ": ";
-			v.print_value(f);
+			f << "\n    " << v.variable_id().name() << ": " << v.value();
 		}
 	}
 

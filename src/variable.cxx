@@ -58,10 +58,20 @@ void Variable::unset()
 	_is_set = false;
 }
 
-std::ostream& Variable::print_value(std::ostream& f) const
+Variable::value_printer Variable::value() const
 {
-	if (is_set())
-		return f << static_cast<double>(*this);
+	return value_printer(*this);
+}
+
+Variable::value_printer::value_printer(const Variable& v)
+	: _v(v)
+{
+}
+
+std::ostream& operator <<(std::ostream& f, const Variable::value_printer& v)
+{
+	if (v._v.is_set())
+		return f << static_cast<double>(v._v);
 	else
 		return f << '~';
 }
