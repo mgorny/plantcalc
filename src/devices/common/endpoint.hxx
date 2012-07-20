@@ -17,9 +17,6 @@ class Endpoint : public Device
 protected:
 	PinType _pin;
 
-	virtual Pin* iter_pin_get(int index);
-	virtual DeviceVariable* iter_var_get(int index);
-
 public:
 	Endpoint();
 
@@ -28,6 +25,9 @@ public:
 	virtual bool pins_connected(const Pin& lhs, const Pin& rhs) const;
 
 	operator PinType&();
+
+	virtual pin_list_type pins();
+	virtual variable_list_type variables();
 };
 
 #endif /*_PLANTCALC_DEVICES_ENDPOINT_HXX*/

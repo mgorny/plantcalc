@@ -18,9 +18,6 @@ class Condenser : public CondensingHeatExchanger
 
 	LinearEquation _DeltaT_equation;
 
-protected:
-	virtual DeviceVariable* iter_var_get(int index);
-
 public:
 	Condenser();
 	Condenser(double DeltaT);
@@ -28,6 +25,8 @@ public:
 	Variable& DeltaT();
 
 	virtual EquationSystem equations();
+
+	virtual variable_list_type variables();
 };
 
 #endif /*_PLANTCALC_DEVICES_CONDENSER_HXX*/

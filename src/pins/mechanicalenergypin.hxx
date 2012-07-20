@@ -15,13 +15,12 @@ class MechanicalEnergyPin : public Pin
 {
 	PinVariable _P;
 
-protected:
-	virtual PinVariable* iter_variable_get(int index);
-
 public:
 	MechanicalEnergyPin(DeviceID& dev_id, const char* name);
 
 	Variable& P();
+
+	virtual variable_list_type variables();
 };
 
 #endif /*_PLANTCALC_PINS_MECHANICALENERGYPIN_HXX*/

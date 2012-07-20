@@ -35,33 +35,16 @@ MediumPin::MediumPin(DeviceID& dev_id, const char* name, double p, double T)
 {
 }
 
-PinVariable* MediumPin::iter_variable_get(int index)
+MediumPin::variable_list_type MediumPin::variables()
 {
-	PinVariable* ret;
+	variable_list_type ret;
 
-	switch (index)
-	{
-		case 0:
-			ret = &_p;
-			break;
-		case 1:
-			ret = &_T;
-			break;
-		case 2:
-			ret = &_h;
-			break;
-		case 3:
-			ret = &_s;
-			break;
-		case 4:
-			ret = &_x;
-			break;
-		case 5:
-			ret = &_D;
-			break;
-		default:
-			ret = 0;
-	}
+	ret.push_back(&_p);
+	ret.push_back(&_T);
+	ret.push_back(&_h);
+	ret.push_back(&_s);
+	ret.push_back(&_x);
+	ret.push_back(&_D);
 
 	return ret;
 }

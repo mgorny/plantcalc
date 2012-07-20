@@ -21,24 +21,13 @@ FuelPin::FuelPin(DeviceID& dev_id, const char* name)
 {
 }
 
-PinVariable* FuelPin::iter_variable_get(int index)
+FuelPin::variable_list_type FuelPin::variables()
 {
-	PinVariable* ret;
+	variable_list_type ret;
 
-	switch (index)
-	{
-		case 0:
-			ret = &_Q;
-			break;
-		case 1:
-			ret = &_B;
-			break;
-		case 2:
-			ret = &_Qw;
-			break;
-		default:
-			ret = 0;
-	}
+	ret.push_back(&_Q);
+	ret.push_back(&_B);
+	ret.push_back(&_Qw);
 
 	return ret;
 }

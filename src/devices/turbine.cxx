@@ -72,49 +72,28 @@ Turbine::Turbine(double isen_eff,
 	_out.p().set_value(pout);
 }
 
+Turbine::pin_list_type Turbine::pins()
+{
+	pin_list_type ret = MediumFlowDevice::pins();
+
+	ret.push_back(&_energy_out);
+
+	return ret;
+}
+
+Turbine::variable_list_type Turbine::variables()
+{
+	variable_list_type ret;
+
+	ret.push_back(&_isenthropic_efficiency);
+	ret.push_back(&_mechanical_efficiency);
+
+	return ret;
+}
+
 Variable& Turbine::isenthropic_efficiency()
 {
 	return _isenthropic_efficiency;
-}
-
-Pin* Turbine::iter_pin_get(int index)
-{
-	Pin* ret;
-
-	if (index < _iter_first_free_index)
-		return MediumFlowDevice::iter_pin_get(index);
-	else
-		index -= _iter_first_free_index;
-
-	switch (index)
-	{
-		case 0:
-			ret = &_energy_out;
-			break;
-		default:
-			ret = 0;
-	}
-
-	return ret;
-}
-
-DeviceVariable* Turbine::iter_var_get(int index)
-{
-	DeviceVariable* ret;
-
-	switch (index)
-	{
-		case 0:
-			ret = &_isenthropic_efficiency;
-			break;
-		case 1:
-			ret = &_mechanical_efficiency;
-			break;
-		default:
-			ret = 0;
-	}
-
-	return ret;
 }
 
 Variable& Turbine::mechanical_efficiency()

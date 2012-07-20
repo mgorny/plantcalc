@@ -8,7 +8,6 @@
 #endif
 
 #include "device.hxx"
-#include "util/methodbasediterable.ixx"
 
 Device::Device(const char* name)
 	: _device_id(name)
@@ -24,49 +23,34 @@ DeviceID& Device::device_id()
 	return _device_id;
 }
 
-template class MethodBasedIterator<Device, Pin>;
-template class MethodBasedIterable<Device, Pin>;
-template class MethodBasedIterator<Device, DeviceVariable>;
-template class MethodBasedIterable<Device, DeviceVariable>;
-
-Device::pin_iterable Device::pins()
-{
-	return pin_iterable(*this, &Device::iter_pin_get);
-}
-
-Device::variable_iterable Device::variables()
-{
-	return variable_iterable(*this, &Device::iter_var_get);
-}
-
 std::ostream& operator<<(std::ostream& f, Device& dev)
 {
 	f << dev._device_id << ":";
 
-	Device::variable_iterable vars = dev.variables();
-	Device::pin_iterable pins = dev.pins();
+	Device::variable_list_type vars = dev.variables();
+	Device::pin_list_type pins = dev.pins();
 
-	for (Device::variable_iterable::iterator it = vars.begin();
+	for (Device::variable_list_type::iterator it = vars.begin();
 			it != vars.end(); ++it)
 	{
-		DeviceVariable& v = *it;
+		DeviceVariable& v = **it;
 
 		f << "\n  " << v.variable_id().name() << ": ";
 		v.print_value(f);
 	}
 
-	for (Device::pin_iterable::iterator it = pins.begin();
+	for (Device::pin_list_type::iterator it = pins.begin();
 			it != pins.end(); ++it)
 	{
-		Pin& pin = *it;
+		Pin& pin = **it;
 
 		f << "\n  " << pin.pin_id().name() << ":";
 
-		Pin::variable_iterable lvars = pin.variables();
-		for (Pin::variable_iterable::iterator vt = lvars.begin();
+		Pin::variable_list_type lvars = pin.variables();
+		for (Pin::variable_list_type::iterator vt = lvars.begin();
 				vt != lvars.end(); ++vt)
 		{
-			PinVariable& v = *vt;
+			PinVariable& v = **vt;
 
 			f << "\n    " << v.variable_id().name() << ": ";
 			v.print_value(f);

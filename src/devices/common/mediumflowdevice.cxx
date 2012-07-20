@@ -15,8 +15,7 @@ MediumFlowDevice::MediumFlowDevice(const char* name)
 	: Device(name),
 	_primary_mass_eq(_in.D(), _out.D()),
 	_in(_device_id, "in"),
-	_out(_device_id, "out"),
-	_iter_first_free_index(2)
+	_out(_device_id, "out")
 {
 }
 
@@ -39,24 +38,12 @@ EquationSystem MediumFlowDevice::equations()
 	return ret;
 }
 
-Pin* MediumFlowDevice::iter_pin_get(int index)
+MediumFlowDevice::pin_list_type MediumFlowDevice::pins()
 {
-	Pin* ret;
+	pin_list_type ret;
 
-	assert(_iter_first_free_index == 2);
-	assert(index < _iter_first_free_index);
-
-	switch (index)
-	{
-		case 0:
-			ret = &_in;
-			break;
-		case 1:
-			ret = &_out;
-			break;
-		default:
-			ret = 0;
-	}
+	ret.push_back(&_in);
+	ret.push_back(&_out);
 
 	return ret;
 }

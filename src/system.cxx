@@ -218,33 +218,33 @@ std::ostream& operator<<(std::ostream& f, System& s)
 
 		f << "\n\n" << dev.device_id() << ":";
 
-		Device::variable_iterable vars = dev.variables();
-		Device::pin_iterable pins = dev.pins();
+		Device::variable_list_type vars = dev.variables();
+		Device::pin_list_type pins = dev.pins();
 
-		for (Device::variable_iterable::iterator it = vars.begin();
+		for (Device::variable_list_type::iterator it = vars.begin();
 				it != vars.end(); ++it)
 		{
-			DeviceVariable& v = *it;
+			DeviceVariable& v = **it;
 
 			f << "\n  " << v.variable_id().name() << ": ";
 			v.print_value(f);
 		}
 
-		for (Device::pin_iterable::iterator it = pins.begin();
+		for (Device::pin_list_type::iterator it = pins.begin();
 				it != pins.end(); ++it)
 		{
-			Pin& pin = *it;
+			Pin& pin = **it;
 			Pin* pair = conn_map[&pin];
 
 			f << "\n  " << pin.pin_id().name() << ":";
 			if (pair)
 				f << " # -> " << pair->pin_id();
 
-			Pin::variable_iterable lvars = pin.variables();
-			for (Pin::variable_iterable::iterator vt = lvars.begin();
+			Pin::variable_list_type lvars = pin.variables();
+			for (Pin::variable_list_type::iterator vt = lvars.begin();
 					vt != lvars.end(); ++vt)
 			{
-				PinVariable& v = *vt;
+				PinVariable& v = **vt;
 
 				f << "\n    " << v.variable_id().name() << ": ";
 				v.print_value(f);
@@ -280,16 +280,16 @@ std::ostream& operator<<(std::ostream& f, System::connection_list& cl)
 				jt != gl.end(); ++jt)
 		{
 			Connection& c = **jt;
-			Pin::variable_iterable vi = c.from().variables();
+			Pin::variable_list_type vi = c.from().variables();
 
 			if (first)
 			{
 				f << "\n\n" << type_name;
 
-				for (Pin::variable_iterable::iterator vt = vi.begin();
+				for (Pin::variable_list_type::iterator vt = vi.begin();
 						vt != vi.end(); ++vt)
 				{
-					PinVariable& v = *vt;
+					PinVariable& v = **vt;
 
 					f << "\t" << v.variable_id().name();
 				}
@@ -299,10 +299,10 @@ std::ostream& operator<<(std::ostream& f, System::connection_list& cl)
 
 			f << "\n" << c.from().pin_id() << " -> " << c.to().pin_id();
 
-			for (Pin::variable_iterable::iterator vt = vi.begin();
+			for (Pin::variable_list_type::iterator vt = vi.begin();
 					vt != vi.end(); ++vt)
 			{
-				Variable& v = *vt;
+				Variable& v = **vt;
 
 				f << "\t";
 				v.print_value(f);
@@ -354,12 +354,12 @@ std::ostream& operator<<(std::ostream& f, System::graph_generator g)
 				"\t\tcolor = \"" << color << "\",\n"
 				"\t\tlabel = \"\\E";
 
-			Pin::variable_iterable vi = c.from().variables();
+			Pin::variable_list_type vi = c.from().variables();
 
-			for (Pin::variable_iterable::iterator vt = vi.begin();
+			for (Pin::variable_list_type::iterator vt = vi.begin();
 					vt != vi.end(); ++vt)
 			{
-				PinVariable& v = *vt;
+				PinVariable& v = **vt;
 
 				f << "\\n" << v.variable_id().name() << " = ";
 				v.print_value(f);

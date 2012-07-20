@@ -19,10 +19,6 @@ class Boiler : public MediumFlowDevice
 	FuelPin _fuel_in;
 	LinearEquation _energy_balance_eq;
 
-protected:
-	virtual Pin* iter_pin_get(int index);
-	virtual DeviceVariable* iter_var_get(int index);
-
 public:
 	Boiler(double efficiency = 1);
 	Boiler(double efficiency, double pout, double Tout);
@@ -32,6 +28,9 @@ public:
 	FuelPin& fuel_in();
 
 	virtual EquationSystem equations();
+
+	virtual pin_list_type pins();
+	virtual variable_list_type variables();
 };
 
 #endif /*_PLANTCALC_DEVICES_BOILER_HXX*/

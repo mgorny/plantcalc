@@ -25,9 +25,6 @@ class CondensingHeatExchanger : public MediumFlowDevice
 protected:
 	MediumPin _sec_in, _sec_out;
 
-	virtual Pin* iter_pin_get(int index);
-	virtual DeviceVariable* iter_var_get(int index);
-
 	CondensingHeatExchanger(const char* name);
 
 public:
@@ -36,6 +33,8 @@ public:
 
 	virtual bool pins_connected(const Pin& lhs, const Pin& rhs) const;
 	virtual EquationSystem equations();
+
+	virtual pin_list_type pins();
 };
 
 #endif /*_PLANTCALC_DEVICES_CONDENSINGHEATEXCHANGER_HXX*/

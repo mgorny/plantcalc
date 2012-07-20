@@ -27,33 +27,14 @@ CondensingHeatExchanger::CondensingHeatExchanger(const char* name)
 {
 }
 
-Pin* CondensingHeatExchanger::iter_pin_get(int index)
+CondensingHeatExchanger::pin_list_type CondensingHeatExchanger::pins()
 {
-	Pin* ret;
+	pin_list_type ret = MediumFlowDevice::pins();
 
-	if (index < _iter_first_free_index)
-		return MediumFlowDevice::iter_pin_get(index);
-	else
-		index -= _iter_first_free_index;
-
-	switch (index)
-	{
-		case 0:
-			ret = &_sec_in;
-			break;
-		case 1:
-			ret = &_sec_out;
-			break;
-		default:
-			ret = 0;
-	}
+	ret.push_back(&_sec_in);
+	ret.push_back(&_sec_out);
 
 	return ret;
-}
-
-DeviceVariable* CondensingHeatExchanger::iter_var_get(int index)
-{
-	return 0;
 }
 
 MediumPin& CondensingHeatExchanger::sec_in()

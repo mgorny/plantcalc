@@ -10,28 +10,28 @@
 
 #include "ids/deviceid.hxx"
 #include "ids/pinid.hxx"
-#include "util/methodbasediterable.hxx"
 #include "variables/pinvariable.hxx"
 
 #include <ostream>
+#include <vector>
 
 class Pin
 {
 	friend std::ostream& operator<<(std::ostream& f, Pin& pin);
 
+public:
+	typedef std::vector<PinVariable*> variable_list_type;
+
 protected:
 	PinID _pin_id;
 	Pin(DeviceID& dev_id, const char* name);
-
-	virtual PinVariable* iter_variable_get(int index) = 0;
 
 public:
 	virtual ~Pin();
 
 	PinID& pin_id();
 
-	typedef MethodBasedIterable<Pin, PinVariable> variable_iterable;
-	variable_iterable variables();
+	virtual variable_list_type variables() = 0;
 };
 
 std::ostream& operator<<(std::ostream& f, Pin& pin);

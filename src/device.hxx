@@ -11,17 +11,19 @@
 #include "equationsystem.hxx"
 #include "pin.hxx"
 #include "ids/deviceid.hxx"
-#include "util/methodbasediterable.hxx"
 #include "variables/devicevariable.hxx"
+
+#include <vector>
 
 class Device
 {
+public:
+	typedef std::vector<DeviceVariable*> variable_list_type;
+	typedef std::vector<Pin*> pin_list_type;
+
 protected:
 	DeviceID _device_id;
 	Device(const char* name);
-
-	virtual Pin* iter_pin_get(int index) = 0;
-	virtual DeviceVariable* iter_var_get(int index) = 0;
 
 	friend std::ostream& operator<<(std::ostream& f, Device& dev);
 
@@ -34,11 +36,8 @@ public:
 
 	DeviceID& device_id();
 
-	typedef MethodBasedIterable<Device, Pin> pin_iterable;
-	typedef MethodBasedIterable<Device, DeviceVariable> variable_iterable;
-
-	pin_iterable pins();
-	variable_iterable variables();
+	virtual pin_list_type pins() = 0;
+	virtual variable_list_type variables() = 0;
 };
 
 std::ostream& operator<<(std::ostream& f, Device& dev);

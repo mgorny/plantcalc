@@ -27,18 +27,11 @@ Condenser::Condenser(double DeltaT)
 {
 }
 
-DeviceVariable* Condenser::iter_var_get(int index)
+Condenser::variable_list_type Condenser::variables()
 {
-	DeviceVariable* ret;
+	variable_list_type ret;
 
-	switch (index)
-	{
-		case 0:
-			ret = &_DeltaT;
-			break;
-		default:
-			ret = 0;
-	}
+	ret.push_back(&_DeltaT);
 
 	return ret;
 }

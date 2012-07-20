@@ -16,18 +16,19 @@ Endpoint<PinType>::Endpoint()
 }
 
 template <class PinType>
-Pin* Endpoint<PinType>::iter_pin_get(int index)
+Device::pin_list_type Endpoint<PinType>::pins()
 {
-	if (index == 0)
-		return &_pin;
-	else
-		return 0;
+	pin_list_type ret;
+
+	ret.push_back(&_pin);
+
+	return ret;
 }
 
 template <class PinType>
-DeviceVariable* Endpoint<PinType>::iter_var_get(int index)
+Device::variable_list_type Endpoint<PinType>::variables()
 {
-	return 0;
+	return variable_list_type();
 }
 
 template <class PinType>

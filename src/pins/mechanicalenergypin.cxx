@@ -15,18 +15,11 @@ MechanicalEnergyPin::MechanicalEnergyPin(DeviceID& dev_id, const char* name)
 {
 }
 
-PinVariable* MechanicalEnergyPin::iter_variable_get(int index)
+MechanicalEnergyPin::variable_list_type MechanicalEnergyPin::variables()
 {
-	PinVariable* ret;
+	variable_list_type ret;
 
-	switch (index)
-	{
-		case 0:
-			ret = &_P;
-			break;
-		default:
-			ret = 0;
-	}
+	ret.push_back(&_P);
 
 	return ret;
 }

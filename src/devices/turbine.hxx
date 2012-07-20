@@ -36,10 +36,6 @@ class Turbine : public MediumFlowDevice
 	LinearEquation _real_expansion_eq;
 	LinearEquation _energy_balance_eq;
 
-protected:
-	virtual Pin* iter_pin_get(int index);
-	virtual DeviceVariable* iter_var_get(int index);
-
 public:
 	Turbine(double isenthropic_efficiency = 1,
 			double mechanical_efficiency = 1);
@@ -56,6 +52,9 @@ public:
 
 	virtual bool pins_connected(const Pin& lhs, const Pin& rhs) const;
 	virtual EquationSystem equations();
+
+	virtual pin_list_type pins();
+	virtual variable_list_type variables();
 };
 
 #endif /*_PLANTCALC_DEVICES_TURBINE_HXX*/
