@@ -32,6 +32,8 @@ int main()
 	Turbine t2(.95, .99, 0.1);
 	Condenser c(10);
 
+	Turbine pump(0.97, .99, 10);
+
 	FeedwaterHeater fw1(10);
 
 	MediumEndpoint c1(0.1, 288.15);
@@ -49,10 +51,12 @@ int main()
 	MediumConnection c1m(c.out(), fw1mj.in1());
 	MediumConnection tloop(t.loop_out(), t.loop_in());
 	MediumConnection tloop2(t2.loop_out(), t2.loop_in());
+	MediumConnection pumpc(fw1mj.out(), pump.in());
+	MediumConnection pumpl(pump.loop_out(), pump.loop_in());
 
 	MediumConnection fw1i(msj.out2(), fw1.in());
 	MediumConnection fw1m(fw1.out(), fw1mj.in2());
-	MediumConnection fw1s(fw1mj.out(), fw1.sec_in());
+	MediumConnection fw1s(pump.out(), fw1.sec_in());
 	MediumConnection fw1o(fw1.sec_out(), b.in());
 
 	MediumConnection cs1(c.sec_in(), c1);
@@ -82,6 +86,7 @@ int main()
 	plant.push_back(memj);
 	plant.push_back(fw1mj);
 	plant.push_back(fw1);
+	plant.push_back(pump);
 
 	plant.push_back(bt);
 	plant.push_back(tc);
@@ -99,6 +104,8 @@ int main()
 	plant.push_back(fw1m);
 	plant.push_back(fw1s);
 	plant.push_back(fw1o);
+	plant.push_back(pumpc);
+	plant.push_back(pumpl);
 
 	plant.set_device_ids();
 	plant.set_substances();
