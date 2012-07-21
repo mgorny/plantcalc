@@ -22,26 +22,29 @@
 #include <Eigen/Core>
 #include <Eigen/LU>
 
-class col_index
+namespace
 {
-	int _i;
-
-public:
-	col_index()
-		: _i(-1)
+	class col_index
 	{
-	}
+		int _i;
 
-	void operator=(int x)
-	{
-		_i = x;
-	}
+	public:
+		col_index()
+			: _i(-1)
+		{
+		}
 
-	operator int() const
-	{
-		return _i;
-	}
-};
+		void operator=(int x)
+		{
+			_i = x;
+		}
+
+		operator int() const
+		{
+			return _i;
+		}
+	};
+}
 
 LinearEquationSolver::LinearEquationSolver(double epsilon)
 	: _epsilon(epsilon)
