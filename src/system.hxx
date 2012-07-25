@@ -22,7 +22,6 @@ public:
 	typedef std::vector<Connection*> connection_list;
 	typedef std::vector<connection_list> connection_group_list;
 
-private:
 	class graph_generator
 	{
 		System& _s;
@@ -33,6 +32,7 @@ private:
 		graph_generator(System& s);
 	};
 
+private:
 	device_list _devices;
 	connection_list _connections;
 

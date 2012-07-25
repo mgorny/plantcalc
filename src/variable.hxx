@@ -12,6 +12,7 @@
 
 class Variable
 {
+public:
 	class value_printer
 	{
 		const Variable& _v;
@@ -23,6 +24,7 @@ class Variable
 		value_printer(const Variable& v);
 	};
 
+private:
 	bool _is_set, _read_only;
 	double _val;
 
