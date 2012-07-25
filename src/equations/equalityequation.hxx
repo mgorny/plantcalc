@@ -10,6 +10,12 @@
 
 #include "linearequation.hxx"
 
+/**
+ * An a=b equation.
+ *
+ * A simplified kind of LinearEquation which represents
+ * the @f$ a = b @f$ kind of equation.
+ */
 class EqualityEquation : public LinearEquation
 {
 public:
