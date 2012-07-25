@@ -10,7 +10,7 @@
 
 #include "ids/deviceid.hxx"
 #include "ids/pinid.hxx"
-#include "variables/pinvariable.hxx"
+#include "variables/ownedvariable.hxx"
 
 #include <ostream>
 #include <vector>
@@ -20,7 +20,7 @@ class Pin
 	friend std::ostream& operator<<(std::ostream& f, Pin& pin);
 
 public:
-	typedef std::vector<PinVariable*> variable_list_type;
+	typedef std::vector<OwnedVariable*> variable_list_type;
 
 protected:
 	PinID _pin_id;

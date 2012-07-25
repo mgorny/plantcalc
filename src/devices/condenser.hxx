@@ -10,11 +10,11 @@
 
 #include "common/condensingheatexchanger.hxx"
 #include "../equations/linearequation.hxx"
-#include "../variables/devicevariable.hxx"
+#include "../variables/ownedvariable.hxx"
 
 class Condenser : public CondensingHeatExchanger
 {
-	DeviceVariable _DeltaT;
+	OwnedVariable _DeltaT;
 
 	LinearEquation _DeltaT_equation;
 

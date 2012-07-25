@@ -30,8 +30,7 @@ libplantcalc_base_la_SOURCES = \
 	src/ids/variableid.cxx src/ids/variableid.hxx \
 	\
 	src/variables/constant.cxx src/variables/constant.hxx \
-	src/variables/devicevariable.cxx src/variables/devicevariable.hxx \
-	src/variables/pinvariable.cxx src/variables/pinvariable.hxx \
+	src/variables/ownedvariable.cxx src/variables/ownedvariable.hxx \
 	\
 	src/exceptions/contradictionerror.cxx src/exceptions/contradictionerror.hxx \
 	src/exceptions/nonhomogeneoussubstanceerror.cxx src/exceptions/nonhomogeneoussubstanceerror.hxx

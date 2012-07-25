@@ -9,11 +9,11 @@
 #define _PLANTCALC_PINS_FUELPIN_HXX 1
 
 #include "../pin.hxx"
-#include "../variables/pinvariable.hxx"
+#include "../variables/ownedvariable.hxx"
 
 class FuelPin : public Pin
 {
-	PinVariable _Q, _B, _Qw;
+	OwnedVariable _Q, _B, _Qw;
 
 public:
 	FuelPin(DeviceID& dev_id, const char* name);

@@ -32,7 +32,7 @@ std::ostream& operator<<(std::ostream& f, Pin& pin)
 	for (Pin::variable_list_type::iterator it = vars.begin();
 			it != vars.end(); ++it)
 	{
-		PinVariable& v = **it;
+		OwnedVariable& v = **it;
 
 		f << "\n  " << v.variable_id().name() << ": " << v.value();
 	}

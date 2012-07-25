@@ -13,15 +13,15 @@
 #include "../../pins/mediumpin.hxx"
 #include "../../equations/equalityequation.hxx"
 #include "../../equations/linearequation.hxx"
-#include "../../variables/devicevariable.hxx"
+#include "../../variables/ownedvariable.hxx"
 
 class ReversibleTurbine : public MediumFlowDevice
 {
-	DeviceVariable _isenthropic_efficiency;
-	DeviceVariable _one_minus_isenthropic_efficiency;
+	OwnedVariable _isenthropic_efficiency;
+	OwnedVariable _one_minus_isenthropic_efficiency;
 
-	DeviceVariable _mechanical_efficiency;
-	DeviceVariable _mechanical_efficiency_reciprocal;
+	OwnedVariable _mechanical_efficiency;
+	OwnedVariable _mechanical_efficiency_reciprocal;
 
 	MediumPin _loop_in, _loop_out;
 	MechanicalEnergyPin _energy_pin;

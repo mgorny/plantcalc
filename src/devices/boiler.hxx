@@ -10,11 +10,11 @@
 
 #include "common/mediumflowdevice.hxx"
 #include "../pins/fuelpin.hxx"
-#include "../variables/devicevariable.hxx"
+#include "../variables/ownedvariable.hxx"
 
 class Boiler : public MediumFlowDevice
 {
-	DeviceVariable _efficiency;
+	OwnedVariable _efficiency;
 
 	FuelPin _fuel_in;
 	LinearEquation _energy_balance_eq;

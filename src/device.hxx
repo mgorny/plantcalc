@@ -11,14 +11,14 @@
 #include "equationsystem.hxx"
 #include "pin.hxx"
 #include "ids/deviceid.hxx"
-#include "variables/devicevariable.hxx"
+#include "variables/ownedvariable.hxx"
 
 #include <vector>
 
 class Device
 {
 public:
-	typedef std::vector<DeviceVariable*> variable_list_type;
+	typedef std::vector<OwnedVariable*> variable_list_type;
 	typedef std::vector<Pin*> pin_list_type;
 
 protected:

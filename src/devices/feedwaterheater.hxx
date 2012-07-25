@@ -10,11 +10,11 @@
 
 #include "common/condensingheatexchanger.hxx"
 #include "../equations/linearequation.hxx"
-#include "../variables/devicevariable.hxx"
+#include "../variables/ownedvariable.hxx"
 
 class FeedwaterHeater : public CondensingHeatExchanger
 {
-	DeviceVariable _DeltaTL;
+	OwnedVariable _DeltaTL;
 
 	LinearEquation _DeltaTL_equation;
 

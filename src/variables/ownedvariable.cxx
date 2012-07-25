@@ -7,20 +7,20 @@
 #	include "config.h"
 #endif
 
-#include "devicevariable.hxx"
+#include "ownedvariable.hxx"
 
-DeviceVariable::DeviceVariable(DeviceID& dev_id, const char* name)
-	: _var_id(dev_id, name)
+OwnedVariable::OwnedVariable(ID& owner_id, const char* name)
+	: _var_id(owner_id, name)
 {
 }
 
-DeviceVariable::DeviceVariable(DeviceID& dev_id, const char* name, double value)
+OwnedVariable::OwnedVariable(ID& owner_id, const char* name, double value)
 	: Variable(value),
-	_var_id(dev_id, name)
+	_var_id(owner_id, name)
 {
 }
 
-std::ostream& DeviceVariable::print_to(std::ostream& f) const
+std::ostream& OwnedVariable::print_to(std::ostream& f) const
 {
 	f << _var_id;
 
@@ -33,7 +33,7 @@ std::ostream& DeviceVariable::print_to(std::ostream& f) const
 	return f;
 }
 
-VariableID& DeviceVariable::variable_id()
+VariableID& OwnedVariable::variable_id()
 {
 	return _var_id;
 }
