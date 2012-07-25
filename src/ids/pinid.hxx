@@ -11,6 +11,18 @@
 #include "../id.hxx"
 #include "deviceid.hxx"
 
+/**
+ * A pin identifier.
+ *
+ * An identifier of a Pin. Holds the short pin name and a reference
+ * to its owner (device) identifier.
+ *
+ * Both the pin name and the owner are set through the constructor. They
+ * can be obtained using name() and device_id() methods, respectively.
+ *
+ * When output, the device identifier is prepended to the pin
+ * identifier, and a dot symbol (@c .) is used as a separator.
+ */
 class PinID : public ID
 {
 private:
@@ -21,10 +33,23 @@ protected:
 	virtual std::ostream& print_to(std::ostream& f) const;
 
 public:
+	/**
+	 * Instantiate the pin identifier.
+	 *
+	 * @param[in] device The owning device identifier.
+	 * @param[in] name The short pin name. It must be non-@c NULL,
+	 * and has to be persistent.
+	 */
 	PinID(DeviceID& device, const char* name);
 
+	/**
+	 * Obtain the owning device identifier.
+	 */
 	DeviceID& device_id();
 
+	/**
+	 * Obtain the (local) pin name.
+	 */
 	const char* name() const;
 };
 
