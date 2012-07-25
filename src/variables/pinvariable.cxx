@@ -33,7 +33,7 @@ std::ostream& PinVariable::print_to(std::ostream& f) const
 	return f;
 }
 
-PinVariableID& PinVariable::variable_id()
+VariableID& PinVariable::variable_id()
 {
 	return _var_id;
 }

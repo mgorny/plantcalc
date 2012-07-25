@@ -10,11 +10,11 @@
 
 #include "../variable.hxx"
 #include "../ids/deviceid.hxx"
-#include "../ids/devicevariableid.hxx"
+#include "../ids/variableid.hxx"
 
 class DeviceVariable : public Variable
 {
-	DeviceVariableID _var_id;
+	VariableID _var_id;
 
 protected:
 	virtual std::ostream& print_to(std::ostream& f) const;
@@ -23,7 +23,7 @@ public:
 	DeviceVariable(DeviceID& dev_id, const char* name);
 	DeviceVariable(DeviceID& dev_id, const char* name, double value);
 
-	DeviceVariableID& variable_id();
+	VariableID& variable_id();
 };
 
 #endif /*_PLANTCALC_VARIABLES_DEVICEVARIABLE_HXX*/

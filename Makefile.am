@@ -26,9 +26,8 @@ libplantcalc_base_la_SOURCES = \
 	src/equations/equalityequation.cxx src/equations/equalityequation.hxx \
 	\
 	src/ids/deviceid.cxx src/ids/deviceid.hxx \
-	src/ids/devicevariableid.cxx src/ids/devicevariableid.hxx \
 	src/ids/pinid.cxx src/ids/pinid.hxx \
-	src/ids/pinvariableid.cxx src/ids/pinvariableid.hxx \
+	src/ids/variableid.cxx src/ids/variableid.hxx \
 	\
 	src/variables/constant.cxx src/variables/constant.hxx \
 	src/variables/devicevariable.cxx src/variables/devicevariable.hxx \

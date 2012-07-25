@@ -5,25 +5,24 @@
 
 #pragma once
 
-#ifndef _PLANTCALC_IDS_DEVICEVARIABLEID_HXX
-#define _PLANTCALC_IDS_DEVICEVARIABLEID_HXX 1
+#ifndef _PLANTCALC_IDS_VARIABLEID_HXX
+#define _PLANTCALC_IDS_VARIABLEID_HXX 1
 
 #include "../id.hxx"
-#include "deviceid.hxx"
 
-class DeviceVariableID : public ID
+class VariableID : public ID
 {
 private:
-	DeviceID& _device;
+	ID& _owner;
 	const char* _name;
 
 protected:
 	virtual std::ostream& print_to(std::ostream& f) const;
 
 public:
-	DeviceVariableID(DeviceID& device, const char* name);
+	VariableID(ID& owner, const char* name);
 
 	const char* name() const;
 };
 
-#endif /*_PLANTCALC_IDS_DEVICEVARIABLEID_HXX*/
+#endif /*_PLANTCALC_IDS_VARIABLEID_HXX*/

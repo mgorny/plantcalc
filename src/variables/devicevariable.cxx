@@ -33,7 +33,7 @@ std::ostream& DeviceVariable::print_to(std::ostream& f) const
 	return f;
 }
 
-DeviceVariableID& DeviceVariable::variable_id()
+VariableID& DeviceVariable::variable_id()
 {
 	return _var_id;
 }

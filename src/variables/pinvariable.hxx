@@ -10,11 +10,11 @@
 
 #include "../variable.hxx"
 #include "../ids/pinid.hxx"
-#include "../ids/pinvariableid.hxx"
+#include "../ids/variableid.hxx"
 
 class PinVariable : public Variable
 {
-	PinVariableID _var_id;
+	VariableID _var_id;
 
 protected:
 	virtual std::ostream& print_to(std::ostream& f) const;
@@ -23,7 +23,7 @@ public:
 	PinVariable(PinID& pin_id, const char* name);
 	PinVariable(PinID& pin_id, const char* name, double value);
 
-	PinVariableID& variable_id();
+	VariableID& variable_id();
 };
 
 #endif /*_PLANTCALC_VARIABLES_PINVARIABLE_HXX*/
