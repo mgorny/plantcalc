@@ -12,6 +12,12 @@
 #include "../id.hxx"
 #include "../ids/variableid.hxx"
 
+/**
+ * A variable belonging to an arbitrary class (with an ID).
+ *
+ * An OwnedVariable is the most common variable class. It is basically
+ * a Variable holding owner ID (for pretty-printing).
+ */
 class OwnedVariable : public Variable
 {
 	VariableID _var_id;
@@ -20,9 +26,27 @@ protected:
 	virtual std::ostream& print_to(std::ostream& f) const;
 
 public:
+	/**
+	 * Instantiate an unset variable.
+	 *
+	 * @param[in] owner_id Identifier of the owner class.
+	 * @param[in] name Local short name for the variable. Must be
+	 * non-@c NULL, and has to be persistent.
+	 */
 	OwnedVariable(ID& owner_id, const char* name);
+	/**
+	 * Instantiate a variable and set its value.
+	 *
+	 * @param[in] owner_id Identifier of the owner class.
+	 * @param[in] name Local short name for the variable. Must be
+	 * non-@c NULL, and has to be persistent.
+	 * @param[in] value Initial value for the variable.
+	 */
 	OwnedVariable(ID& owner_id, const char* name, double value);
 
+	/**
+	 * Obtain the variable identifier.
+	 */
 	VariableID& variable_id();
 };
 
