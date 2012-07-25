@@ -8,25 +8,22 @@
 #ifndef _PLANTCALC_IDS_PINVARIABLEID_HXX
 #define _PLANTCALC_IDS_PINVARIABLEID_HXX 1
 
+#include "../id.hxx"
 #include "pinid.hxx"
 
-#include <ostream>
-
-class PinVariableID
+class PinVariableID : public ID
 {
 private:
 	PinID& _pin;
 	const char* _name;
 
-	friend std::ostream&
-		operator<<(std::ostream& f, const PinVariableID& pvid);
+protected:
+	virtual std::ostream& print_to(std::ostream& f) const;
 
 public:
 	PinVariableID(PinID& pin, const char* name);
 
 	const char* name() const;
 };
-
-std::ostream& operator<<(std::ostream& f, const PinVariableID& pvid);
 
 #endif /*_PLANTCALC_IDS_PINVARIABLEID_HXX*/

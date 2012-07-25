@@ -14,9 +14,9 @@ PinID::PinID(DeviceID& device, const char* name)
 {
 }
 
-std::ostream& operator<<(std::ostream& f, const PinID& pid)
+std::ostream& PinID::print_to(std::ostream& f) const
 {
-	return f << pid._device << "." << pid._name;
+	return f << _device << "." << _name;
 }
 
 DeviceID& PinID::device_id()

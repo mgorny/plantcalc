@@ -8,25 +8,22 @@
 #ifndef _PLANTCALC_IDS_DEVICEVARIABLEID_HXX
 #define _PLANTCALC_IDS_DEVICEVARIABLEID_HXX 1
 
+#include "../id.hxx"
 #include "deviceid.hxx"
 
-#include <ostream>
-
-class DeviceVariableID
+class DeviceVariableID : public ID
 {
 private:
 	DeviceID& _device;
 	const char* _name;
 
-	friend std::ostream&
-		operator<<(std::ostream& f, const DeviceVariableID& dvid);
+protected:
+	virtual std::ostream& print_to(std::ostream& f) const;
 
 public:
 	DeviceVariableID(DeviceID& device, const char* name);
 
 	const char* name() const;
 };
-
-std::ostream& operator<<(std::ostream& f, const DeviceVariableID& dvid);
 
 #endif /*_PLANTCALC_IDS_DEVICEVARIABLEID_HXX*/

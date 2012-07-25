@@ -13,6 +13,7 @@ libplantcalc_base_la_SOURCES = \
 	src/equation.cxx src/equation.hxx \
 	src/equationsolver.cxx src/equationsolver.hxx \
 	src/equationsystem.cxx src/equationsystem.hxx \
+	src/id.cxx src/id.hxx \
 	src/substance.cxx src/substance.hxx \
 	src/system.cxx src/system.hxx \
 	src/variable.cxx src/variable.hxx \

@@ -19,7 +19,7 @@ const char* DeviceVariableID::name() const
 	return _name;
 }
 
-std::ostream& operator <<(std::ostream& f, const DeviceVariableID& dvid)
+std::ostream& DeviceVariableID::print_to(std::ostream& f) const
 {
-	return f << dvid._device << "." << dvid._name;
+	return f << _device << "." << _name;
 }

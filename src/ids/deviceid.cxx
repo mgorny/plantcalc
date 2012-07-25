@@ -14,9 +14,9 @@ DeviceID::DeviceID(const char* name)
 {
 }
 
-std::ostream& operator<<(std::ostream& f, const DeviceID& did)
+std::ostream& DeviceID::print_to(std::ostream& f) const
 {
-	return f << did._name << did._num;
+	return f << _name << _num;
 }
 
 const char* DeviceID::name() const
