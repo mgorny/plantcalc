@@ -11,11 +11,11 @@
 #include "../../device.hxx"
 #include "../../equationsystem.hxx"
 #include "../../pins/mediumpin.hxx"
-#include "../../equations/equalityequation.hxx"
+#include "../../equations/additiveinverseequation.hxx"
 
 class MediumFlowDevice : public Device
 {
-	EqualityEquation _primary_mass_eq;
+	AdditiveInverseEquation _primary_mass_eq;
 
 protected:
 	MediumPin _in, _out;

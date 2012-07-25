@@ -9,6 +9,7 @@
 #define _PLANTCALC_CONNECTIONS_MECHANICALENERGYCONNECTION_HXX 1
 
 #include "../connection.hxx"
+#include "../equations/additiveinverseequation.hxx"
 #include "../equations/equalityequation.hxx"
 #include "../equations/linearequation.hxx"
 #include "../pins/mechanicalenergypin.hxx"
@@ -18,7 +19,7 @@ class MechanicalEnergyConnection : public Connection
 	MechanicalEnergyPin& _from;
 	MechanicalEnergyPin& _to;
 
-	EqualityEquation _P_eq;
+	AdditiveInverseEquation _P_eq;
 
 public:
 	MechanicalEnergyConnection(MechanicalEnergyPin& from, MechanicalEnergyPin& to);

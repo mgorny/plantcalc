@@ -17,7 +17,7 @@ Boiler::Boiler(double eff)
 	_fuel_in(_device_id, "fuel-in"),
 	_energy_balance_eq(1.0, _in.D(), _in.h(),
 			1.0, _efficiency, _fuel_in.Q(),
-			-1.0, _out.D(), _out.h())
+			1.0, _out.D(), _out.h())
 {
 }
 
@@ -27,7 +27,7 @@ Boiler::Boiler(double eff, double pout, double Tout)
 	_fuel_in(_device_id, "fuel-in"),
 	_energy_balance_eq(1.0, _in.D(), _in.h(),
 			1.0, _efficiency, _fuel_in.Q(),
-			-1.0, _out.D(), _out.h())
+			1.0, _out.D(), _out.h())
 {
 	MediumPin& mout = _out;
 	mout.p().set_value(pout);

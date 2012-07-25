@@ -18,8 +18,8 @@ MediumSplittingJunction::MediumSplittingJunction()
 	_h1_eq(_in.h(), _out1.h()),
 	_h2_eq(_in.h(), _out2.h()),
 	_mass_eq(1.0, _in.D(),
-			-1.0, _out1.D(),
-			-1.0, _out2.D())
+			1.0, _out1.D(),
+			1.0, _out2.D())
 {
 }
 

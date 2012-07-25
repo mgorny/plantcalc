@@ -11,6 +11,7 @@
 #include "mediumflowdevice.hxx"
 #include "../../pins/mechanicalenergypin.hxx"
 #include "../../pins/mediumpin.hxx"
+#include "../../equations/additiveinverseequation.hxx"
 #include "../../equations/equalityequation.hxx"
 #include "../../equations/linearequation.hxx"
 #include "../../variables/ownedvariable.hxx"
@@ -29,8 +30,8 @@ class ReversibleTurbine : public MediumFlowDevice
 	LinearEquation _one_minus_isen_eff_eq;
 	LinearEquation _mech_eff_reciprocal_eq;
 
-	EqualityEquation _loop_mass_eq;
-	EqualityEquation _loop_mass_balance_eq;
+	AdditiveInverseEquation _loop_mass_eq;
+	AdditiveInverseEquation _loop_mass_balance_eq;
 	EqualityEquation _loop_pressure_eq;
 	EqualityEquation _ideal_expansion_eq;
 	LinearEquation _real_expansion_eq;

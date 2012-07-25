@@ -9,6 +9,7 @@
 #define _PLANTCALC_CONNECTIONS_FUELCONNECTION_HXX 1
 
 #include "../connection.hxx"
+#include "../equations/additiveinverseequation.hxx"
 #include "../equations/equalityequation.hxx"
 #include "../equations/linearequation.hxx"
 #include "../pins/fuelpin.hxx"
@@ -19,7 +20,8 @@ class FuelConnection : public Connection
 	FuelPin& _to;
 
 	LinearEquation _energy_eq;
-	EqualityEquation _Q_eq, _B_eq, _Qw_eq;
+	AdditiveInverseEquation _Q_eq;
+	EqualityEquation _B_eq, _Qw_eq;
 
 public:
 	FuelConnection(FuelPin& from, FuelPin& to);

@@ -9,6 +9,7 @@
 #define _PLANTCALC_CONNECTIONS_MEDIUMCONNECTION_HXX 1
 
 #include "../connection.hxx"
+#include "../equations/additiveinverseequation.hxx"
 #include "../equations/equalityequation.hxx"
 #include "../equations/mediumstateequation.hxx"
 #include "../pins/mediumpin.hxx"
@@ -19,7 +20,8 @@ class MediumConnection : public Connection
 	MediumPin& _from;
 	MediumPin& _to;
 
-	EqualityEquation _p_eq, _T_eq, _h_eq, _s_eq, _x_eq, _D_eq;
+	EqualityEquation _p_eq, _T_eq, _h_eq, _s_eq, _x_eq;
+	AdditiveInverseEquation _D_eq;
 	MediumSubstance* _substance;
 	MediumStateEquation _state_eq;
 

@@ -15,7 +15,7 @@ template class MixingJunction<MechanicalEnergyPin>;
 MechanicalEnergyMixingJunction::MechanicalEnergyMixingJunction()
 	: _P_eq(1.0, _in1.P(),
 			1.0, _in2.P(),
-			-1.0, _out.P())
+			1.0, _out.P())
 {
 }
 

@@ -15,7 +15,7 @@ template class MixingJunction<MediumPin>;
 ApproximateMediumMixingJunction::ApproximateMediumMixingJunction()
 	: _mass_eq(1.0, _in1.D(),
 			1.0, _in2.D(),
-			-1.0, _out.D()),
+			1.0, _out.D()),
 	_p_eq(_in1.p(), _out.p()),
 	_h_eq(_in1.h(), _out.h())
 {

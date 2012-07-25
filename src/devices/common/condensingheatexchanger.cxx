@@ -20,8 +20,8 @@ CondensingHeatExchanger::CondensingHeatExchanger(const char* name)
 	_primary_saturation_eq(out().x(), xsat),
 	_energy_balance_eq(1, in().D(), in().h(),
 			1, _sec_in.D(), _sec_in.h(),
-			-1, out().D(), out().h(),
-			-1, _sec_out.D(), _sec_out.h()),
+			1, out().D(), out().h(),
+			1, _sec_out.D(), _sec_out.h()),
 	_sec_in(_device_id, "sec-in"),
 	_sec_out(_device_id, "sec-out")
 {

@@ -25,6 +25,7 @@
 
 #include <vector>
 #include <iostream>
+#include <stdexcept>
 
 int main()
 {
@@ -60,7 +61,7 @@ int main()
 	MediumConnection fw1s(pump.out(), fw1.sec_in());
 	MediumConnection fw1o(fw1.sec_out(), b.in());
 
-	MediumConnection cs1(c.sec_in(), c1);
+	MediumConnection cs1(c1, c.sec_in());
 	MediumConnection cs2(c.sec_out(), c2);
 
 	FuelConnection ff(fe, b.fuel_in());
@@ -127,6 +128,11 @@ int main()
 			std::cout << eqs << std::endl;
 	}
 	catch (ContradictionError& e)
+	{
+		std::cout << eqs << std::endl;
+		throw;
+	}
+	catch (std::range_error& e)
 	{
 		std::cout << eqs << std::endl;
 		throw;

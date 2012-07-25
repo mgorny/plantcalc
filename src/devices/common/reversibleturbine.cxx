@@ -37,7 +37,7 @@ ReversibleTurbine::ReversibleTurbine(const char* name,
 			-1.0, _one_minus_isenthropic_efficiency, _in.h(),
 			-1.0, _isenthropic_efficiency, _loop_out.h()),
 	_energy_balance_eq(1.0, _out.D(), _out.h(),
-			-1.0, _in.D(), _in.h(),
+			1.0, _in.D(), _in.h(),
 			1.0, _mechanical_efficiency_reciprocal, _energy_pin.P())
 {
 	// XXX: add boundaries to efficiences
@@ -66,7 +66,7 @@ ReversibleTurbine::ReversibleTurbine(const char* name,
 			-1.0, _one_minus_isenthropic_efficiency, _in.h(),
 			-1.0, _isenthropic_efficiency, _loop_out.h()),
 	_energy_balance_eq(1.0, _out.D(), _out.h(),
-			-1.0, _in.D(), _in.h(),
+			1.0, _in.D(), _in.h(),
 			1.0, _mechanical_efficiency_reciprocal, _energy_pin.P())
 {
 	_out.p().set_value(pout);
