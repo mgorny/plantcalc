@@ -23,6 +23,7 @@ libplantcalc_base_la_SOURCES = \
 	src/devices/common/splittingjunction.hxx src/devices/common/splittingjunction.ixx \
 	\
 	src/equations/linearequation.cxx src/equations/linearequation.hxx \
+	src/equations/additiveinverseequation.cxx src/equations/additiveinverseequation.hxx \
 	src/equations/equalityequation.cxx src/equations/equalityequation.hxx \
 	\
 	src/ids/deviceid.cxx src/ids/deviceid.hxx \
