@@ -11,13 +11,32 @@
 #include "../pin.hxx"
 #include "../variables/ownedvariable.hxx"
 
+/**
+ * A pin used to transfer mechanical energy.
+ *
+ * The MechanicalEnergyPin represents a pin which is used to transfer
+ * mechanical energy. It defines a single variable P() for transferred
+ * power.
+ *
+ * If the value of P() is positive, then the pin is producing mechanical
+ * energy; if it is negative, it is consuming it.
+ */
 class MechanicalEnergyPin : public Pin
 {
 	OwnedVariable _P;
 
 public:
+	/**
+	 * Instantiate a new MechanicalEnergyPin.
+	 *
+	 * @param[in] dev_id The pin owner (device) identifier.
+	 * @param[in] name The pin name.
+	 */
 	MechanicalEnergyPin(DeviceID& dev_id, const char* name);
 
+	/**
+	 * The power delivered by the pin [kW].
+	 */
 	Variable& P();
 
 	virtual variable_list_type variables();

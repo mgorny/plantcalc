@@ -9,10 +9,6 @@
 
 #include "mediumpin.hxx"
 
-MediumPin::~MediumPin()
-{
-}
-
 MediumPin::MediumPin(DeviceID& dev_id, const char* name)
 	: Pin(dev_id, name),
 	_p(_pin_id, "p"),
