@@ -14,6 +14,19 @@
 #include "../equations/linearequation.hxx"
 #include "../pins/fuelpin.hxx"
 
+/**
+ * A fuel-transfer connection.
+ *
+ * A connection between two FuelPin objects.
+ *
+ * A FuelConnection correlates the fuel properties on both ends.
+ * Additionally, it creates an equation correlating the fuel flux
+ * (Fuel::B()) with its energy flux (Fuel::Q()):
+ *
+ * @f[
+ * Q = B Q_w
+ * @f]
+ */
 class FuelConnection : public Connection
 {
 	FuelPin& _from;
@@ -24,6 +37,12 @@ class FuelConnection : public Connection
 	EqualityEquation _B_eq, _Qw_eq;
 
 public:
+	/**
+	 * Instantiate a new FuelConnection.
+	 *
+	 * @param[in] from A reference to the source pin.
+	 * @param[in] to A reference to the destination pin.
+	 */
 	FuelConnection(FuelPin& from, FuelPin& to);
 
 	virtual FuelPin& from();

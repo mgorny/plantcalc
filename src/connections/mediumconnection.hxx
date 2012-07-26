@@ -15,6 +15,19 @@
 #include "../pins/mediumpin.hxx"
 #include "../substances/mediumsubstance.hxx"
 
+/**
+ * A medium-transfer connection.
+ *
+ * A connection between two MediumPin objects.
+ *
+ * A MediumConnection correlates the medium properties on both ends.
+ * Additionally, it creates a MediumStateEquation correlating
+ * the medium properties.
+ *
+ * In order for MediumStateEquation to be able to calculate
+ * the properties, a correct MediumSubstance has to be set using
+ * substance() method.
+ */
 class MediumConnection : public Connection
 {
 	MediumPin& _from;
@@ -26,6 +39,12 @@ class MediumConnection : public Connection
 	MediumStateEquation _state_eq;
 
 public:
+	/**
+	 * Instantiate a new MediumConnection.
+	 *
+	 * @param[in] from A reference to the source pin.
+	 * @param[in] to A reference to the destination pin.
+	 */
 	MediumConnection(MediumPin& from, MediumPin& to);
 
 	virtual MediumPin& from();

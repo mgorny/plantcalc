@@ -14,6 +14,14 @@
 #include "../equations/linearequation.hxx"
 #include "../pins/mechanicalenergypin.hxx"
 
+/**
+ * A mechanical energy-transfer connection.
+ *
+ * A connection between two MechanicalEnergyPin objects.
+ *
+ * A MechanicalEnergyConnection correlates the mechanical power on both
+ * ends of the connection.
+ */
 class MechanicalEnergyConnection : public Connection
 {
 	MechanicalEnergyPin& _from;
@@ -22,6 +30,12 @@ class MechanicalEnergyConnection : public Connection
 	AdditiveInverseEquation _P_eq;
 
 public:
+	/**
+	 * Instantiate a new MechanicalEnergyConnection.
+	 *
+	 * @param[in] from A reference to the source pin.
+	 * @param[in] to A reference to the destination pin.
+	 */
 	MechanicalEnergyConnection(MechanicalEnergyPin& from, MechanicalEnergyPin& to);
 
 	virtual MechanicalEnergyPin& from();
