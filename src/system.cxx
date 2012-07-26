@@ -88,11 +88,11 @@ void System::set_substances()
 	}
 }
 
-EquationSystem System::equations()
+EquationSystem System::equations() const
 {
 	EquationSystem eqs;
 
-	for (device_list::iterator it = _devices.begin();
+	for (device_list::const_iterator it = _devices.begin();
 			it != _devices.end(); ++it)
 	{
 		Device& d = **it;
@@ -100,7 +100,7 @@ EquationSystem System::equations()
 		eqs += d.equations();
 	}
 
-	for (connection_list::iterator it = _connections.begin();
+	for (connection_list::const_iterator it = _connections.begin();
 			it != _connections.end(); ++it)
 	{
 		Connection& c = **it;
@@ -111,21 +111,21 @@ EquationSystem System::equations()
 	return eqs;
 }
 
-System::device_list& System::devices()
+const System::device_list& System::devices() const
 {
 	return _devices;
 }
 
-System::connection_list& System::connections()
+const System::connection_list& System::connections() const
 {
 	return _connections;
 }
 
-System::connection_group_list System::grouped_connections()
+System::connection_group_list System::grouped_connections() const
 {
 	std::map<DeviceID*, Device*> device_map;
 
-	for (device_list::iterator it = _devices.begin();
+	for (device_list::const_iterator it = _devices.begin();
 			it != _devices.end(); ++it)
 	{
 		Device& d = **it;
@@ -196,11 +196,11 @@ System::connection_group_list System::grouped_connections()
 	return ret;
 }
 
-std::ostream& operator<<(std::ostream& f, System& s)
+std::ostream& operator<<(std::ostream& f, const System& s)
 {
 	std::map<Pin*, Pin*> conn_map;
 
-	for (System::connection_list::iterator it = s._connections.begin();
+	for (System::connection_list::const_iterator it = s._connections.begin();
 			it != s._connections.end(); ++it)
 	{
 		Connection& c = **it;
@@ -211,7 +211,7 @@ std::ostream& operator<<(std::ostream& f, System& s)
 
 	f << "---";
 
-	for (System::device_list::iterator dt = s._devices.begin();
+	for (System::device_list::const_iterator dt = s._devices.begin();
 			dt != s._devices.end(); ++dt)
 	{
 		Device& dev = **dt;
@@ -253,12 +253,12 @@ std::ostream& operator<<(std::ostream& f, System& s)
 	return f;
 }
 
-std::ostream& operator<<(std::ostream& f, System::connection_list& cl)
+std::ostream& operator<<(std::ostream& f, const System::connection_list& cl)
 {
 	typedef std::map<const char*, System::connection_list> connection_group_map;
 	connection_group_map cgmap;
 
-	for (System::connection_list::iterator it = cl.begin();
+	for (System::connection_list::const_iterator it = cl.begin();
 			it != cl.end(); ++it)
 	{
 		Connection& c = **it;
@@ -310,19 +310,19 @@ std::ostream& operator<<(std::ostream& f, System::connection_list& cl)
 	return f;
 }
 
-System::graph_generator System::graph()
+const System::graph_generator System::graph() const
 {
 	return graph_generator(*this);
 }
 
-System::graph_generator::graph_generator(System& s)
+System::graph_generator::graph_generator(const System& s)
 	: _s(s)
 {
 }
 
-std::ostream& operator<<(std::ostream& f, System::graph_generator g)
+std::ostream& operator<<(std::ostream& f, const System::graph_generator g)
 {
-	System& s = g._s;
+	const System& s = g._s;
 	System::connection_group_list groups = s.grouped_connections();
 
 	f << "digraph system\n"

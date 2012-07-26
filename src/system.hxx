@@ -24,20 +24,20 @@ public:
 
 	class graph_generator
 	{
-		System& _s;
+		const System& _s;
 
-		friend std::ostream& operator<<(std::ostream& f, System::graph_generator g);
+		friend std::ostream& operator<<(std::ostream& f, const System::graph_generator g);
 
 	public:
-		graph_generator(System& s);
+		graph_generator(const System& s);
 	};
 
 private:
 	device_list _devices;
 	connection_list _connections;
 
-	friend std::ostream& operator<<(std::ostream& f, System& s);
-	friend std::ostream& operator<<(std::ostream& f, System::graph_generator& g);
+	friend std::ostream& operator<<(std::ostream& f, const System& s);
+	friend std::ostream& operator<<(std::ostream& f, const System::graph_generator g);
 	friend class graph_generator;
 
 public:
@@ -49,15 +49,15 @@ public:
 	void set_device_ids();
 	void set_substances();
 
-	EquationSystem equations();
-	device_list& devices();
-	connection_list& connections();
-	connection_group_list grouped_connections();
-	graph_generator graph();
+	EquationSystem equations() const;
+	const device_list& devices() const;
+	const connection_list& connections() const;
+	connection_group_list grouped_connections() const;
+	const graph_generator graph() const;
 };
 
-std::ostream& operator<<(std::ostream& f, System& s);
-std::ostream& operator<<(std::ostream& f, System::connection_list& cl);
-std::ostream& operator<<(std::ostream& f, System::graph_generator g);
+std::ostream& operator<<(std::ostream& f, const System& s);
+std::ostream& operator<<(std::ostream& f, const System::connection_list& cl);
+std::ostream& operator<<(std::ostream& f, const System::graph_generator g);
 
 #endif /*_PLANTCALC_SYSTEM_HXX*/
