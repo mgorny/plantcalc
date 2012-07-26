@@ -62,6 +62,12 @@ bool H2OMedium::solve(Variable& p, Variable& T,
 		used_x = true;
 		state = h2o::H2O::Tx(T, x);
 	}
+	else if (h.is_set() && s.is_set())
+	{
+		used_h = true;
+		used_s = true;
+		state = h2o::H2O::hs(h, s);
+	}
 	else
 		return false;
 
