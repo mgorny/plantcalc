@@ -22,6 +22,10 @@
  * methods. In the base Connection class, these are upcasted to the Pin
  * class. In the derived classes, a more specific return types are used.
  *
+ * The properties of the medium in the connection can be obtained using
+ * the variables in the source pin (from() method). This ensures that
+ * the flux value will be positive if the flow is directed forward.
+ *
  * Each connection provides a number of equations, expressing
  * the correlations between particular source and destination pin
  * variables. In particular, connection usually expresses the equality

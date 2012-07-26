@@ -29,6 +29,10 @@
  * Each pin holds a number of variables. These can be obtained using
  * direct getters or the variables() method.
  *
+ * If the pin is an output pin for a flux, then the relevant flux
+ * variable should have a positive value. If it is an input pin,
+ * the value should be negative.
+ *
  * Each pin can be connected to another pin using the Connection class.
  * The pin itself is not aware of the connection, neither does ensure
  * that only one connection applies to it. However, it is invalid to
