@@ -31,8 +31,8 @@ public:
 	/**
 	 * Instantiate a new FuelPin.
 	 *
-	 * @param[in] dev_id The pin owner (device) identifier.
-	 * @param[in] name The pin name.
+	 * @param dev_id The pin owner (device) identifier.
+	 * @param name The pin name.
 	 */
 	FuelPin(DeviceID& dev_id, const char* name);
 

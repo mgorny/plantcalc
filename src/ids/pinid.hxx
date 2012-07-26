@@ -36,8 +36,8 @@ public:
 	/**
 	 * Instantiate the pin identifier.
 	 *
-	 * @param[in] device The owning device identifier.
-	 * @param[in] name The short pin name. It must be non-@c NULL,
+	 * @param device The owning device identifier.
+	 * @param name The short pin name. It must be non-@c NULL,
 	 * and has to be persistent.
 	 */
 	PinID(DeviceID& device, const char* name);

@@ -29,8 +29,8 @@ public:
 	/**
 	 * Instantiate a new MechanicalEnergyPin.
 	 *
-	 * @param[in] dev_id The pin owner (device) identifier.
-	 * @param[in] name The pin name.
+	 * @param dev_id The pin owner (device) identifier.
+	 * @param name The pin name.
 	 */
 	MechanicalEnergyPin(DeviceID& dev_id, const char* name);
 

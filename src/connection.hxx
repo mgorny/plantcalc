@@ -77,7 +77,7 @@ public:
 	 * @a new_subst. The caller should own it, and ensure its
 	 * destruction.
 	 *
-	 * @param[in] new_subst A pointer to new Substance instance,
+	 * @param new_subst A pointer to new Substance instance,
 	 * or @c NULL to unset.
 	 */
 	virtual void substance(Substance* new_subst);

@@ -40,8 +40,8 @@ public:
 	/**
 	 * Instantiate a new FuelConnection.
 	 *
-	 * @param[in] from A reference to the source pin.
-	 * @param[in] to A reference to the destination pin.
+	 * @param from A reference to the source pin.
+	 * @param to A reference to the destination pin.
 	 */
 	FuelConnection(FuelPin& from, FuelPin& to);
 

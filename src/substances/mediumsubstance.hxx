@@ -28,8 +28,8 @@ public:
 	 * The exact details of the equation and the method of solving it
 	 * depend on the particular substance.
 	 *
-	 * @param[in,out] p, T, h, s, x The medium parameter variables.
-	 * @param[in] epsilon Allowed absolute difference between two
+	 * @param p, T, h, s, x The medium parameter variables.
+	 * @param epsilon Allowed absolute difference between two
 	 * variable values considered equal.
 	 *
 	 * @returns @c true on success, @c false on insufficient data.

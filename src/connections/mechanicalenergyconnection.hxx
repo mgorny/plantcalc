@@ -33,8 +33,8 @@ public:
 	/**
 	 * Instantiate a new MechanicalEnergyConnection.
 	 *
-	 * @param[in] from A reference to the source pin.
-	 * @param[in] to A reference to the destination pin.
+	 * @param from A reference to the source pin.
+	 * @param to A reference to the destination pin.
 	 */
 	MechanicalEnergyConnection(MechanicalEnergyPin& from, MechanicalEnergyPin& to);
 
