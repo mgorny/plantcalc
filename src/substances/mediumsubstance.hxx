@@ -11,9 +11,31 @@
 #include "../substance.hxx"
 #include "../variable.hxx"
 
+/**
+ * A substance for thermodynamic medium.
+ *
+ * A substance for a MediumConnection. A MediumStance provides routines
+ * to correlate various medium properties through the solve() method
+ * (which is used by MediumStateEquation).
+ */
 class MediumSubstance : public Substance
 {
 public:
+	/**
+	 * Try to solve the medium state equation using the available state
+	 * variables and set the remaining ones.
+	 *
+	 * The exact details of the equation and the method of solving it
+	 * depend on the particular substance.
+	 *
+	 * @param[in,out] p, T, h, s, x The medium parameter variables.
+	 * @param[in] epsilon Allowed absolute difference between two
+	 * variable values considered equal.
+	 *
+	 * @returns @c true on success, @c false on insufficient data.
+	 * @throws ContradictionError if the variable values
+	 * are contradictory.
+	 */
 	virtual bool solve(Variable& p, Variable& T,
 			Variable& h, Variable& s, Variable& x,
 			double epsilon) = 0;

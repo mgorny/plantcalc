@@ -49,6 +49,9 @@ public:
 	 * variables referenced in the equation may be set to incorrect
 	 * values or left unset.
 	 *
+	 * @param[in] epsilon Allowed absolute difference between two
+	 * variable values considered equal.
+	 *
 	 * @returns @c true on success, @c false on insufficient data.
 	 * @throws ContradictionError if the variable values
 	 * are contradictory.
