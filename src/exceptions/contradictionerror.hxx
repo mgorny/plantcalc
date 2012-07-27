@@ -8,7 +8,7 @@
 #ifndef _PLANTCALC_EXCEPTIONS_CONTRADICTIONERROR_HXX
 #define _PLANTCALC_EXCEPTIONS_CONTRADICTIONERROR_HXX 1
 
-#include <exception>
+#include "../exception.hxx"
 
 /**
  * Contradictory values in an equation.
@@ -16,7 +16,7 @@
  * The ContradictionError exceptions is thrown whenever equation solving
  * results in contradictory values for a single variable.
  */
-class ContradictionError : public std::exception
+class ContradictionError : public Exception
 {
 public:
 	ContradictionError();

@@ -8,7 +8,7 @@
 #ifndef _PLANTCALC_EXCEPTIONS_NONHOMOGENEOUSSUBSTANCEERROR_HXX
 #define _PLANTCALC_EXCEPTIONS_NONHOMOGENEOUSSUBSTANCEERROR_HXX 1
 
-#include <exception>
+#include "../exception.hxx"
 
 /**
  * Non-homogeneous substance in a set of interlinked connections.
@@ -17,7 +17,7 @@
  * System::set_substances() detects that two different substances
  * are set in a set of interlinked connections.
  */
-class NonHomogeneousSubstanceError : public std::exception
+class NonHomogeneousSubstanceError : public Exception
 {
 public:
 	NonHomogeneousSubstanceError();
