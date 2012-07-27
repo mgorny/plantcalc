@@ -10,6 +10,13 @@
 
 #include <exception>
 
+/**
+ * Non-homogeneous substance in a set of interlinked connections.
+ *
+ * The NonHomogeneousSubstanceError exceptions is thrown whenever
+ * System::set_substances() detects that two different substances
+ * are set in a set of interlinked connections.
+ */
 class NonHomogeneousSubstanceError : public std::exception
 {
 public:

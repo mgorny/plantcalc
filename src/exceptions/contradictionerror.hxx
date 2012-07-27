@@ -10,6 +10,12 @@
 
 #include <exception>
 
+/**
+ * Contradictory values in an equation.
+ *
+ * The ContradictionError exceptions is thrown whenever equation solving
+ * results in contradictory values for a single variable.
+ */
 class ContradictionError : public std::exception
 {
 public:
