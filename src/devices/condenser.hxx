@@ -12,6 +12,19 @@
 #include "../equations/linearequation.hxx"
 #include "../variables/ownedvariable.hxx"
 
+/**
+ * A vapor condenser.
+ *
+ * The Condenser class provides a simple model of vapor condenser built
+ * on top of CondensingHeatExchanger.
+ *
+ * The Condenser class introduces a DeltaT() variable which specifies
+ * the temperature difference between secondary flow output and input:
+ *
+ * @f[
+ * \Delta T = T_{out}'' - T_{in}''
+ * @f]
+ */
 class Condenser : public CondensingHeatExchanger
 {
 	OwnedVariable _DeltaT;
@@ -19,9 +32,18 @@ class Condenser : public CondensingHeatExchanger
 	LinearEquation _DeltaT_equation;
 
 public:
+	/**
+	 * Instantiate a new Condenser.
+	 */
 	Condenser();
+	/**
+	 * Instantiate a new Condenser and set initial @f$ \Delta T @f$.
+	 */
 	Condenser(double DeltaT);
 
+	/**
+	 * The temperature difference between secondary pins.
+	 */
 	Variable& DeltaT();
 
 	virtual EquationSystem equations();

@@ -11,9 +11,18 @@
 #include "../common/endpoint.hxx"
 #include "../../pins/fuelpin.hxx"
 
+/**
+ * An endpoint for fuel flux.
+ *
+ * The FuelEndpoint class provides a free endpoint for fuel connection.
+ * It can serve as a source (or consumer) of any amount of fuel.
+ */
 class FuelEndpoint : public Endpoint<FuelPin>
 {
 public:
+	/**
+	 * Instantiate a FuelEndpoint.
+	 */
 	FuelEndpoint();
 };
 

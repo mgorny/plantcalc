@@ -11,10 +11,32 @@
 #include "../common/endpoint.hxx"
 #include "../../pins/mediumpin.hxx"
 
+/**
+ * An endpoint for medium flux.
+ *
+ * The MediumEndpoint class provides a free endpoint for medium
+ * connection. It can serve as a source or consumer for any amount
+ * of medium.
+ *
+ * The medium at the endpoint has a defined pressure. If the endpoint
+ * serves as source, the temperature should be specified as well.
+ */
 class MediumEndpoint : public Endpoint<MediumPin>
 {
 public:
+	/**
+	 * Instantiate a MediumEndpoint with a defined pressure.
+	 *
+	 * @param p The medium pressure [MPa].
+	 */
 	MediumEndpoint(double p = 0.1);
+	/**
+	 * Instantiate a MediumEndpoint with a defined pressure
+	 * and temperature.
+	 *
+	 * @param p The medium pressure [MPa].
+	 * @param T The medium temperature [K].
+	 */
 	MediumEndpoint(double p, double T);
 };
 

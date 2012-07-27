@@ -12,11 +12,20 @@
 #include "../../equations/linearequation.hxx"
 #include "../../pins/mechanicalenergypin.hxx"
 
+/**
+ * A mechanical energy mixing junction.
+ *
+ * The MechanicalEnergyMixingJunction class provides a simple mixing
+ * junction for mechanical energy connections.
+ */
 class MechanicalEnergyMixingJunction : public MixingJunction<MechanicalEnergyPin>
 {
 	LinearEquation _P_eq;
 
 public:
+	/**
+	 * Instantiate a new MechanicalEnergyMixingJunction.
+	 */
 	MechanicalEnergyMixingJunction();
 
 	virtual EquationSystem equations();

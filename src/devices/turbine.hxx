@@ -10,11 +10,32 @@
 
 #include "common/reversibleturbine.hxx"
 
+/**
+ * A simple turbine.
+ *
+ * The Turbine class provides a simple turbine model which can be used
+ * to obtain mechanical power through decompressing the medium.
+ */
 class Turbine : public ReversibleTurbine
 {
 public:
+	/**
+	 * Instantiate a new Turbine.
+	 *
+	 * @param isenthropic_efficiency Initial isenthropic efficiency
+	 * value.
+	 * @param mechanical_efficiency Initial mechanical efficiency value.
+	 */
 	Turbine(double isenthropic_efficiency = 1,
 			double mechanical_efficiency = 1);
+	/**
+	 * Instantiate a new Turbine and set the output pressure.
+	 *
+	 * @param isenthropic_efficiency Initial isenthropic efficiency
+	 * value.
+	 * @param mechanical_efficiency Initial mechanical efficiency value.
+	 * @param pout Initial output pressure [MPa].
+	 */
 	Turbine(double isenthropic_efficiency,
 			double mechanical_efficiency, double pout);
 };
