@@ -11,6 +11,10 @@
 #include "../common/endpoint.hxx"
 #include "../../pins/fuelpin.hxx"
 
-typedef Endpoint<FuelPin> FuelEndpoint;
+class FuelEndpoint : public Endpoint<FuelPin>
+{
+public:
+	FuelEndpoint();
+};
 
 #endif /*_PLANTCALC_DEVICES_ENDPOINTS_FUELENDPOINT_HXX*/

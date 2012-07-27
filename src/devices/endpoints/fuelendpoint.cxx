@@ -11,3 +11,7 @@
 #include "../common/endpoint.ixx"
 
 template class Endpoint<FuelPin>;
+
+FuelEndpoint::FuelEndpoint()
+{
+}
