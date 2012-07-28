@@ -40,17 +40,17 @@ public:
 	/**
 	 * Instantiate a new Boiler.
 	 *
-	 * @param efficiency The boiler efficiency (determines the heat
+	 * @param[in] efficiency The boiler efficiency (determines the heat
 	 * loss).
 	 */
 	Boiler(double efficiency = 1);
 	/**
 	 * Instantiate a new Boiler and set output parameters.
 	 *
-	 * @param efficiency The boiler efficiency (determines the heat
+	 * @param[in] efficiency The boiler efficiency (determines the heat
 	 * loss).
-	 * @param pout Initial output pressure [MPa].
-	 * @param Tout Initial output temperature [K].
+	 * @param[in] pout Initial output pressure [MPa].
+	 * @param[in] Tout Initial output temperature [K].
 	 */
 	Boiler(double efficiency, double pout, double Tout);
 

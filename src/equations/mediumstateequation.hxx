@@ -52,9 +52,9 @@ public:
 	/**
 	 * Instantiate a new MediumStateEquation.
 	 *
-	 * @param subst_var A reference to the pointer variable holding
+	 * @param[in] subst_var A reference to the pointer variable holding
 	 * the current substance.
-	 * @param p, T, h, s, x References to medium state variables.
+	 * @param[in,out] p, T, h, s, x References to medium state variables.
 	 */
 	MediumStateEquation(const MediumSubstance* const& subst_var,
 			Variable& p, Variable& T, Variable& h,

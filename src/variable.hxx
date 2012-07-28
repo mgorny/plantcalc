@@ -66,8 +66,8 @@ protected:
 	/**
 	 * Instantiate the Variable with given value.
 	 *
-	 * @param value Initial value for the variable.
-	 * @param read_only Whether any changes to the value should be
+	 * @param[in] value Initial value for the variable.
+	 * @param[in] read_only Whether any changes to the value should be
 	 * prohibited. If set to @c true, any changes to the variable will
 	 * result in @c std::logic_error exception.
 	 */

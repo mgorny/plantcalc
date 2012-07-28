@@ -52,9 +52,9 @@ public:
 	 * (effectively moving the point to the saturation line). The result
 	 * of that may be either a correct value or a ContradictionError.
 	 *
-	 * @param p, T, h, s, x The medium parameter variables.
-	 * @param epsilon Allowed absolute difference between two
-	 * variable values considered equal.
+	 * @param[in,out] p, T, h, s, x The medium parameter variables.
+	 * @param[in] epsilon Allowed absolute difference between
+	 * two variable values considered equal.
 	 *
 	 * @returns @c true on success, @c false on insufficient data.
 	 * @throws ContradictionError if the variable values

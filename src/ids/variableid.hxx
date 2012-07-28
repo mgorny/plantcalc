@@ -35,8 +35,8 @@ public:
 	/**
 	 * Instantiate the variable identifier.
 	 *
-	 * @param owner The owner identifier.
-	 * @param name The variable name. It must be non-@c NULL, and has to be
+	 * @param[in] owner The owner identifier.
+	 * @param[in] name The variable name. It must be non-@c NULL, and has to be
 	 * persistent.
 	 */
 	VariableID(const ID& owner, const char* name);

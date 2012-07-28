@@ -50,7 +50,7 @@ protected:
 	/**
 	 * Instantiate a new CondensingHeatExchanger.
 	 *
-	 * @param name A short name for the device.
+	 * @param[in] name A short name for the device.
 	 */
 	CondensingHeatExchanger(const char* name);
 

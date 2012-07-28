@@ -22,19 +22,19 @@ public:
 	/**
 	 * Instantiate a new Pump.
 	 *
-	 * @param isenthropic_efficiency Initial isenthropic efficiency
+	 * @param[in] isenthropic_efficiency Initial isenthropic efficiency
 	 * value.
-	 * @param mechanical_efficiency Initial mechanical efficiency value.
+	 * @param[in] mechanical_efficiency Initial mechanical efficiency value.
 	 */
 	Pump(double isenthropic_efficiency = 1,
 			double mechanical_efficiency = 1);
 	/**
 	 * Instantiate a new Pump and set the output pressure.
 	 *
-	 * @param isenthropic_efficiency Initial isenthropic efficiency
+	 * @param[in] isenthropic_efficiency Initial isenthropic efficiency
 	 * value.
-	 * @param mechanical_efficiency Initial mechanical efficiency value.
-	 * @param pout Initial output pressure [MPa].
+	 * @param[in] mechanical_efficiency Initial mechanical efficiency value.
+	 * @param[in] pout Initial output pressure [MPa].
 	 */
 	Pump(double isenthropic_efficiency,
 			double mechanical_efficiency, double pout);

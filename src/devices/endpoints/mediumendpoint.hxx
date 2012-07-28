@@ -27,15 +27,15 @@ public:
 	/**
 	 * Instantiate a MediumEndpoint with a defined pressure.
 	 *
-	 * @param p The medium pressure [MPa].
+	 * @param[in] p The medium pressure [MPa].
 	 */
 	MediumEndpoint(double p = 0.1);
 	/**
 	 * Instantiate a MediumEndpoint with a defined pressure
 	 * and temperature.
 	 *
-	 * @param p The medium pressure [MPa].
-	 * @param T The medium temperature [K].
+	 * @param[in] p The medium pressure [MPa].
+	 * @param[in] T The medium temperature [K].
 	 */
 	MediumEndpoint(double p, double T);
 };

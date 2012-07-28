@@ -74,10 +74,10 @@ protected:
 	/**
 	 * Instantiate a new ReversibleTurbine.
 	 *
-	 * @param name A short name for the device.
-	 * @param isenthropic_efficiency Initial isenthropic efficiency
+	 * @param[in] name A short name for the device.
+	 * @param[in] isenthropic_efficiency Initial isenthropic efficiency
 	 * value.
-	 * @param mechanical_efficiency Initial mechanical efficiency value.
+	 * @param[in] mechanical_efficiency Initial mechanical efficiency value.
 	 */
 	ReversibleTurbine(const char* name,
 			double isenthropic_efficiency,
@@ -85,11 +85,11 @@ protected:
 	/**
 	 * Instantiate a new ReversibleTurbine and set the output pressure.
 	 *
-	 * @param name A short name for the device.
-	 * @param isenthropic_efficiency Initial isenthropic efficiency
+	 * @param[in] name A short name for the device.
+	 * @param[in] isenthropic_efficiency Initial isenthropic efficiency
 	 * value.
-	 * @param mechanical_efficiency Initial mechanical efficiency value.
-	 * @param pout Initial output pressure [MPa].
+	 * @param[in] mechanical_efficiency Initial mechanical efficiency value.
+	 * @param[in] pout Initial output pressure [MPa].
 	 */
 	ReversibleTurbine(const char* name,
 			double isenthropic_efficiency,

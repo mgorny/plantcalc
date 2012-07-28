@@ -36,9 +36,9 @@ public:
 	/**
 	 * Instantiate a new AutoEquationSolver.
 	 *
-	 * @param eqs The equation system to solve.
-	 * @param epsilon The maximum absolute difference between two values
-	 * to be considered equal.
+	 * @param[in,out] eqs The equation system to solve.
+	 * @param[in] epsilon The maximum absolute difference between
+	 * two values to be considered equal.
 	 */
 	AutoEquationSolver(EquationSystem& eqs, double epsilon = 1E-6);
 

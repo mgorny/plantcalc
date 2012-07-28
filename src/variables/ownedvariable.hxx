@@ -29,18 +29,18 @@ public:
 	/**
 	 * Instantiate an unset variable.
 	 *
-	 * @param owner_id Identifier of the owner class.
-	 * @param name Local short name for the variable. Must be
+	 * @param[in] owner_id Identifier of the owner class.
+	 * @param[in] name Local short name for the variable. Must be
 	 * non-@c NULL, and has to be persistent.
 	 */
 	OwnedVariable(const ID& owner_id, const char* name);
 	/**
 	 * Instantiate a variable and set its value.
 	 *
-	 * @param owner_id Identifier of the owner class.
-	 * @param name Local short name for the variable. Must be
+	 * @param[in] owner_id Identifier of the owner class.
+	 * @param[in] name Local short name for the variable. Must be
 	 * non-@c NULL, and has to be persistent.
-	 * @param value Initial value for the variable.
+	 * @param[in] value Initial value for the variable.
 	 */
 	OwnedVariable(const ID& owner_id, const char* name, double value);
 

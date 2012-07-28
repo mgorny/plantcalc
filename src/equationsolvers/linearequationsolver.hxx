@@ -37,9 +37,9 @@ public:
 	/**
 	 * Instantiate a new LinearEquationSolver.
 	 *
-	 * @param eqs The equation system to solve.
-	 * @param epsilon The maximum absolute difference between two values
-	 * to be considered equal.
+	 * @param[in,out] eqs The equation system to solve.
+	 * @param[in] epsilon The maximum absolute difference between
+	 * two values to be considered equal.
 	 */
 	LinearEquationSolver(EquationSystem& eqs, double epsilon = 1E-6);
 

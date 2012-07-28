@@ -36,7 +36,7 @@ protected:
 	/**
 	 * Instantiate a MediumFlowDevice.
 	 *
-	 * @param name A short name for the device.
+	 * @param[in] name A short name for the device.
 	 */
 	MediumFlowDevice(const char* name);
 

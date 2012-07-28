@@ -56,8 +56,8 @@ protected:
 	/**
 	 * Instantiate the Pin, and its identifier.
 	 *
-	 * @param dev_id Reference to the owning device identifier.
-	 * @param name The pin name.
+	 * @param[in] dev_id Reference to the owning device identifier.
+	 * @param[in] name The pin name.
 	 */
 	Pin(const DeviceID& dev_id, const char* name);
 

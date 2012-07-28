@@ -42,8 +42,8 @@ public:
 	/**
 	 * Instantiate a new MediumConnection.
 	 *
-	 * @param from A reference to the source pin.
-	 * @param to A reference to the destination pin.
+	 * @param[in,out] from A reference to the source pin.
+	 * @param[in,out] to A reference to the destination pin.
 	 */
 	MediumConnection(MediumPin& from, MediumPin& to);
 

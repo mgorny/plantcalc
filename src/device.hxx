@@ -61,7 +61,7 @@ protected:
 	/**
 	 * Instantiate the Device, setting its name in the identifier.
 	 *
-	 * @param name The short name for the device. The string will
+	 * @param[in] name The short name for the device. The string will
 	 * not be copied and thus must be constant.
 	 */
 	Device(const char* name);

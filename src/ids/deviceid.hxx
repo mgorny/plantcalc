@@ -39,7 +39,7 @@ public:
 	/**
 	 * Instantiate the device identifier.
 	 *
-	 * @param name The short device name. It must be non-@c NULL,
+	 * @param[in] name The short device name. It must be non-@c NULL,
 	 * and has to be persistent.
 	 */
 	DeviceID(const char* name);
