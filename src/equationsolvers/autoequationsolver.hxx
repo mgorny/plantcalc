@@ -14,9 +14,10 @@
 
 class AutoEquationSolver : public EquationSolver
 {
-	EquationSystem& _eqs;
 	LinearEquationSolver _linear_solver;
 	SingleEquationSolver _single_solver;
+
+	bool _single_done;
 
 public:
 	AutoEquationSolver(EquationSystem& eqs, double epsilon = 1E-6);

@@ -10,27 +10,23 @@
 #include "autoequationsolver.hxx"
 
 AutoEquationSolver::AutoEquationSolver(EquationSystem& eqs, double epsilon)
-	: _eqs(eqs),
-	_linear_solver(eqs, epsilon),
-	_single_solver(eqs, epsilon)
+	: _linear_solver(eqs, epsilon),
+	_single_solver(eqs, epsilon),
+	_single_done(false)
 {
 }
 
 bool AutoEquationSolver::iterate()
 {
-	EquationSystem& eqs = _eqs;
-	EquationSystem::size_type prev_size = eqs.size();
-
-	if (_single_solver.iterate())
+	if (!_single_done)
+	{
+		if (!_single_solver.iterate())
+			_single_done = true;
 		return true;
-	if (eqs.size() != prev_size)
-		return true;
-	prev_size = eqs.size();
-
-	if (_linear_solver.iterate())
-		return true;
-	if (eqs.size() != prev_size)
-		return true;
-
-	return false;
+	}
+	else
+	{
+		_single_done = false;
+		return _linear_solver.iterate();
+	}
 }
