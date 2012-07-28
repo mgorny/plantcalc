@@ -123,7 +123,7 @@ const System::connection_list& System::connections() const
 
 System::connection_group_list System::grouped_connections() const
 {
-	std::map<DeviceID*, Device*> device_map;
+	std::map<const DeviceID*, Device*> device_map;
 
 	for (device_list::const_iterator it = _devices.begin();
 			it != _devices.end(); ++it)
@@ -151,10 +151,10 @@ System::connection_group_list System::grouped_connections() const
 		{
 			Connection* c = group[i];
 
-			DeviceID* ldev_id = &c->from().pin_id().device_id();
+			const DeviceID* ldev_id = &c->from().pin_id().device_id();
 			Device& ldev = *device_map[ldev_id];
 
-			DeviceID* rdev_id = &c->to().pin_id().device_id();
+			const DeviceID* rdev_id = &c->to().pin_id().device_id();
 			Device& rdev = *device_map[rdev_id];
 
 			for (connection_list::iterator it = ungrouped_connections.begin();

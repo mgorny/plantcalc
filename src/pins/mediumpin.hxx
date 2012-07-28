@@ -34,7 +34,7 @@ public:
 	 * @param dev_id The pin owner (device) identifier.
 	 * @param name The pin name.
 	 */
-	MediumPin(DeviceID& dev_id, const char* name);
+	MediumPin(const DeviceID& dev_id, const char* name);
 	/**
 	 * Instantiate a new MediumPin and preset the pressure
 	 * and temperature.
@@ -44,7 +44,7 @@ public:
 	 * @param p The initial pressure [MPa].
 	 * @param T The initial temperature [K].
 	 */
-	MediumPin(DeviceID& dev_id, const char* name, double p, double T);
+	MediumPin(const DeviceID& dev_id, const char* name, double p, double T);
 
 	/**
 	 * The pressure [MPa].

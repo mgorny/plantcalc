@@ -25,7 +25,7 @@
 class VariableID : public ID
 {
 private:
-	ID& _owner;
+	const ID& _owner;
 	const char* _name;
 
 protected:
@@ -39,7 +39,7 @@ public:
 	 * @param name The variable name. It must be non-@c NULL, and has to be
 	 * persistent.
 	 */
-	VariableID(ID& owner, const char* name);
+	VariableID(const ID& owner, const char* name);
 
 	/**
 	 * Obtain the (local) variable name.

@@ -9,7 +9,7 @@
 
 #include "fuelpin.hxx"
 
-FuelPin::FuelPin(DeviceID& dev_id, const char* name)
+FuelPin::FuelPin(const DeviceID& dev_id, const char* name)
 	: Pin(dev_id, name),
 	_Q(_pin_id, "Q"),
 	_B(_pin_id, "B"),

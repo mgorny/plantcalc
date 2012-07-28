@@ -9,7 +9,7 @@
 
 #include "pin.hxx"
 
-Pin::Pin(DeviceID& dev_id, const char* name)
+Pin::Pin(const DeviceID& dev_id, const char* name)
 	: _pin_id(dev_id, name)
 {
 }

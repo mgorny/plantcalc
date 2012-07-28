@@ -9,7 +9,7 @@
 
 #include "mechanicalenergypin.hxx"
 
-MechanicalEnergyPin::MechanicalEnergyPin(DeviceID& dev_id, const char* name)
+MechanicalEnergyPin::MechanicalEnergyPin(const DeviceID& dev_id, const char* name)
 	: Pin(dev_id, name),
 	_P(_pin_id, "P")
 {

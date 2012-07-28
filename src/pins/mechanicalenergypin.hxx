@@ -32,7 +32,7 @@ public:
 	 * @param dev_id The pin owner (device) identifier.
 	 * @param name The pin name.
 	 */
-	MechanicalEnergyPin(DeviceID& dev_id, const char* name);
+	MechanicalEnergyPin(const DeviceID& dev_id, const char* name);
 
 	/**
 	 * The power delivered by the pin [kW].

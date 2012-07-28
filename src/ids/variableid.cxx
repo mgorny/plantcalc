@@ -9,7 +9,7 @@
 
 #include "variableid.hxx"
 
-VariableID::VariableID(ID& owner, const char* name)
+VariableID::VariableID(const ID& owner, const char* name)
 	: _owner(owner), _name(name)
 {
 }

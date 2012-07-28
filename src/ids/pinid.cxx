@@ -9,7 +9,7 @@
 
 #include "pinid.hxx"
 
-PinID::PinID(DeviceID& device, const char* name)
+PinID::PinID(const DeviceID& device, const char* name)
 	: _device(device), _name(name)
 {
 }
@@ -19,7 +19,7 @@ std::ostream& PinID::print_to(std::ostream& f) const
 	return f << _device << "." << _name;
 }
 
-DeviceID& PinID::device_id()
+const DeviceID& PinID::device_id() const
 {
 	return _device;
 }

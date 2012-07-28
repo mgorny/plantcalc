@@ -59,7 +59,7 @@ protected:
 	 * @param dev_id Reference to the owning device identifier.
 	 * @param name The pin name.
 	 */
-	Pin(DeviceID& dev_id, const char* name);
+	Pin(const DeviceID& dev_id, const char* name);
 
 public:
 	virtual ~Pin();

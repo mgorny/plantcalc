@@ -34,7 +34,7 @@ public:
 	 * @param dev_id The pin owner (device) identifier.
 	 * @param name The pin name.
 	 */
-	FuelPin(DeviceID& dev_id, const char* name);
+	FuelPin(const DeviceID& dev_id, const char* name);
 
 	/**
 	 * The energy flux delivered by the pin [kJ/s].

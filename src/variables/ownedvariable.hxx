@@ -33,7 +33,7 @@ public:
 	 * @param name Local short name for the variable. Must be
 	 * non-@c NULL, and has to be persistent.
 	 */
-	OwnedVariable(ID& owner_id, const char* name);
+	OwnedVariable(const ID& owner_id, const char* name);
 	/**
 	 * Instantiate a variable and set its value.
 	 *
@@ -42,7 +42,7 @@ public:
 	 * non-@c NULL, and has to be persistent.
 	 * @param value Initial value for the variable.
 	 */
-	OwnedVariable(ID& owner_id, const char* name, double value);
+	OwnedVariable(const ID& owner_id, const char* name, double value);
 
 	/**
 	 * Obtain the variable identifier.

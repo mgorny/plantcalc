@@ -26,7 +26,7 @@
 class PinID : public ID
 {
 private:
-	DeviceID& _device;
+	const DeviceID& _device;
 	const char* _name;
 
 protected:
@@ -40,12 +40,12 @@ public:
 	 * @param name The short pin name. It must be non-@c NULL,
 	 * and has to be persistent.
 	 */
-	PinID(DeviceID& device, const char* name);
+	PinID(const DeviceID& device, const char* name);
 
 	/**
 	 * Obtain the owning device identifier.
 	 */
-	DeviceID& device_id();
+	const DeviceID& device_id() const;
 
 	/**
 	 * Obtain the (local) pin name.

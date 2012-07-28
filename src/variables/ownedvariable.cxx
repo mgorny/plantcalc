@@ -9,12 +9,12 @@
 
 #include "ownedvariable.hxx"
 
-OwnedVariable::OwnedVariable(ID& owner_id, const char* name)
+OwnedVariable::OwnedVariable(const ID& owner_id, const char* name)
 	: _var_id(owner_id, name)
 {
 }
 
-OwnedVariable::OwnedVariable(ID& owner_id, const char* name, double value)
+OwnedVariable::OwnedVariable(const ID& owner_id, const char* name, double value)
 	: Variable(value),
 	_var_id(owner_id, name)
 {

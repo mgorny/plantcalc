@@ -9,7 +9,7 @@
 
 #include "mediumpin.hxx"
 
-MediumPin::MediumPin(DeviceID& dev_id, const char* name)
+MediumPin::MediumPin(const DeviceID& dev_id, const char* name)
 	: Pin(dev_id, name),
 	_p(_pin_id, "p"),
 	_T(_pin_id, "T"),
@@ -20,7 +20,7 @@ MediumPin::MediumPin(DeviceID& dev_id, const char* name)
 {
 }
 
-MediumPin::MediumPin(DeviceID& dev_id, const char* name, double p, double T)
+MediumPin::MediumPin(const DeviceID& dev_id, const char* name, double p, double T)
 	: Pin(dev_id, name),
 	_p(_pin_id, "p", p),
 	_T(_pin_id, "T", T),
