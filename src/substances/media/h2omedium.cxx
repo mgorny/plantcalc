@@ -23,7 +23,7 @@ const char* H2OMedium::name() const
 
 bool H2OMedium::solve(Variable& p, Variable& T,
 			Variable& h, Variable& s, Variable& x,
-			double epsilon)
+			double epsilon) const
 {
 	h2o::H2O state;
 	bool used_p = false, used_T = false, used_h = false,

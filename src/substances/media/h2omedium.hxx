@@ -62,7 +62,7 @@ public:
 	 */
 	virtual bool solve(Variable& p, Variable& T,
 			Variable& h, Variable& s, Variable& x,
-			double epsilon);
+			double epsilon) const;
 };
 
 #endif /*_PLANTCALC_SUBSTANCES_MEDIA_H2OMEDIUM_HXX*/
