@@ -35,7 +35,7 @@ class MediumConnection : public Connection
 
 	EqualityEquation _p_eq, _T_eq, _h_eq, _s_eq, _x_eq;
 	AdditiveInverseEquation _D_eq;
-	MediumSubstance* _substance;
+	const MediumSubstance* _substance;
 	MediumStateEquation _state_eq;
 
 public:
@@ -50,9 +50,9 @@ public:
 	virtual MediumPin& from();
 	virtual MediumPin& to();
 
-	virtual MediumSubstance* substance();
-	virtual void substance(Substance* new_subst);
-	void substance(MediumSubstance* new_subst);
+	virtual const MediumSubstance* substance();
+	virtual void substance(const Substance* new_subst);
+	void substance(const MediumSubstance* new_subst);
 
 	virtual EquationSystem equations();
 };

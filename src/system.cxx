@@ -55,13 +55,13 @@ void System::set_substances()
 			it != groups.end(); ++it)
 	{
 		connection_list& group = *it;
-		Substance* group_substance = 0;
+		const Substance* group_substance = 0;
 
 		for (connection_list::iterator gt = group.begin();
 				gt != group.end(); ++gt)
 		{
 			Connection& c = **gt;
-			Substance* subst = c.substance();
+			const Substance* subst = c.substance();
 
 			if (subst)
 			{

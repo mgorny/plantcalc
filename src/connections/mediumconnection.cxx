@@ -31,22 +31,22 @@ MediumPin& MediumConnection::to()
 	return _to;
 }
 
-MediumSubstance* MediumConnection::substance()
+const MediumSubstance* MediumConnection::substance()
 {
 	return _substance;
 }
 
-void MediumConnection::substance(Substance* new_subst)
+void MediumConnection::substance(const Substance* new_subst)
 {
-	MediumSubstance* subst = 0;
+	const MediumSubstance* subst = 0;
 
 	if (new_subst) // use references to throw an exception
-		subst = &dynamic_cast<MediumSubstance&>(*new_subst);
+		subst = &dynamic_cast<const MediumSubstance&>(*new_subst);
 
 	substance(subst);
 }
 
-void MediumConnection::substance(MediumSubstance* new_subst)
+void MediumConnection::substance(const MediumSubstance* new_subst)
 {
 	_substance = new_subst;
 }

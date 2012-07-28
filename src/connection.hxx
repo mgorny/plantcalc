@@ -69,7 +69,7 @@ public:
 	 *
 	 * @returns A pointer to Substance instance, or @c NULL if none.
 	 */
-	virtual Substance* substance();
+	virtual const Substance* substance();
 	/**
 	 * Set (or unset) the Substance instance for the connection.
 	 *
@@ -80,7 +80,7 @@ public:
 	 * @param new_subst A pointer to new Substance instance,
 	 * or @c NULL to unset.
 	 */
-	virtual void substance(Substance* new_subst);
+	virtual void substance(const Substance* new_subst);
 
 	/**
 	 * Obtain the equations expressing the correlations between

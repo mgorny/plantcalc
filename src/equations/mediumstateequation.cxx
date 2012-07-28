@@ -11,7 +11,8 @@
 
 #include <stdexcept>
 
-MediumStateEquation::MediumStateEquation(MediumSubstance*& subst_var,
+MediumStateEquation::MediumStateEquation(
+		const MediumSubstance* const& subst_var,
 		Variable& p, Variable& T, Variable& h,
 		Variable& s, Variable& x)
 	: _p(p), _T(T), _h(h), _s(s), _x(x), _medium(subst_var)

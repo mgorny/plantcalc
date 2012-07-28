@@ -15,12 +15,12 @@ Connection::~Connection()
 {
 }
 
-Substance* Connection::substance()
+const Substance* Connection::substance()
 {
 	return 0;
 }
 
-void Connection::substance(Substance* new_subst)
+void Connection::substance(const Substance* new_subst)
 {
 	if (new_subst)
 		throw std::runtime_error("This connection type does not support substances.");

@@ -46,7 +46,7 @@ class MediumStateEquation : public Equation
 	Variable& _s;
 	Variable& _x;
 
-	MediumSubstance*& _medium;
+	const MediumSubstance* const& _medium;
 
 public:
 	/**
@@ -56,7 +56,7 @@ public:
 	 * the current substance.
 	 * @param p, T, h, s, x References to medium state variables.
 	 */
-	MediumStateEquation(MediumSubstance*& subst_var,
+	MediumStateEquation(const MediumSubstance* const& subst_var,
 			Variable& p, Variable& T, Variable& h,
 			Variable& s, Variable& x);
 
