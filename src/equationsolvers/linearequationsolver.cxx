@@ -46,13 +46,14 @@ namespace
 	};
 }
 
-LinearEquationSolver::LinearEquationSolver(double epsilon)
-	: _epsilon(epsilon)
+LinearEquationSolver::LinearEquationSolver(EquationSystem& eqs, double epsilon)
+	: _eqs(eqs), _epsilon(epsilon)
 {
 }
 
-bool LinearEquationSolver::iterate(EquationSystem& eqs)
+bool LinearEquationSolver::iterate()
 {
+	EquationSystem& eqs = _eqs;
 	typedef std::vector<LinearEquation*> linear_eq_list;
 	linear_eq_list lineqs;
 

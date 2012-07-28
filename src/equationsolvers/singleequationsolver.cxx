@@ -9,13 +9,14 @@
 
 #include "singleequationsolver.hxx"
 
-SingleEquationSolver::SingleEquationSolver(double epsilon)
-	: _epsilon(epsilon)
+SingleEquationSolver::SingleEquationSolver(EquationSystem& eqs, double epsilon)
+	: _eqs(eqs), _epsilon(epsilon)
 {
 }
 
-bool SingleEquationSolver::iterate(EquationSystem& eqs)
+bool SingleEquationSolver::iterate()
 {
+	EquationSystem& eqs = _eqs;
 	EquationSystem::iterator it;
 	bool any_solved = false;
 

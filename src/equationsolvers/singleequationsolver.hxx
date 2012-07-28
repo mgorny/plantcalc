@@ -12,12 +12,13 @@
 
 class SingleEquationSolver : public EquationSolver
 {
+	EquationSystem& _eqs;
 	double _epsilon;
 
 public:
-	SingleEquationSolver(double epsilon = 1E-6);
+	SingleEquationSolver(EquationSystem& eqs, double epsilon = 1E-6);
 
-	virtual bool iterate(EquationSystem& eqs);
+	virtual bool iterate();
 };
 
 #endif /*_PLANTCALC_EQUATIONSOLVERS_SINGLEEQUATIONSOLVER_HXX*/

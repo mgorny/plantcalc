@@ -120,11 +120,11 @@ int main()
 	EquationSystem eqs = plant.equations();
 	std::cout << eqs << std::endl;
 
-	AutoEquationSolver solv;
+	AutoEquationSolver solv(eqs);
 
 	try
 	{
-		while (solv.iterate(eqs))
+		while (solv.iterate())
 			std::cout << eqs << std::endl;
 	}
 	catch (ContradictionError& e)

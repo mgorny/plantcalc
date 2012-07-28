@@ -15,7 +15,7 @@ class EquationSolver
 public:
 	virtual ~EquationSolver();
 
-	virtual bool iterate(EquationSystem& eqs) = 0;
+	virtual bool iterate() = 0;
 };
 
 #endif /*_PLANTCALC_EQUATIONSOLVER_HXX*/
