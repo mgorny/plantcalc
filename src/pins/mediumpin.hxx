@@ -5,8 +5,8 @@
 
 #pragma once
 
-#ifndef _PLANTCALC_PINS_MEDIUMPIN_HXX
-#define _PLANTCALC_PINS_MEDIUMPIN_HXX 1
+#ifndef PLANTCALC_PINS_MEDIUMPIN_HXX
+#define PLANTCALC_PINS_MEDIUMPIN_HXX 1
 
 #include "../pin.hxx"
 #include "../variables/ownedvariable.hxx"

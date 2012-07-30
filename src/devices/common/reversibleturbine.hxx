@@ -5,8 +5,8 @@
 
 #pragma once
 
-#ifndef _PLANTCALC_DEVICES_REVERSIBLETURBINE_HXX
-#define _PLANTCALC_DEVICES_REVERSIBLETURBINE_HXX 1
+#ifndef PLANTCALC_DEVICES_COMMON_REVERSIBLETURBINE_HXX
+#define PLANTCALC_DEVICES_COMMON_REVERSIBLETURBINE_HXX 1
 
 #include "mediumflowdevice.hxx"
 #include "../../pins/mechanicalenergypin.hxx"
@@ -139,4 +139,4 @@ public:
 	virtual variable_list_type variables();
 };
 
-#endif /*_PLANTCALC_DEVICES_REVERSIBLETURBINE_HXX*/
+#endif /*_PLANTCALC_DEVICES_COMMON_REVERSIBLETURBINE_HXX*/

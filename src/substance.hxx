@@ -5,8 +5,8 @@
 
 #pragma once
 
-#ifndef _PLANTCALC_SUBSTANCE_HXX
-#define _PLANTCALC_SUBSTANCE_HXX 1
+#ifndef PLANTCALC_SUBSTANCE_HXX
+#define PLANTCALC_SUBSTANCE_HXX 1
 
 /**
  * A definition of particular substance which can flow through

@@ -5,8 +5,8 @@
 
 #pragma once
 
-#ifndef _PLANTCALC_DEVICES_ENDPOINT_HXX
-#define _PLANTCALC_DEVICES_ENDPOINT_HXX 1
+#ifndef PLANTCALC_DEVICES_COMMON_ENDPOINT_HXX
+#define PLANTCALC_DEVICES_COMMON_ENDPOINT_HXX 1
 
 #include "../../device.hxx"
 #include "../../pin.hxx"
@@ -43,4 +43,4 @@ public:
 	virtual variable_list_type variables();
 };
 
-#endif /*_PLANTCALC_DEVICES_ENDPOINT_HXX*/
+#endif /*_PLANTCALC_DEVICES_COMMON_ENDPOINT_HXX*/

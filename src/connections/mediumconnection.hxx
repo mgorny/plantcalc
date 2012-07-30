@@ -5,8 +5,8 @@
 
 #pragma once
 
-#ifndef _PLANTCALC_CONNECTIONS_MEDIUMCONNECTION_HXX
-#define _PLANTCALC_CONNECTIONS_MEDIUMCONNECTION_HXX 1
+#ifndef PLANTCALC_CONNECTIONS_MEDIUMCONNECTION_HXX
+#define PLANTCALC_CONNECTIONS_MEDIUMCONNECTION_HXX 1
 
 #include "../connection.hxx"
 #include "../equations/additiveinverseequation.hxx"

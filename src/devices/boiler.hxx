@@ -5,8 +5,8 @@
 
 #pragma once
 
-#ifndef _PLANTCALC_DEVICES_BOILER_HXX
-#define _PLANTCALC_DEVICES_BOILER_HXX 1
+#ifndef PLANTCALC_DEVICES_BOILER_HXX
+#define PLANTCALC_DEVICES_BOILER_HXX 1
 
 #include "common/mediumflowdevice.hxx"
 #include "../pins/fuelpin.hxx"

@@ -5,8 +5,8 @@
 
 #pragma once
 
-#ifndef _PLANTCALC_CONNECTIONS_FUELCONNECTION_HXX
-#define _PLANTCALC_CONNECTIONS_FUELCONNECTION_HXX 1
+#ifndef PLANTCALC_CONNECTIONS_FUELCONNECTION_HXX
+#define PLANTCALC_CONNECTIONS_FUELCONNECTION_HXX 1
 
 #include "../connection.hxx"
 #include "../equations/additiveinverseequation.hxx"

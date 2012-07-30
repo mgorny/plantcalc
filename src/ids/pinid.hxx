@@ -5,8 +5,8 @@
 
 #pragma once
 
-#ifndef _PLANTCALC_IDS_PINID_HXX
-#define _PLANTCALC_IDS_PINID_HXX 1
+#ifndef PLANTCALC_IDS_PINID_HXX
+#define PLANTCALC_IDS_PINID_HXX 1
 
 #include "../id.hxx"
 #include "deviceid.hxx"

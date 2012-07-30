@@ -5,8 +5,8 @@
 
 #pragma once
 
-#ifndef _PLANTCALC_VARIABLE_HXX
-#define _PLANTCALC_VARIABLE_HXX 1
+#ifndef PLANTCALC_VARIABLE_HXX
+#define PLANTCALC_VARIABLE_HXX 1
 
 #include <ostream>
 

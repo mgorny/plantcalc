@@ -5,8 +5,8 @@
 
 #pragma once
 
-#ifndef _PLANTCALC_IDS_VARIABLEID_HXX
-#define _PLANTCALC_IDS_VARIABLEID_HXX 1
+#ifndef PLANTCALC_IDS_VARIABLEID_HXX
+#define PLANTCALC_IDS_VARIABLEID_HXX 1
 
 #include "../id.hxx"
 

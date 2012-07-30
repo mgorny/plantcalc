@@ -5,8 +5,8 @@
 
 #pragma once
 
-#ifndef _PLANTCALC_DEVICE_HXX
-#define _PLANTCALC_DEVICE_HXX 1
+#ifndef PLANTCALC_DEVICE_HXX
+#define PLANTCALC_DEVICE_HXX 1
 
 #include "equationsystem.hxx"
 #include "pin.hxx"

@@ -5,8 +5,8 @@
 
 #pragma once
 
-#ifndef _PLANTCALC_EXCEPTION_HXX
-#define _PLANTCALC_EXCEPTION_HXX 1
+#ifndef PLANTCALC_EXCEPTION_HXX
+#define PLANTCALC_EXCEPTION_HXX 1
 
 #include <exception>
 

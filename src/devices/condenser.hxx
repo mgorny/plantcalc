@@ -5,8 +5,8 @@
 
 #pragma once
 
-#ifndef _PLANTCALC_DEVICES_CONDENSER_HXX
-#define _PLANTCALC_DEVICES_CONDENSER_HXX 1
+#ifndef PLANTCALC_DEVICES_CONDENSER_HXX
+#define PLANTCALC_DEVICES_CONDENSER_HXX 1
 
 #include "common/condensingheatexchanger.hxx"
 #include "../equations/linearequation.hxx"

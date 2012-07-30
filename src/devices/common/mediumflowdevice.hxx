@@ -5,8 +5,8 @@
 
 #pragma once
 
-#ifndef _PLANTCALC_DEVICES_MEDIUMFLOWDEVICE_HXX
-#define _PLANTCALC_DEVICES_MEDIUMFLOWDEVICE_HXX 1
+#ifndef PLANTCALC_DEVICES_COMMON_MEDIUMFLOWDEVICE_HXX
+#define PLANTCALC_DEVICES_COMMON_MEDIUMFLOWDEVICE_HXX 1
 
 #include "../../device.hxx"
 #include "../../equationsystem.hxx"
@@ -57,4 +57,4 @@ public:
 	virtual pin_list_type pins();
 };
 
-#endif /*_PLANTCALC_DEVICES_MEDIUMFLOWDEVICE_HXX*/
+#endif /*_PLANTCALC_DEVICES_COMMON_MEDIUMFLOWDEVICE_HXX*/
