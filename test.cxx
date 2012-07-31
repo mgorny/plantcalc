@@ -51,10 +51,7 @@ int main()
 	MediumConnection tt2(msj.out1(), t2.in());
 	MediumConnection tc(t2.out(), c.in());
 	MediumConnection c1m(c.out(), fw1mj.in1());
-	MediumConnection tloop(t.loop_out(), t.loop_in());
-	MediumConnection tloop2(t2.loop_out(), t2.loop_in());
 	MediumConnection pumpc(fw1mj.out(), pump.in());
-	MediumConnection pumpl(pump.loop_out(), pump.loop_in());
 
 	MediumConnection fw1i(msj.out2(), fw1.in());
 	MediumConnection fw1m(fw1.out(), fw1mj.in2());
@@ -100,8 +97,6 @@ int main()
 	plant.push_back(tout1);
 	plant.push_back(tout2);
 	plant.push_back(c1m);
-	plant.push_back(tloop);
-	plant.push_back(tloop2);
 	plant.push_back(cs1);
 	plant.push_back(cs2);
 	plant.push_back(ff);
@@ -110,7 +105,6 @@ int main()
 	plant.push_back(fw1s);
 	plant.push_back(fw1o);
 	plant.push_back(pumpc);
-	plant.push_back(pumpl);
 	plant.push_back(pumpm);
 	plant.push_back(pumptm);
 

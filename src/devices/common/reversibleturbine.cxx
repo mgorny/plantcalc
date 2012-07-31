@@ -38,7 +38,8 @@ ReversibleTurbine::ReversibleTurbine(const char* name,
 			-1.0, _isenthropic_efficiency, _loop_out.h()),
 	_energy_balance_eq(1.0, _out.D(), _out.h(),
 			1.0, _in.D(), _in.h(),
-			1.0, _mechanical_efficiency_reciprocal, _energy_pin.P())
+			1.0, _mechanical_efficiency_reciprocal, _energy_pin.P()),
+	_loop_conn(_loop_out, _loop_in)
 {
 	// XXX: add boundaries to efficiences
 }
@@ -67,7 +68,8 @@ ReversibleTurbine::ReversibleTurbine(const char* name,
 			-1.0, _isenthropic_efficiency, _loop_out.h()),
 	_energy_balance_eq(1.0, _out.D(), _out.h(),
 			1.0, _in.D(), _in.h(),
-			1.0, _mechanical_efficiency_reciprocal, _energy_pin.P())
+			1.0, _mechanical_efficiency_reciprocal, _energy_pin.P()),
+	_loop_conn(_loop_out, _loop_in)
 {
 	_out.p().set_value(pout);
 }
@@ -101,16 +103,6 @@ Variable& ReversibleTurbine::mechanical_efficiency()
 	return _mechanical_efficiency;
 }
 
-MediumPin& ReversibleTurbine::loop_out()
-{
-	return _loop_out;
-}
-
-MediumPin& ReversibleTurbine::loop_in()
-{
-	return _loop_in;
-}
-
 MechanicalEnergyPin& ReversibleTurbine::energy_pin()
 {
 	return _energy_pin;
@@ -136,6 +128,15 @@ EquationSystem ReversibleTurbine::equations()
 	ret.push_back(&_ideal_expansion_eq);
 	ret.push_back(&_real_expansion_eq);
 	ret.push_back(&_energy_balance_eq);
+
+	return ret;
+}
+
+Device::connection_list_type ReversibleTurbine::internal_connections()
+{
+	connection_list_type ret;
+
+	ret.push_back(&_loop_conn);
 
 	return ret;
 }

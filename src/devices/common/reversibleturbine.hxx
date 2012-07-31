@@ -9,6 +9,7 @@
 #define PLANTCALC_DEVICES_COMMON_REVERSIBLETURBINE_HXX 1
 
 #include "mediumflowdevice.hxx"
+#include "../../connections/mediumconnection.hxx"
 #include "../../pins/mechanicalenergypin.hxx"
 #include "../../pins/mediumpin.hxx"
 #include "../../equations/additiveinverseequation.hxx"
@@ -70,6 +71,8 @@ class ReversibleTurbine : public MediumFlowDevice
 	LinearEquation _real_expansion_eq;
 	LinearEquation _energy_balance_eq;
 
+	MediumConnection _loop_conn;
+
 protected:
 	/**
 	 * Instantiate a new ReversibleTurbine.
@@ -113,21 +116,6 @@ public:
 	Variable& mechanical_efficiency();
 
 	/**
-	 * Output pin of the internal loop used to calculate real expansion
-	 * parameters.
-	 *
-	 * Must be connected to loop_in().
-	 */
-	MediumPin& loop_out();
-	/**
-	 * Input pin of the internal loop used to calculate real expansion
-	 * parameters.
-	 *
-	 * Must be connected to loop_out().
-	 */
-	MediumPin& loop_in();
-
-	/**
 	 * The energy output pin.
 	 */
 	MechanicalEnergyPin& energy_pin();
@@ -137,6 +125,8 @@ public:
 
 	virtual pin_list_type pins();
 	virtual variable_list_type variables();
+
+	virtual connection_list_type internal_connections();
 };
 
 #endif /*_PLANTCALC_DEVICES_COMMON_REVERSIBLETURBINE_HXX*/
