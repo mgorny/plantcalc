@@ -57,3 +57,8 @@ std::ostream& operator<<(std::ostream& f, Device& dev)
 
 	return f;
 }
+
+Device::connection_list_type Device::internal_connections()
+{
+	return connection_list_type();
+}

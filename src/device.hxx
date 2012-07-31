@@ -44,11 +44,14 @@
  * pins_connected() method.
  */
 
+#include "connection.hxx"
+
 class Device
 {
 public:
 	typedef std::vector<OwnedVariable*> variable_list_type;
 	typedef std::vector<Pin*> pin_list_type;
+	typedef std::vector<Connection*> connection_list_type;
 
 protected:
 	/**
@@ -81,6 +84,9 @@ public:
 	 *
 	 * Any successive call to equations() will return the same
 	 * equations. The list will not contain any @c NULL pointers.
+	 *
+	 * The list will not contain equations specific to the internal
+	 * connections of this device. These have to be obtained separately.
 	 */
 	virtual EquationSystem equations() = 0;
 
@@ -133,6 +139,18 @@ public:
 	 * The list will not contain any @c NULL pointers.
 	 */
 	virtual variable_list_type variables() = 0;
+
+	/**
+	 * Obtain the list of internal connections in the device.
+	 *
+	 * The returned list will contain pointers to internal Connection
+	 * instances belonging to the device. These are owned by the device,
+	 * and must not be freed.
+	 *
+	 * Any successive call to internal_connections() will return
+	 * the same list. The list will not contain any @c NULL pointers.
+	 */
+	virtual connection_list_type internal_connections();
 };
 
 /**
