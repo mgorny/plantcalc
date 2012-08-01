@@ -17,6 +17,7 @@ MediumConnection::MediumConnection(MediumPin& from, MediumPin& to)
 	_s_eq(from.s(), to.s()),
 	_x_eq(from.x(), to.x()),
 	_D_eq(from.D(), to.D()),
+	_substance(0),
 	_state_eq(_substance, from.p(), from.T(), from.h(), from.s(), from.x())
 {
 }
