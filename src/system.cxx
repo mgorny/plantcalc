@@ -15,20 +15,48 @@
 #include <typeinfo>
 #include <vector>
 
-#include <iostream>
-
 System::System()
 {
+}
+
+bool System::flattened_connections_set() const
+{
+	return !_flattened_connections.empty() || _connections.empty();
 }
 
 void System::push_back(Device& dev)
 {
 	_devices.push_back(&dev);
+
+	if (flattened_connections_set()) // XXX
+		_flattened_connections.clear();
 }
 
 void System::push_back(Connection& conn)
 {
+	// This check must be performed *before* appending.
+	if (flattened_connections_set())
+		_flattened_connections.push_back(&conn);
+
 	_connections.push_back(&conn);
+}
+
+void System::flatten()
+{
+	_flattened_connections = _connections;
+
+	const device_list& devs = _devices;
+
+	for (device_list::const_iterator it = devs.begin();
+			it != devs.end(); ++it)
+	{
+		Device& d = **it;
+		const Device::connection_list_type& ic = d.internal_connections();
+
+		// XXX: implement +=
+		_flattened_connections.insert(_flattened_connections.end(),
+				ic.begin(), ic.end());
+	}
 }
 
 void System::set_device_ids()
@@ -100,8 +128,9 @@ EquationSystem System::equations() const
 		eqs += d.equations();
 	}
 
-	for (connection_list::const_iterator it = _connections.begin();
-			it != _connections.end(); ++it)
+	const connection_list& conns = flattened_connections();
+	for (connection_list::const_iterator it = conns.begin();
+			it != conns.end(); ++it)
 	{
 		Connection& c = **it;
 
@@ -121,6 +150,14 @@ const System::connection_list& System::connections() const
 	return _connections;
 }
 
+const System::connection_list& System::flattened_connections() const
+{
+	if (!flattened_connections_set())
+		return _connections;
+
+	return _flattened_connections;
+}
+
 System::connection_group_list System::grouped_connections() const
 {
 	std::map<const DeviceID*, Device*> device_map;
@@ -134,7 +171,7 @@ System::connection_group_list System::grouped_connections() const
 		device_map[&id] = &d;
 	}
 
-	connection_list ungrouped_connections(_connections);
+	connection_list ungrouped_connections(flattened_connections());
 
 	connection_group_list ret;
 

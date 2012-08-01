@@ -45,6 +45,10 @@ private:
 	device_list _devices;
 	connection_list _connections;
 
+	connection_list _flattened_connections;
+
+	bool flattened_connections_set() const;
+
 	friend std::ostream& operator<<(std::ostream& f, const System& s);
 	friend std::ostream& operator<<(std::ostream& f, const System::graph_generator g);
 	friend class graph_generator;
@@ -63,6 +67,17 @@ public:
 	 * Add a connection to the system.
 	 */
 	void push_back(Connection& conn);
+
+	/**
+	 * Flatten the connections in the system.
+	 *
+	 * The flatten() method obtains all private connections from devices
+	 * in the system and stores them in an internal list.
+	 *
+	 * The resulting list can be obtained afterwards using
+	 * the flattened_connections() method.
+	 */
+	void flatten();
 
 	/**
 	 * Set successive device numbers for devices.
@@ -92,12 +107,31 @@ public:
 	const device_list& devices() const;
 	/**
 	 * Obtain the list of connections in the system.
+	 *
+	 * Note that this list will contain only the connections directly
+	 * provided by user. In order to get the flattened connection list,
+	 * use flattened_connections() method.
 	 */
 	const connection_list& connections() const;
+
+	/**
+	 * Obtain the flattened list of connections.
+	 *
+	 * Before calling this method, the flatten() method should be called
+	 * to generate the list. Otherwise, the non-flattened list
+	 * of connections will be returned.
+	 *
+	 * The returned list will contain all connections given by user
+	 * and additionally all internal connections from devices.
+	 */
+	const connection_list& flattened_connections() const;
+
 	/**
 	 * Obtain the list of interlinked connection groups.
 	 *
 	 * The resulting list contains lists of interlinked connections.
+	 * Note that the flattened connection list will be used as input,
+	 * so the result will contain internal connections as well.
 	 */
 	connection_group_list grouped_connections() const;
 	/**

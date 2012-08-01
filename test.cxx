@@ -108,6 +108,7 @@ int main()
 	plant.push_back(pumpm);
 	plant.push_back(pumptm);
 
+	plant.flatten();
 	plant.set_device_ids();
 	plant.set_substances();
 
