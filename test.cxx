@@ -34,7 +34,7 @@ int main()
 	Turbine t2(.95, .99, 0.1);
 	Condenser c(10);
 
-	Pump pump(0.97, .99, 10);
+	Pump pump(0.97, .99);
 
 	FeedwaterHeater fw1(10);
 

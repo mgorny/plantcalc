@@ -9,6 +9,8 @@
 #define PLANTCALC_DEVICES_BOILER_HXX 1
 
 #include "common/mediumflowdevice.hxx"
+#include "../equations/equalityequation.hxx"
+#include "../equations/linearequation.hxx"
 #include "../pins/fuelpin.hxx"
 #include "../variables/ownedvariable.hxx"
 
@@ -35,6 +37,7 @@ class Boiler : public MediumFlowDevice
 
 	FuelPin _fuel_in;
 	LinearEquation _energy_balance_eq;
+	EqualityEquation _pressure_eq;
 
 public:
 	/**
