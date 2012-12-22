@@ -22,7 +22,7 @@
  *
  * The ReversibleTurbine provides a base class for devices which convert
  * medium energy into mechanical energy through decompression,
- * or the other way.
+ * or the other way around.
  *
  * The following equation describes the heat exchange:
  *
@@ -40,25 +40,15 @@
  * expansion calculations. The 'ideal' output parameters will be set
  * in the loop.
  *
- * The real output enthalpy is calculated using the following equation:
- *
- * @f[
- * h_{out} = ( 1 - \eta_h ) h_{in} + \eta_h h_{ideal}
- * @f]
- *
- * with @f$ \eta_h @f$ being the isenthropic efficiency,
- * and @f$ h_{ideal} @f$ being the 'ideal' specific enthalpy obtained
- * in the loop.
+ * The real output enthalpy is expressed in the Turbine and Pump
+ * sub-classes.
  */
 class ReversibleTurbine : public MediumFlowDevice
 {
-	OwnedVariable _isenthropic_efficiency;
-	OwnedVariable _one_minus_isenthropic_efficiency;
-
 	OwnedVariable _mechanical_efficiency;
 	OwnedVariable _mechanical_efficiency_reciprocal;
 
-	MediumPin _loop_in, _loop_out;
+	MediumPin _loop_in;
 	MechanicalEnergyPin _energy_pin;
 
 	LinearEquation _one_minus_isen_eff_eq;
@@ -68,12 +58,16 @@ class ReversibleTurbine : public MediumFlowDevice
 	AdditiveInverseEquation _loop_mass_balance_eq;
 	EqualityEquation _loop_pressure_eq;
 	EqualityEquation _ideal_expansion_eq;
-	LinearEquation _real_expansion_eq;
 	LinearEquation _energy_balance_eq;
 
 	MediumConnection _loop_conn;
 
 protected:
+	OwnedVariable _isenthropic_efficiency;
+	OwnedVariable _one_minus_isenthropic_efficiency;
+
+	MediumPin _loop_out;
+
 	/**
 	 * Instantiate a new ReversibleTurbine.
 	 *

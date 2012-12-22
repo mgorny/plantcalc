@@ -15,9 +15,21 @@
  *
  * The Pump class provides a simple pump model which can be used
  * to increase the pressure of a liquid.
+ *
+ * The real output enthalpy is calculated using the following equation:
+ *
+ * @f[
+ * h_{out} \eta_h = h_{ideal} - ( 1 - \eta_h ) h_{in}
+ * @f]
+ *
+ * with @f$ \eta_h @f$ being the isenthropic efficiency,
+ * and @f$ h_{ideal} @f$ being the 'ideal' specific enthalpy obtained
+ * in the loop.
  */
 class Pump : public ReversibleTurbine
 {
+	LinearEquation _real_expansion_eq;
+
 public:
 	/**
 	 * Instantiate a new Pump.
@@ -38,6 +50,8 @@ public:
 	 */
 	Pump(double isenthropic_efficiency,
 			double mechanical_efficiency, double pout);
+
+	virtual EquationSystem equations();
 };
 
 #endif /*_PLANTCALC_DEVICES_PUMP_HXX*/

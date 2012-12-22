@@ -15,9 +15,21 @@
  *
  * The Turbine class provides a simple turbine model which can be used
  * to obtain mechanical power through decompressing the medium.
+ *
+ * The real output enthalpy is calculated using the following equation:
+ *
+ * @f[
+ * h_{out} = ( 1 - \eta_h ) h_{in} + \eta_h h_{ideal}
+ * @f]
+ *
+ * with @f$ \eta_h @f$ being the isenthropic efficiency,
+ * and @f$ h_{ideal} @f$ being the 'ideal' specific enthalpy obtained
+ * in the loop.
  */
 class Turbine : public ReversibleTurbine
 {
+	LinearEquation _real_expansion_eq;
+
 public:
 	/**
 	 * Instantiate a new Turbine.
@@ -38,6 +50,8 @@ public:
 	 */
 	Turbine(double isenthropic_efficiency,
 			double mechanical_efficiency, double pout);
+
+	virtual EquationSystem equations();
 };
 
 #endif /*_PLANTCALC_DEVICES_TURBINE_HXX*/

@@ -17,12 +17,9 @@ static Constant one(1);
 ReversibleTurbine::ReversibleTurbine(const char* name,
 		double isen_eff, double mech_eff)
 	: MediumFlowDevice(name),
-	_isenthropic_efficiency(_device_id, "etai", isen_eff),
-	_one_minus_isenthropic_efficiency(_device_id, "1-etai"),
 	_mechanical_efficiency(_device_id, "etam", mech_eff),
 	_mechanical_efficiency_reciprocal(_device_id, "1/etam"),
 	_loop_in(_device_id, "loop-in"),
-	_loop_out(_device_id, "loop-out"),
 	_energy_pin(_device_id, "energy-pin"),
 	_one_minus_isen_eff_eq(1.0, one,
 			-1.0, _isenthropic_efficiency,
@@ -33,13 +30,13 @@ ReversibleTurbine::ReversibleTurbine(const char* name,
 	_loop_mass_balance_eq(_loop_in.D(), _loop_out.D()),
 	_loop_pressure_eq(_loop_out.p(), _out.p()),
 	_ideal_expansion_eq(_in.s(), _loop_in.s()),
-	_real_expansion_eq(1.0, _out.h(),
-			-1.0, _one_minus_isenthropic_efficiency, _in.h(),
-			-1.0, _isenthropic_efficiency, _loop_out.h()),
 	_energy_balance_eq(1.0, _out.D(), _out.h(),
 			1.0, _in.D(), _in.h(),
 			1.0, _mechanical_efficiency_reciprocal, _energy_pin.P()),
-	_loop_conn(_loop_out, _loop_in)
+	_loop_conn(_loop_out, _loop_in),
+	_isenthropic_efficiency(_device_id, "etai", isen_eff),
+	_one_minus_isenthropic_efficiency(_device_id, "1-etai"),
+	_loop_out(_device_id, "loop-out")
 {
 	// XXX: add boundaries to efficiences
 }
@@ -47,12 +44,9 @@ ReversibleTurbine::ReversibleTurbine(const char* name,
 ReversibleTurbine::ReversibleTurbine(const char* name,
 		double isen_eff, double mech_eff, double pout)
 	: MediumFlowDevice(name),
-	_isenthropic_efficiency(_device_id, "etai", isen_eff),
-	_one_minus_isenthropic_efficiency(_device_id, "(1-etai)"),
 	_mechanical_efficiency(_device_id, "etam", mech_eff),
 	_mechanical_efficiency_reciprocal(_device_id, "(1/etam)"),
 	_loop_in(_device_id, "loop-in"),
-	_loop_out(_device_id, "loop-out"),
 	_energy_pin(_device_id, "energy-pin"),
 	_one_minus_isen_eff_eq(1.0, one,
 			-1.0, _isenthropic_efficiency,
@@ -63,13 +57,13 @@ ReversibleTurbine::ReversibleTurbine(const char* name,
 	_loop_mass_balance_eq(_loop_in.D(), _loop_out.D()),
 	_loop_pressure_eq(_loop_out.p(), _out.p()),
 	_ideal_expansion_eq(_in.s(), _loop_in.s()),
-	_real_expansion_eq(1.0, _out.h(),
-			-1.0, _one_minus_isenthropic_efficiency, _in.h(),
-			-1.0, _isenthropic_efficiency, _loop_out.h()),
 	_energy_balance_eq(1.0, _out.D(), _out.h(),
 			1.0, _in.D(), _in.h(),
 			1.0, _mechanical_efficiency_reciprocal, _energy_pin.P()),
-	_loop_conn(_loop_out, _loop_in)
+	_loop_conn(_loop_out, _loop_in),
+	_isenthropic_efficiency(_device_id, "etai", isen_eff),
+	_one_minus_isenthropic_efficiency(_device_id, "(1-etai)"),
+	_loop_out(_device_id, "loop-out")
 {
 	_out.p().set_value(pout);
 }
@@ -126,7 +120,6 @@ EquationSystem ReversibleTurbine::equations()
 	ret.push_back(&_loop_mass_balance_eq);
 	ret.push_back(&_loop_pressure_eq);
 	ret.push_back(&_ideal_expansion_eq);
-	ret.push_back(&_real_expansion_eq);
 	ret.push_back(&_energy_balance_eq);
 
 	return ret;
