@@ -58,6 +58,7 @@ libplantcalc_powerplant_la_SOURCES = \
 	src/devices/endpoints/mediumendpoint.cxx src/devices/endpoints/mediumendpoint.hxx \
 	src/devices/mixingjunctions/approximatemediummixingjunction.cxx src/devices/mixingjunctions/approximatemediummixingjunction.hxx \
 	src/devices/mixingjunctions/mechanicalenergymixingjunction.cxx src/devices/mixingjunctions/mechanicalenergymixingjunction.hxx \
+	src/devices/splittingjunctions/fuelsplittingjunction.cxx src/devices/splittingjunctions/fuelsplittingjunction.hxx \
 	src/devices/splittingjunctions/mediumsplittingjunction.cxx src/devices/splittingjunctions/mediumsplittingjunction.hxx \
 	src/devices/boiler.cxx src/devices/boiler.hxx \
 	src/devices/condenser.cxx src/devices/condenser.hxx \
