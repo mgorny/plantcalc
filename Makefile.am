@@ -92,6 +92,14 @@ test_SOURCES = test.cxx
 test_CPPFLAGS = $(LIBH2OXX_CFLAGS) $(EIGEN_CFLAGS)
 test_LDADD = libplantcalc.la
 
+all-am: out.svg
+
+out.svg: out.dot
+	dot -Tsvg $< > $@
+
+out.dot: test
+	./test
+
 EXTRA_DIST = NEWS
 NEWS: configure.ac Makefile.am
 	git for-each-ref refs/tags --sort '-*committerdate' \
