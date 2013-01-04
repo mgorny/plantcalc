@@ -55,6 +55,7 @@ libplantcalc_powerplant_la_SOURCES = \
 	src/devices/common/mediumflowdevice.cxx src/devices/common/mediumflowdevice.hxx \
 	src/devices/common/reversibleturbine.cxx src/devices/common/reversibleturbine.hxx \
 	src/devices/endpoints/fuelendpoint.cxx src/devices/endpoints/fuelendpoint.hxx \
+	src/devices/endpoints/mechanicalenergyendpoint.cxx src/devices/endpoints/mechanicalenergyendpoint.hxx \
 	src/devices/endpoints/mediumendpoint.cxx src/devices/endpoints/mediumendpoint.hxx \
 	src/devices/mixingjunctions/approximatemediummixingjunction.cxx src/devices/mixingjunctions/approximatemediummixingjunction.hxx \
 	src/devices/mixingjunctions/mechanicalenergymixingjunction.cxx src/devices/mixingjunctions/mechanicalenergymixingjunction.hxx \
