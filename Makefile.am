@@ -63,6 +63,7 @@ libplantcalc_powerplant_la_SOURCES = \
 	src/devices/splittingjunctions/mediumsplittingjunction.cxx src/devices/splittingjunctions/mediumsplittingjunction.hxx \
 	src/devices/boiler.cxx src/devices/boiler.hxx \
 	src/devices/condenser.cxx src/devices/condenser.hxx \
+	src/devices/deaerator.cxx src/devices/deaerator.hxx \
 	src/devices/feedwaterheater.cxx src/devices/feedwaterheater.hxx \
 	src/devices/pump.cxx src/devices/pump.hxx \
 	src/devices/turbine.cxx src/devices/turbine.hxx \

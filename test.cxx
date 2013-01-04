@@ -4,6 +4,7 @@
 
 #include "src/devices/boiler.hxx"
 #include "src/devices/condenser.hxx"
+#include "src/devices/deaerator.hxx"
 #include "src/devices/feedwaterheater.hxx"
 #include "src/devices/pump.hxx"
 #include "src/devices/turbine.hxx"
@@ -48,9 +49,11 @@ int main()
 	Turbine T25(.9, .99, 0.0035); plant.push_back(T25);
 	Condenser Sk(10); plant.push_back(Sk);
 
-	FeedwaterHeater R24(5), R23(5), R22(5), R21(5), R11(5);
-	plant.push_back(R24); plant.push_back(R23); plant.push_back(R22);
+	FeedwaterHeater R24(5), R23(5), R21(5), R11(5);
+	plant.push_back(R24); plant.push_back(R23);
 	plant.push_back(R21); plant.push_back(R11);
+
+	Deaerator R22; plant.push_back(R22);
 
 	Pump PSk(.9, .99), P22(.9, .99);
 	plant.push_back(PSk); plant.push_back(P22);
@@ -101,15 +104,11 @@ int main()
 	MediumConnection R24_R23(R24.sec_out(), R23.sec_in()); plant.push_back(R24_R23);
 	MediumConnection R23_R22(R23.sec_out(), R22.sec_in()); plant.push_back(R23_R22);
 
-	// (XXX: odgazowywacz!)
-	ApproximateMediumMixingJunction R22m1; plant.push_back(R22m1);
-	MediumConnection R22_R22m11(R22.out(), R22m1.in1()); plant.push_back(R22_R22m11);
-	MediumConnection R22_R22m12(R22.sec_out(), R22m1.in2()); plant.push_back(R22_R22m12);
+	// odgazowywacz
+	ApproximateMediumMixingJunction R22m; plant.push_back(R22m);
+	MediumConnection R22_R22m(R22.out(), R22m.in1()); plant.push_back(R22_R22m);
 
-	ApproximateMediumMixingJunction R22m2; plant.push_back(R22m2);
-	MediumConnection R22m1_R22m2(R22m1.out(), R22m2.in1()); plant.push_back(R22m1_R22m2);
-
-	MediumConnection R22m2_P22(R22m2.out(), P22.in()); plant.push_back(R22m2_P22);
+	MediumConnection R22m_P22(R22m.out(), P22.in()); plant.push_back(R22m_P22);
 	MediumConnection P22_R21(P22.out(), R21.sec_in()); plant.push_back(P22_R21);
 	MediumConnection R21_R11(R21.sec_out(), R11.sec_in()); plant.push_back(R21_R11);
 	MediumConnection R11_K1(R11.sec_out(), K1.in()); plant.push_back(R11_K1);
@@ -117,7 +116,7 @@ int main()
 	ApproximateMediumMixingJunction R21m; plant.push_back(R21m);
 	MediumConnection R21_R21m(R21.out(), R21m.in1()); plant.push_back(R21_R21m);
 	MediumConnection R11_R21m(R11.out(), R21m.in2()); plant.push_back(R11_R21m);
-	MediumConnection R21m_R22m12(R21m.out(), R22m2.in2()); plant.push_back(R21m_R22m12);
+	MediumConnection R21m_R22m(R21m.out(), R22m.in2()); plant.push_back(R21m_R22m);
 
 	K1_T11.substance(&woda);
 
@@ -183,10 +182,6 @@ int main()
 	plant.set_substances();
 
 	EquationSystem eqs = plant.equations();
-
-	// XXX: zrobić odgazowywacz porządnie
-	EqualityEquation odg_p(R22.sec_out().p(), R22.out().p());
-	eqs.push_back(&odg_p);
 
 	AutoEquationSolver solv(eqs);
 
