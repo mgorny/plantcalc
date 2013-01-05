@@ -44,8 +44,10 @@ class Deaerator : public MediumFlowDevice
 public:
 	/**
 	 * Instantiate a new Deaerator.
+	 *
+	 * @param[in] name The device name.
 	 */
-	Deaerator();
+	Deaerator(const char* name);
 
 	/**
 	 * The secondary medium input pin.

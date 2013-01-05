@@ -9,8 +9,8 @@
 
 #include "feedwaterheater.hxx"
 
-FeedwaterHeater::FeedwaterHeater()
-	: CondensingHeatExchanger("FwH"),
+FeedwaterHeater::FeedwaterHeater(const char* name)
+	: CondensingHeatExchanger(name),
 	_DeltaTL(_device_id, "DeltaTL"),
 	_DeltaTL_equation(1.0, _sec_out.T(),
 			1.0, _DeltaTL,
@@ -18,8 +18,8 @@ FeedwaterHeater::FeedwaterHeater()
 {
 }
 
-FeedwaterHeater::FeedwaterHeater(double DeltaTL)
-	: CondensingHeatExchanger("FwH"),
+FeedwaterHeater::FeedwaterHeater(const char* name, double DeltaTL)
+	: CondensingHeatExchanger(name),
 	_DeltaTL(_device_id, "DeltaTL", DeltaTL),
 	_DeltaTL_equation(1.0, _sec_out.T(),
 			1.0, _DeltaTL,

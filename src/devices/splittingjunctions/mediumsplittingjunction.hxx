@@ -29,8 +29,10 @@ class MediumSplittingJunction : public SplittingJunction<MediumPin>
 public:
 	/**
 	 * Instantiate a new MediumSplittingJunction.
+	 *
+	 * @param[in] name The junction name.
 	 */
-	MediumSplittingJunction();
+	MediumSplittingJunction(const char* name);
 
 	virtual EquationSystem equations();
 };

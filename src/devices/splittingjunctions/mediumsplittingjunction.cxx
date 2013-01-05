@@ -12,8 +12,9 @@
 
 template class SplittingJunction<MediumPin>;
 
-MediumSplittingJunction::MediumSplittingJunction()
-	: _p1_eq(_in.p(), _out1.p()),
+MediumSplittingJunction::MediumSplittingJunction(const char* name)
+	: SplittingJunction<MediumPin>(name),
+	_p1_eq(_in.p(), _out1.p()),
 	_p2_eq(_in.p(), _out2.p()),
 	_h1_eq(_in.h(), _out1.h()),
 	_h2_eq(_in.h(), _out2.h()),

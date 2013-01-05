@@ -35,13 +35,17 @@ class FeedwaterHeater : public CondensingHeatExchanger
 public:
 	/**
 	 * Instantiate a new FeedwaterHeater.
+	 *
+	 * @param[in] name The device name.
 	 */
-	FeedwaterHeater();
+	FeedwaterHeater(const char* name);
 	/**
 	 * Instantiate a new FeedwaterHeater and set initial
 	 * @f$ \Delta T_L @f$.
+	 *
+	 * @param[in] name The device name.
 	 */
-	FeedwaterHeater(double DeltaTL);
+	FeedwaterHeater(const char* name, double DeltaTL);
 
 	/**
 	 * The temperature difference between the primary and secondary

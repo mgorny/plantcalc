@@ -59,22 +59,6 @@ void System::flatten()
 	}
 }
 
-void System::set_device_ids()
-{
-	std::map<const char*, int> device_numbering_table;
-
-	for (device_list::iterator it = _devices.begin();
-			it != _devices.end(); ++it)
-	{
-		Device& d = **it;
-		DeviceID& id = d.device_id();
-
-		int new_num = ++device_numbering_table[id.name()];
-
-		id.num(new_num);
-	}
-}
-
 void System::set_substances()
 {
 	connection_group_list groups = grouped_connections();

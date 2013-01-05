@@ -30,7 +30,6 @@ class DeviceID : public ID
 {
 private:
 	const char* _name;
-	int _num;
 
 protected:
 	virtual std::ostream& print_to(std::ostream& f) const;
@@ -48,16 +47,6 @@ public:
 	 * Obtain the device name (without the number).
 	 */
 	const char* name() const;
-	/**
-	 * Obtain the device number.
-	 *
-	 * @returns The device number or @c 0 if unset.
-	 */
-	int num() const;
-	/**
-	 * Set the device number.
-	 */
-	void num(int new_num);
 };
 
 #endif /*_PLANTCALC_IDS_DEVICEID_HXX*/

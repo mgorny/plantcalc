@@ -25,8 +25,10 @@ class MechanicalEnergyMixingJunction : public MixingJunction<MechanicalEnergyPin
 public:
 	/**
 	 * Instantiate a new MechanicalEnergyMixingJunction.
+	 *
+	 * @param[in] name The junction name.
 	 */
-	MechanicalEnergyMixingJunction();
+	MechanicalEnergyMixingJunction(const char* name);
 
 	virtual EquationSystem equations();
 };

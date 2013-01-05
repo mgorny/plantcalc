@@ -23,8 +23,10 @@ class MechanicalEnergyEndpoint : public Endpoint<MechanicalEnergyPin>
 public:
 	/**
 	 * Instantiate a MechanicalEnergyEndpoint.
+	 *
+	 * @param[in] name The device name.
 	 */
-	MechanicalEnergyEndpoint();
+	MechanicalEnergyEndpoint(const char* name);
 };
 
 #endif /*PLANTCALC_DEVICES_ENDPOINTS_MECHANICALENERGYENDPOINT_HXX*/

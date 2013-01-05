@@ -80,10 +80,6 @@ public:
 	void flatten();
 
 	/**
-	 * Set successive device numbers for devices.
-	 */
-	void set_device_ids();
-	/**
 	 * Set substances in interlinked connections.
 	 *
 	 * If any of the interlinked connections has a substance set,

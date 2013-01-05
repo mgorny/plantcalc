@@ -12,6 +12,7 @@
 
 template class Endpoint<FuelPin>;
 
-FuelEndpoint::FuelEndpoint()
+FuelEndpoint::FuelEndpoint(const char* name)
+	: Endpoint<FuelPin>(name)
 {
 }

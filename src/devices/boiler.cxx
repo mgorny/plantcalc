@@ -11,8 +11,8 @@
 
 #include "boiler.hxx"
 
-Boiler::Boiler(double eff)
-	: MediumFlowDevice("B"),
+Boiler::Boiler(const char* name, double eff)
+	: MediumFlowDevice(name),
 	_efficiency(_device_id, "eta", eff),
 	_fuel_in(_device_id, "fuel-in"),
 	_energy_balance_eq(1.0, _in.D(), _in.h(),
@@ -22,8 +22,8 @@ Boiler::Boiler(double eff)
 {
 }
 
-Boiler::Boiler(double eff, double pout, double Tout)
-	: MediumFlowDevice("B"),
+Boiler::Boiler(const char* name, double eff, double pout, double Tout)
+	: MediumFlowDevice(name),
 	_efficiency(_device_id, "eta", eff),
 	_fuel_in(_device_id, "fuel-in"),
 	_energy_balance_eq(1.0, _in.D(), _in.h(),

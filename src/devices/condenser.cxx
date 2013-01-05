@@ -9,8 +9,8 @@
 
 #include "condenser.hxx"
 
-Condenser::Condenser()
-	: CondensingHeatExchanger("C"),
+Condenser::Condenser(const char* name)
+	: CondensingHeatExchanger(name),
 	_DeltaT(_device_id, "DeltaT"),
 	_DeltaT_equation(1.0, _sec_in.T(),
 			1.0, _DeltaT,
@@ -18,8 +18,8 @@ Condenser::Condenser()
 {
 }
 
-Condenser::Condenser(double DeltaT)
-	: CondensingHeatExchanger("C"),
+Condenser::Condenser(const char* name, double DeltaT)
+	: CondensingHeatExchanger(name),
 	_DeltaT(_device_id, "DeltaT", DeltaT),
 	_DeltaT_equation(1.0, _sec_in.T(),
 			1.0, _DeltaT,

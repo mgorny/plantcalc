@@ -9,8 +9,8 @@
 #define _PLANTCALC_DEVICES_ENDPOINT_IXX 1
 
 template <class PinType>
-Endpoint<PinType>::Endpoint()
-	: Device("E"),
+Endpoint<PinType>::Endpoint(const char* name)
+	: Device(name),
 	_pin(_device_id, "i/o")
 {
 }

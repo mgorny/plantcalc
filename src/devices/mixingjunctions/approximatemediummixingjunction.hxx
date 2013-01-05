@@ -32,8 +32,10 @@ class ApproximateMediumMixingJunction : public MixingJunction<MediumPin>
 public:
 	/**
 	 * Instantiate a new ApproximateMediumMixingJunction.
+	 *
+	 * @param[in] name The junction name.
 	 */
-	ApproximateMediumMixingJunction();
+	ApproximateMediumMixingJunction(const char* name);
 
 	virtual EquationSystem equations();
 };

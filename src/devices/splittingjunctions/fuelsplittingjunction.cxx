@@ -12,8 +12,9 @@
 
 template class SplittingJunction<FuelPin>;
 
-FuelSplittingJunction::FuelSplittingJunction()
-	: _Qw1_eq(_in.Qw(), _out1.Qw()),
+FuelSplittingJunction::FuelSplittingJunction(const char* name)
+	: SplittingJunction<FuelPin>(name),
+	_Qw1_eq(_in.Qw(), _out1.Qw()),
 	_Qw2_eq(_in.Qw(), _out2.Qw()),
 	_energy_eq(1.0, _in.Q(),
 			1.0, _out1.Q(),

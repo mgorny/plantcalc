@@ -12,6 +12,7 @@
 
 template class Endpoint<MechanicalEnergyPin>;
 
-MechanicalEnergyEndpoint::MechanicalEnergyEndpoint()
+MechanicalEnergyEndpoint::MechanicalEnergyEndpoint(const char* name)
+	: Endpoint<MechanicalEnergyPin>(name)
 {
 }

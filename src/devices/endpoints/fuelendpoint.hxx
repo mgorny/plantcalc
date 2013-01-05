@@ -22,8 +22,10 @@ class FuelEndpoint : public Endpoint<FuelPin>
 public:
 	/**
 	 * Instantiate a FuelEndpoint.
+	 *
+	 * @param[in] name The device name.
 	 */
-	FuelEndpoint();
+	FuelEndpoint(const char* name);
 };
 
 #endif /*_PLANTCALC_DEVICES_ENDPOINTS_FUELENDPOINT_HXX*/

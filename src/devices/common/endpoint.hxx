@@ -27,8 +27,10 @@ protected:
 public:
 	/**
 	 * Instantiate the endpoint.
+	 *
+	 * @param[in] name The device name.
 	 */
-	Endpoint();
+	Endpoint(const char* name);
 
 	virtual EquationSystem equations();
 

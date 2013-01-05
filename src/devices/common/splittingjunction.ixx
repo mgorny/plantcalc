@@ -13,8 +13,8 @@
 #include <cassert>
 
 template <class PinType>
-SplittingJunction<PinType>::SplittingJunction()
-	: Device("SJ"),
+SplittingJunction<PinType>::SplittingJunction(const char* name)
+	: Device(name),
 	_in(_device_id, "in"),
 	_out1(_device_id, "out1"),
 	_out2(_device_id, "out2")

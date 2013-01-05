@@ -27,17 +27,19 @@ public:
 	/**
 	 * Instantiate a MediumEndpoint with a defined pressure.
 	 *
+	 * @param[in] name The device name.
 	 * @param[in] p The medium pressure [MPa].
 	 */
-	MediumEndpoint(double p = 0.1);
+	MediumEndpoint(const char* name, double p = 0.1);
 	/**
 	 * Instantiate a MediumEndpoint with a defined pressure
 	 * and temperature.
 	 *
+	 * @param[in] name The device name.
 	 * @param[in] p The medium pressure [MPa].
 	 * @param[in] T The medium temperature [K].
 	 */
-	MediumEndpoint(double p, double T);
+	MediumEndpoint(const char* name, double p, double T);
 };
 
 #endif /*_PLANTCALC_DEVICES_ENDPOINTS_MEDIUMENDPOINT_HXX*/

@@ -12,8 +12,8 @@
 #include <cassert>
 
 template <class PinType>
-MixingJunction<PinType>::MixingJunction()
-	: Device("MJ"),
+MixingJunction<PinType>::MixingJunction(const char* name)
+	: Device(name),
 	_in1(_device_id, "in1"),
 	_in2(_device_id, "in2"),
 	_out(_device_id, "out")

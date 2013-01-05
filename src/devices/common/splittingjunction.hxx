@@ -37,8 +37,10 @@ protected:
 
 	/**
 	 * Instantiate a new SplittingJunction.
+	 *
+	 * @param[in] name The device name.
 	 */
-	SplittingJunction();
+	SplittingJunction(const char* name);
 
 public:
 	virtual bool pins_connected(const Pin& lhs, const Pin& rhs) const;

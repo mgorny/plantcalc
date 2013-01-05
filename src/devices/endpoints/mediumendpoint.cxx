@@ -12,14 +12,16 @@
 
 template class Endpoint<MediumPin>;
 
-MediumEndpoint::MediumEndpoint(double p)
+MediumEndpoint::MediumEndpoint(const char* name, double p)
+	: Endpoint<MediumPin>(name)
 {
 	MediumPin& pin = *this;
 
 	pin.p().set_value(p);
 }
 
-MediumEndpoint::MediumEndpoint(double p, double T)
+MediumEndpoint::MediumEndpoint(const char* name, double p, double T)
+	: Endpoint<MediumPin>(name)
 {
 	MediumPin& pin = *this;
 

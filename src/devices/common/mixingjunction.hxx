@@ -37,8 +37,10 @@ protected:
 
 	/**
 	 * Instantiate a new MixingJunction.
+	 *
+	 * @param[in] name The device name.
 	 */
-	MixingJunction();
+	MixingJunction(const char* name);
 
 public:
 	virtual bool pins_connected(const Pin& lhs, const Pin& rhs) const;

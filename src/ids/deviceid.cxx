@@ -10,26 +10,16 @@
 #include "deviceid.hxx"
 
 DeviceID::DeviceID(const char* name)
-	: _name(name), _num(0)
+	: _name(name)
 {
 }
 
 std::ostream& DeviceID::print_to(std::ostream& f) const
 {
-	return f << _name << _num;
+	return f << _name;
 }
 
 const char* DeviceID::name() const
 {
 	return _name;
-}
-
-int DeviceID::num() const
-{
-	return _num;
-}
-
-void DeviceID::num(int new_num)
-{
-	_num = new_num;
 }

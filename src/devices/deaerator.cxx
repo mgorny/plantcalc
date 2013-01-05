@@ -12,8 +12,8 @@
 
 static Constant xsat(0.0);
 
-Deaerator::Deaerator()
-	: MediumFlowDevice("DA"),
+Deaerator::Deaerator(const char* name)
+	: MediumFlowDevice(name),
 	_sec_in(_device_id, "sec-in"),
 	_primary_pressure_eq(in().p(), out().p()),
 	_secondary_pressure_eq(_sec_in.p(), in().p()),

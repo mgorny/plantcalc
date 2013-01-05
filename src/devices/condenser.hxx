@@ -34,12 +34,16 @@ class Condenser : public CondensingHeatExchanger
 public:
 	/**
 	 * Instantiate a new Condenser.
+	 *
+	 * @param[in] name The device name.
 	 */
-	Condenser();
+	Condenser(const char* name);
 	/**
 	 * Instantiate a new Condenser and set initial @f$ \Delta T @f$.
+	 *
+	 * @param[in] name The device name.
 	 */
-	Condenser(double DeltaT);
+	Condenser(const char* name, double DeltaT);
 
 	/**
 	 * The temperature difference between secondary pins.

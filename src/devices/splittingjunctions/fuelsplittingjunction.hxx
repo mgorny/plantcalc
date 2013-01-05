@@ -27,8 +27,10 @@ class FuelSplittingJunction : public SplittingJunction<FuelPin>
 public:
 	/**
 	 * Instantiate a new FuelSplittingJunction.
+	 *
+	 * @param[in] name The junction name.
 	 */
-	FuelSplittingJunction();
+	FuelSplittingJunction(const char* name);
 
 	virtual EquationSystem equations();
 };

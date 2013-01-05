@@ -43,19 +43,21 @@ public:
 	/**
 	 * Instantiate a new Boiler.
 	 *
+	 * @param[in] name The device name.
 	 * @param[in] efficiency The boiler efficiency (determines the heat
 	 * loss).
 	 */
-	Boiler(double efficiency = 1);
+	Boiler(const char* name, double efficiency = 1);
 	/**
 	 * Instantiate a new Boiler and set output parameters.
 	 *
+	 * @param[in] name The device name.
 	 * @param[in] efficiency The boiler efficiency (determines the heat
 	 * loss).
 	 * @param[in] pout Initial output pressure [MPa].
 	 * @param[in] Tout Initial output temperature [K].
 	 */
-	Boiler(double efficiency, double pout, double Tout);
+	Boiler(const char* name, double efficiency, double pout, double Tout);
 
 	/**
 	 * The boiler effiency.
