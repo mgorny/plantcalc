@@ -40,13 +40,13 @@ int main()
 	// obieg pierwotny
 	Boiler K1("K1", .9, 10.2, 811.15); plant.push_back(K1);
 	Boiler K2("K2", .9, 2.35, 811.15); plant.push_back(K2);
-	Turbine T11("T11", .9, .99, 2.56); plant.push_back(T11);
-	Turbine T12("T12", .9, .99, 2.35); plant.push_back(T12);
-	Turbine T21("T21", .9, .99, 1.37); plant.push_back(T21);
-	Turbine T22("T22", .9, .99, 0.50); plant.push_back(T22);
-	Turbine T23("T23", .9, .99, 0.20); plant.push_back(T23);
-	Turbine T24("T24", .9, .99, 0.07); plant.push_back(T24);
-	Turbine T25("T25", .9, .99, 0.0035); plant.push_back(T25);
+	Turbine T11("T11", .8, .99, 2.56); plant.push_back(T11);
+	Turbine T12("T12", .8, .99, 2.35); plant.push_back(T12);
+	Turbine T21("T21", .8, .99, 1.37); plant.push_back(T21);
+	Turbine T22("T22", .8, .99, 0.50); plant.push_back(T22);
+	Turbine T23("T23", .8, .99, 0.20); plant.push_back(T23);
+	Turbine T24("T24", .8, .99, 0.07); plant.push_back(T24);
+	Turbine T25("T25", .8, .99, 0.0035); plant.push_back(T25);
 	Condenser Sk("Sk", 10); plant.push_back(Sk);
 
 	FeedwaterHeater R24("R24", 5), R23("R23", 5);
@@ -56,7 +56,7 @@ int main()
 
 	Deaerator R22("R22"); plant.push_back(R22);
 
-	Pump PSk("PSk", .9, .99), P22("P22", .9, .99);
+	Pump PSk("PSk", .8, .99), P22("P22", .8, .99);
 	plant.push_back(PSk); plant.push_back(P22);
 
 	// połączenia i rozgałęzienia
@@ -175,7 +175,7 @@ int main()
 	MechanicalEnergyEndpoint Gen("Gen"); plant.push_back(Gen);
 	MechanicalEnergyConnection Gene_Gen(Gene.out(), Gen); plant.push_back(Gene_Gen);
 
-	Gene.out().P().set_value(90115);
+	T25e.out().P().set_value(90115);
 
 	plant.flatten();
 	plant.set_substances();
