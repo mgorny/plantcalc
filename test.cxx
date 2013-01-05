@@ -43,7 +43,7 @@ int main()
 	Turbine T11(.9, .99, 2.56); plant.push_back(T11);
 	Turbine T12(.9, .99, 2.35); plant.push_back(T12);
 	Turbine T21(.9, .99, 1.37); plant.push_back(T21);
-	Turbine T22(.9, .99, 0.45); plant.push_back(T22);
+	Turbine T22(.9, .99, 0.50); plant.push_back(T22);
 	Turbine T23(.9, .99, 0.20); plant.push_back(T23);
 	Turbine T24(.9, .99, 0.07); plant.push_back(T24);
 	Turbine T25(.9, .99, 0.0035); plant.push_back(T25);
@@ -59,37 +59,36 @@ int main()
 	plant.push_back(PSk); plant.push_back(P22);
 
 	// połączenia i rozgałęzienia
-	MediumConnection K1_T11(K1.out(), T11.in()); plant.push_back(K1_T11);
-
 	MediumSplittingJunction T11r; plant.push_back(T11r);
-	MediumConnection T11_T11r(T11.out(), T11r.in()); plant.push_back(T11_T11r);
-	MediumConnection T11r_R11(T11r.out2(), R11.in()); plant.push_back(T11r_R11);
-	MediumConnection T11r_T12(T11r.out1(), T12.in()); plant.push_back(T11r_T12);
+	MediumConnection K1_T11r(K1.out(), T11r.in()); plant.push_back(K1_T11r);
+	MediumConnection T11r_T11(T11r.out1(), T11.in()); plant.push_back(T11r_T11);
+	MediumConnection T11_R11(T11.out(), R11.in()); plant.push_back(T11_R11);
 
+	MediumConnection T11r_T12r(T11r.out2(), T12.in()); plant.push_back(T11r_T12r);
 	MediumConnection T12_K2(T12.out(), K2.in()); plant.push_back(T12_K2);
-	MediumConnection K2_T21(K2.out(), T21.in()); plant.push_back(K2_T21);
 
 	MediumSplittingJunction T21r; plant.push_back(T21r);
-	MediumConnection T21_T21r(T21.out(), T21r.in()); plant.push_back(T21_T21r);
-	MediumConnection T21r_R21(T21r.out2(), R21.in()); plant.push_back(T21r_R21);
-	MediumConnection T21r_T22(T21r.out1(), T22.in()); plant.push_back(T21r_T22);
+	MediumConnection K2_T21r(K2.out(), T21r.in()); plant.push_back(K2_T21r);
+	MediumConnection T21r_T21(T21r.out1(), T21.in()); plant.push_back(T21r_T21);
+	MediumConnection T21_R21(T21.out(), R21.in()); plant.push_back(T21_R21);
 
 	MediumSplittingJunction T22r; plant.push_back(T22r);
-	MediumConnection T22_T22r(T22.out(), T22r.in()); plant.push_back(T22_T22r);
-	MediumConnection T22r_R22(T22r.out2(), R22.in()); plant.push_back(T22r_R22);
-	MediumConnection T22r_T23(T22r.out1(), T23.in()); plant.push_back(T22r_T23);
+	MediumConnection T21r_T22r(T21r.out2(), T22r.in()); plant.push_back(T21r_T22r);
+	MediumConnection T22r_T22(T22r.out1(), T22.in()); plant.push_back(T22r_T22);
+	MediumConnection T22_R22(T22.out(), R22.in()); plant.push_back(T22_R22);
 
 	MediumSplittingJunction T23r; plant.push_back(T23r);
-	MediumConnection T23_T23r(T23.out(), T23r.in()); plant.push_back(T23_T23r);
-	MediumConnection T23r_R23(T23r.out2(), R23.in()); plant.push_back(T23r_R23);
-	MediumConnection T23r_T24(T23r.out1(), T24.in()); plant.push_back(T23r_T24);
+	MediumConnection T22r_T23r(T22r.out2(), T23r.in()); plant.push_back(T22r_T23r);
+	MediumConnection T23r_T23(T23r.out1(), T23.in()); plant.push_back(T23r_T23);
+	MediumConnection T23_R23(T23.out(), R23.in()); plant.push_back(T23_R23);
 
 	MediumSplittingJunction T24r; plant.push_back(T24r);
-	MediumConnection T24_T24r(T24.out(), T24r.in()); plant.push_back(T24_T24r);
-	MediumConnection T24r_R24(T24r.out2(), R24.in()); plant.push_back(T24r_R24);
-	MediumConnection T24r_T25(T24r.out1(), T25.in()); plant.push_back(T24r_T25);
+	MediumConnection T23r_T24r(T23r.out2(), T24r.in()); plant.push_back(T23r_T24r);
+	MediumConnection T24r_T24(T24r.out1(), T24.in()); plant.push_back(T24r_T24);
+	MediumConnection T24_R24(T24.out(), R24.in()); plant.push_back(T24_R24);
 
-	MediumConnection T25_Sk(T25.out(), Sk.in()); plant.push_back(T25_Sk);
+	MediumConnection T24r_T25(T24r.out2(), T25.in()); plant.push_back(T24r_T25);
+	MediumConnection T25_C(T25.out(), Sk.in()); plant.push_back(T25_C);
 
 	ApproximateMediumMixingJunction Skm; plant.push_back(Skm);
 	MediumConnection Sk_Skm(Sk.out(), Skm.in1()); plant.push_back(Sk_Skm);
@@ -118,7 +117,7 @@ int main()
 	MediumConnection R11_R21m(R11.out(), R21m.in2()); plant.push_back(R11_R21m);
 	MediumConnection R21m_R22m(R21m.out(), R22m.in2()); plant.push_back(R21m_R22m);
 
-	K1_T11.substance(&woda);
+	K1_T11r.substance(&woda);
 
 	// obieg wtórny skraplacza
 	MediumEndpoint SkI(.1, 283.15), SkII(.1);
