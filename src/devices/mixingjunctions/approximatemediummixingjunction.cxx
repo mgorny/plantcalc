@@ -18,7 +18,7 @@ ApproximateMediumMixingJunction::ApproximateMediumMixingJunction(const char* nam
 			1.0, _in2.D(),
 			1.0, _out.D()),
 	_p_eq(_in1.p(), _out.p()),
-	_h_eq(_in1.h(), _out.h())
+	_s_eq(_in1.s(), _out.s())
 {
 }
 
@@ -28,7 +28,7 @@ EquationSystem ApproximateMediumMixingJunction::equations()
 
 	ret.push_back(&_mass_eq);
 	ret.push_back(&_p_eq);
-	ret.push_back(&_h_eq);
+	ret.push_back(&_s_eq);
 
 	return ret;
 }

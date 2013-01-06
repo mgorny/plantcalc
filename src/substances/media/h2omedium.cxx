@@ -38,15 +38,15 @@ bool H2OMedium::solve(Variable& p, Variable& T,
 			used_T = true;
 			state = h2o::H2O::pT(p, T);
 		}
-		else if (h.is_set())
-		{
-			used_h = true;
-			state = h2o::H2O::ph(p, h);
-		}
 		else if (s.is_set())
 		{
 			used_s = true;
 			state = h2o::H2O::ps(p, s);
+		}
+		else if (h.is_set())
+		{
+			used_h = true;
+			state = h2o::H2O::ph(p, h);
 		}
 		else if (x.is_set())
 		{

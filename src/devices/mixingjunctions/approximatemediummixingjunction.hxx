@@ -27,7 +27,7 @@
 class ApproximateMediumMixingJunction : public MixingJunction<MediumPin>
 {
 	LinearEquation _mass_eq;
-	EqualityEquation _p_eq, _h_eq;
+	EqualityEquation _p_eq, _s_eq;
 
 public:
 	/**
