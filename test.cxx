@@ -3,9 +3,10 @@
 #endif
 
 #include "src/devices/boiler.hxx"
-#include "src/devices/condenser.hxx"
-#include "src/devices/deaerator.hxx"
+#include "src/devices/condenser2.hxx"
+#include "src/devices/deaerator2.hxx"
 #include "src/devices/feedwaterheater.hxx"
+#include "src/devices/feedwaterheater2.hxx"
 #include "src/devices/pump.hxx"
 #include "src/devices/turbine.hxx"
 #include "src/devices/endpoints/fuelendpoint.hxx"
@@ -14,7 +15,6 @@
 #include "src/devices/splittingjunctions/fuelsplittingjunction.hxx"
 #include "src/devices/splittingjunctions/mediumsplittingjunction.hxx"
 #include "src/devices/mixingjunctions/mechanicalenergymixingjunction.hxx"
-#include "src/devices/mixingjunctions/approximatemediummixingjunction.hxx"
 #include "src/equationsystem.hxx"
 #include "src/system.hxx"
 
@@ -47,14 +47,16 @@ int main()
 	Turbine T23("T23", .8, .99, 0.20); plant.push_back(T23);
 	Turbine T24("T24", .8, .99, 0.07); plant.push_back(T24);
 	Turbine T25("T25", .8, .99, 0.0035); plant.push_back(T25);
-	Condenser Sk("Sk", 10); plant.push_back(Sk);
+	Condenser2 Sk("Sk", 10); plant.push_back(Sk);
 
-	FeedwaterHeater R24("R24", 5), R23("R23", 5);
+	FeedwaterHeater2 R24("R24", 5);
+	FeedwaterHeater R23("R23", 5);
 	plant.push_back(R24); plant.push_back(R23);
-	FeedwaterHeater R21("R21", 5), R11("R11", 5);
+	FeedwaterHeater2 R21("R21", 5);
+	FeedwaterHeater R11("R11", 5);
 	plant.push_back(R21); plant.push_back(R11);
 
-	Deaerator R22("R22"); plant.push_back(R22);
+	Deaerator2 R22("R22"); plant.push_back(R22);
 
 	Pump PSk("PSk", .8, .99), P22("P22", .8, .99);
 	plant.push_back(PSk); plant.push_back(P22);
@@ -91,32 +93,23 @@ int main()
 	MediumConnection T24r_T25(T24r.out2(), T25.in()); plant.push_back(T24r_T25);
 	MediumConnection T25_C(T25.out(), Sk.in()); plant.push_back(T25_C);
 
-	ApproximateMediumMixingJunction Skm("Skm"); plant.push_back(Skm);
-	MediumConnection Sk_Skm(Sk.out(), Skm.in1()); plant.push_back(Sk_Skm);
-	MediumConnection Skm_PSk(Skm.out(), PSk.in()); plant.push_back(Skm_PSk);
+	MediumConnection Sk_PSk(Sk.out(), PSk.in()); plant.push_back(Sk_PSk);
 	MediumConnection PSk_R24(PSk.out(), R24.sec_in()); plant.push_back(PSk_R24);
 
-	ApproximateMediumMixingJunction R24m("R24m"); plant.push_back(R24m);
-	MediumConnection R24_R24m(R24.out(), R24m.in1()); plant.push_back(R24_R24m);
-	MediumConnection R23_R24m(R23.out(), R24m.in2()); plant.push_back(R23_R24m);
-	MediumConnection R24m_Skm(R24m.out(), Skm.in2()); plant.push_back(R24m_Skm);
+	MediumConnection R23_R24(R23.out(), R24.cond_in()); plant.push_back(R23_R24);
+	MediumConnection R24_Sk(R24.out(), Sk.cond_in()); plant.push_back(R24_Sk);
 
 	MediumConnection R24_R23(R24.sec_out(), R23.sec_in()); plant.push_back(R24_R23);
 	MediumConnection R23_R22(R23.sec_out(), R22.sec_in()); plant.push_back(R23_R22);
 
 	// odgazowywacz
-	ApproximateMediumMixingJunction R22m("R22m"); plant.push_back(R22m);
-	MediumConnection R22_R22m(R22.out(), R22m.in1()); plant.push_back(R22_R22m);
-
-	MediumConnection R22m_P22(R22m.out(), P22.in()); plant.push_back(R22m_P22);
+	MediumConnection R22_P22(R22.out(), P22.in()); plant.push_back(R22_P22);
 	MediumConnection P22_R21(P22.out(), R21.sec_in()); plant.push_back(P22_R21);
 	MediumConnection R21_R11(R21.sec_out(), R11.sec_in()); plant.push_back(R21_R11);
 	MediumConnection R11_K1(R11.sec_out(), K1.in()); plant.push_back(R11_K1);
 
-	ApproximateMediumMixingJunction R21m("R21m"); plant.push_back(R21m);
-	MediumConnection R21_R21m(R21.out(), R21m.in1()); plant.push_back(R21_R21m);
-	MediumConnection R11_R21m(R11.out(), R21m.in2()); plant.push_back(R11_R21m);
-	MediumConnection R21m_R22m(R21m.out(), R22m.in2()); plant.push_back(R21m_R22m);
+	MediumConnection R11_R21(R11.out(), R21.cond_in()); plant.push_back(R11_R21);
+	MediumConnection R21_R22(R21.out(), R22.cond_in()); plant.push_back(R21_R22);
 
 	K1_T11r.substance(&woda);
 
@@ -186,7 +179,7 @@ int main()
 
 	try
 	{
-		while (solv.iterate())
+		while (solv.iterate());
 			std::cout << eqs << std::endl;
 	}
 	catch (ContradictionError& e)

@@ -52,6 +52,7 @@ libplantcalc_powerplant_la_SOURCES = \
 	src/connections/mediumconnection.cxx src/connections/mediumconnection.hxx \
 	\
 	src/devices/common/condensingheatexchanger.cxx src/devices/common/condensingheatexchanger.hxx \
+	src/devices/common/condensingheatexchanger2.cxx src/devices/common/condensingheatexchanger2.hxx \
 	src/devices/common/mediumflowdevice.cxx src/devices/common/mediumflowdevice.hxx \
 	src/devices/common/reversibleturbine.cxx src/devices/common/reversibleturbine.hxx \
 	src/devices/endpoints/fuelendpoint.cxx src/devices/endpoints/fuelendpoint.hxx \
@@ -63,8 +64,11 @@ libplantcalc_powerplant_la_SOURCES = \
 	src/devices/splittingjunctions/mediumsplittingjunction.cxx src/devices/splittingjunctions/mediumsplittingjunction.hxx \
 	src/devices/boiler.cxx src/devices/boiler.hxx \
 	src/devices/condenser.cxx src/devices/condenser.hxx \
+	src/devices/condenser2.cxx src/devices/condenser2.hxx \
 	src/devices/deaerator.cxx src/devices/deaerator.hxx \
+	src/devices/deaerator2.cxx src/devices/deaerator2.hxx \
 	src/devices/feedwaterheater.cxx src/devices/feedwaterheater.hxx \
+	src/devices/feedwaterheater2.cxx src/devices/feedwaterheater2.hxx \
 	src/devices/pump.cxx src/devices/pump.hxx \
 	src/devices/turbine.cxx src/devices/turbine.hxx \
 	\
