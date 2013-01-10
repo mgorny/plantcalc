@@ -91,6 +91,11 @@ public:
 			double c2, Variable& v2a, Variable& v2b,
 			double c3, Variable& v3a, Variable& v3b,
 			double c4, Variable& v4a, Variable& v4b);
+	LinearEquation(double c1, Variable& v1a, Variable& v1b,
+			double c2, Variable& v2a, Variable& v2b,
+			double c3, Variable& v3a, Variable& v3b,
+			double c4, Variable& v4a, Variable& v4b,
+			double c5, Variable& v5a, Variable& v5b);
 
 	virtual bool solve(double epsilon);
 };

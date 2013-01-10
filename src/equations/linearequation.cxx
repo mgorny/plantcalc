@@ -64,6 +64,19 @@ LinearEquation::LinearEquation(double c1, Variable& v1a, Variable& v1b,
 	push_back(c4, v4a, v4b);
 }
 
+LinearEquation::LinearEquation(double c1, Variable& v1a, Variable& v1b,
+		double c2, Variable& v2a, Variable& v2b,
+		double c3, Variable& v3a, Variable& v3b,
+		double c4, Variable& v4a, Variable& v4b,
+		double c5, Variable& v5a, Variable& v5b)
+{
+	push_back(c1, v1a, v1b);
+	push_back(c2, v2a, v2b);
+	push_back(c3, v3a, v3b);
+	push_back(c4, v4a, v4b);
+	push_back(c5, v5a, v5b);
+}
+
 void LinearEquation::push_back(double coefficient, Variable& v)
 {
 	list_elem_type li = {coefficient, &v, 0};
