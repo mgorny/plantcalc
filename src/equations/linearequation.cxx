@@ -53,6 +53,17 @@ LinearEquation::LinearEquation(double c1, Variable& v1a, Variable& v1b,
 	push_back(c3, v3a, v3b);
 }
 
+LinearEquation::LinearEquation(double c1, Variable& v1,
+		double c2, Variable& v2,
+		double c3, Variable& v3,
+		double c4, Variable& v4)
+{
+	push_back(c1, v1);
+	push_back(c2, v2);
+	push_back(c3, v3);
+	push_back(c4, v4);
+}
+
 LinearEquation::LinearEquation(double c1, Variable& v1a, Variable& v1b,
 		double c2, Variable& v2a, Variable& v2b,
 		double c3, Variable& v3a, Variable& v3b,

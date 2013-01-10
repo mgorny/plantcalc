@@ -82,6 +82,10 @@ public:
 			double c2, Variable& v2,
 			double c3, Variable& v3);
 	LinearEquation(double c1, Variable& v1,
+			double c2, Variable& v2,
+			double c3, Variable& v3,
+			double c4, Variable& v4);
+	LinearEquation(double c1, Variable& v1,
 			double c2, Variable& v2a, Variable& v2b,
 			double c3, Variable& v3a, Variable& v3b);
 	LinearEquation(double c1, Variable& v1a, Variable& v1b,
