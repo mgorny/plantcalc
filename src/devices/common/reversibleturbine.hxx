@@ -45,24 +45,22 @@
  */
 class ReversibleTurbine : public MediumFlowDevice
 {
-	OwnedVariable _mechanical_efficiency;
-	OwnedVariable _mechanical_efficiency_reciprocal;
-
 	MediumPin _loop_in;
-	MechanicalEnergyPin _energy_pin;
 
 	LinearEquation _one_minus_isen_eff_eq;
-	LinearEquation _mech_eff_reciprocal_eq;
 
 	AdditiveInverseEquation _loop_mass_eq;
 	AdditiveInverseEquation _loop_mass_balance_eq;
 	EqualityEquation _loop_pressure_eq;
 	EqualityEquation _ideal_expansion_eq;
-	LinearEquation _energy_balance_eq;
 
 	MediumConnection _loop_conn;
 
 protected:
+	MechanicalEnergyPin _energy_pin;
+
+	OwnedVariable _mechanical_efficiency;
+
 	OwnedVariable _isenthropic_efficiency;
 	OwnedVariable _one_minus_isenthropic_efficiency;
 

@@ -29,6 +29,7 @@
 class Pump : public ReversibleTurbine
 {
 	LinearEquation _real_expansion_eq;
+	LinearEquation _energy_balance_eq;
 
 public:
 	/**

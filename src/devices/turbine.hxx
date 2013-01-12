@@ -28,7 +28,11 @@
  */
 class Turbine : public ReversibleTurbine
 {
+	OwnedVariable _mechanical_efficiency_reciprocal;
+
 	LinearEquation _real_expansion_eq;
+	LinearEquation _mech_eff_reciprocal_eq;
+	LinearEquation _energy_balance_eq;
 
 public:
 	/**
